@@ -297,10 +297,10 @@ strong {
 }
 
 .hero-bg {
-  background-image: url('../images/briArialog.jpg');
+  background-image: url('../images/bria.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 60%;
+  background-size: 100%;
 }
 
 .hero-bg::after {

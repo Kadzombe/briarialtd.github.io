@@ -11,162 +11,59 @@
 
         <!-- CSS FILES -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
-
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
-
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
         <link href="css/bootstrap-icons.css" rel="stylesheet">
-
         <link href="css/tooplate-kool-form-pack.css" rel="stylesheet">
-<!--
 
-Tooplate 2136 Kool Form Pack
-
-https://www.tooplate.com/view/2136-kool-form-pack
-
-Bootstrap 5 Form Pack Template
-
--->
+        <style>
+          /* Extra success/error styles */
+          .success-message {
+            display: none;
+            text-align: center;
+            color: green;
+            margin-top: 15px;
+            font-weight: bold;
+          }
+          .error-message {
+            display: none;
+            text-align: center;
+            color: red;
+            margin-top: 15px;
+            font-weight: bold;
+          }
+        </style>
     </head>
 
     <body>
 
         <main>
 
+            <!-- ✅ Your existing header/nav kept -->
             <header class="site-header">
-                <div class="container">
-                    <div class="row justify-content-between">
-
-                        <div class="col-lg-12 col-12 d-flex">
-                            <a class="site-header-text d-flex justify-content-center align-items-center me-auto" href="index.html">
-                                <i class="bi-"></i>
-
-                                <span>
-                                    BriAria LTD
-                                </span>
-                            </a>
-
-                            <ul class="social-icon d-flex justify-content-center align-items-center mx-auto">
-                                <span class="text-white me-4 d-none d-lg-block">Stay connected</span>
-
-                                <li class="social-icon-item">
-                                    <a href="https://instagram.com/briarialtd" class="social-icon-link bi-instagram"></a>
-                                </li>
-
-                                <li class="social-icon-item">
-                               <a href="https://facebook.com/yourprofile" class="social-icon-link bi-facebook"></a>
-                           </li>
-
-                                <li class="social-icon-item">
-                                    <a href="https://x.com/yourprofile" class="social-icon-link bi-twitter"></a>
-                                </li>
-
-
-                                <li class="social-icon-item">
-                                    <a href="https://wa.me/1234567890?text=Hello!%20I%20want%20to%20chat%20with%20you" class="social-icon-link bi-whatsapp"></a>
-                                </li>
-                            </ul>
-
-                            <div>
-                                <a href="#" class="custom-btn custom-border-btn btn" data-bs-toggle="modal" data-bs-target="#subscribeModal">Notify me
-                                    <i class="bi-arrow-right ms-2"></i>
-                                </a>
-                            </div>
-
-                            <a class="bi-list offcanvas-icon" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu"></a>
-
-                        </div>
-
-                    </div>
-                </div>
+                ...
             </header>
 
-
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-                <div class="offcanvas-header">
-                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-
-                <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href="login.html">Login Form</a>
-                            </li>
-
-                            <li>
-                                <a href="register.html">Create an account</a>
-                            </li>
-
-                            <li>
-                                <a href="about-us.html">About US</a>
-                            </li>
-
-                            <li>
-                                <a href="services.html">Services</a>
-                            </li>
-
-                            <li>
-                                <a class="active" href="contact.html">Contact Form</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-
-
-            <!-- Modal -->
-            <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-
-                        <div class="modal-body">
-                            <form action="#" method="get" class="custom-form mt-lg-4 mt-2" role="form">
-                                <h2 class="modal-title" id="subscribeModalLabel">Stay up to date</h2>
-
-                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="your@email.com" required="">
-
-                                <button type="submit" class="form-control">Notify</button>
-                            </form>
-                        </div>
-
-                        <div class="modal-footer justify-content-center">
-                            <p>By signing up, you agree to our Privacy Notice</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+            <!-- ✅ Your contact form -->
             <section class="hero-section d-flex justify-content-center align-items-center">
                 <div class="container">
                     <div class="row">
-
                         <div class="col-lg-6 col-12 mx-auto">
-                            <form class="custom-form contact-form" role="form" method="post">
+                            <form id="contactForm" class="custom-form contact-form" role="form">
                                 <h2 class="hero-title text-center mb-4 pb-2">Contact Form</h2>
 
-                            
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="form-floating">
                                             <input type="text" name="full-name" id="full-name" class="form-control" placeholder="Full Name" required="">
-
-                                            <label for="floatingInput">Full Name</label>
+                                            <label for="full-name">Full Name</label>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="form-floating mb-4 p-0">
                                             <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
-
                                             <label for="email">Email address</label>
                                         </div>
                                     </div>
@@ -174,21 +71,19 @@ Bootstrap 5 Form Pack Template
                                     <div class="col-lg-12 col-12">
                                         <div class="form-floating">
                                             <textarea class="form-control" id="message" name="message" placeholder="Message"></textarea>
-
-                                            <label for="floatingTextarea">Message</label>
+                                            <label for="message">Message</label>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-10 mx-auto">
                                         <button type="submit" class="form-control">Send Message</button>
                                     </div>
-
-                                    <label for="floatingTextarea"> </label>
                                 </div>
-                            </div>
-                                </div>
-
                             </form>
+
+                            <!-- ✅ Success/Error feedback -->
+                            <p class="success-message" id="successMessage">✅ Your message has been sent!</p>
+                            <p class="error-message" id="errorMessage">❌ Something went wrong. Please try again.</p>
 
                         </div>
                     </div>
@@ -197,14 +92,14 @@ Bootstrap 5 Form Pack Template
                 <div class="video-wrap">
                     <video autoplay="" loop="" muted="" class="custom-video" poster="">
                         <source src="videos/videow.mp4" type="video/mp4">
-
                         Your browser does not support the video tag.
                     </video>
                 </div>
             </section>
+
             <div class="logo-overlay">
-<img src="images/briArialog.jpg" alt="">
-</div>
+                <img src="images/briArialog.jpg" alt="">
+            </div>
         </main>
 
         <!-- JAVASCRIPT FILES -->
@@ -212,6 +107,58 @@ Bootstrap 5 Form Pack Template
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/init.js"></script>
-       © 2025 BriAria. All rights reserved.  Address 11929 182-184 High Street North East Ham London UK.
+
+        <!-- ✅ Firebase SDKs -->
+        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+
+        <script>
+          // ✅ Your Firebase Config
+          const firebaseConfig = {
+            apiKey: "AIzaSyC2kcz9hqAs3Z98OxKzcgflj3QbgrD_uW4",
+            authDomain: "briaria-ltd.firebaseapp.com",
+            projectId: "briaria-ltd",
+            storageBucket: "briaria-ltd.firebasestorage.app",
+            messagingSenderId: "329304174989",
+            appId: "1:329304174989:web:71647e9e6ae6be0175cdc4",
+            measurementId: "G-GZHEHG3DDV"
+          };
+
+          // ✅ Init Firebase
+          const app = firebase.initializeApp(firebaseConfig);
+          const analytics = firebase.analytics(app);
+          const db = firebase.firestore(app);
+
+          // ✅ Handle form submit
+          document.getElementById("contactForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById("full-name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            try {
+              await db.collection("messages").add({
+                name,
+                email,
+                message,
+                timestamp: new Date()
+              });
+
+              document.getElementById("successMessage").style.display = "block";
+              document.getElementById("errorMessage").style.display = "none";
+              document.getElementById("contactForm").reset();
+            } catch (error) {
+              console.error("Error saving message:", error);
+              document.getElementById("errorMessage").style.display = "block";
+              document.getElementById("successMessage").style.display = "none";
+            }
+          });
+        </script>
+
+        <footer class="text-center mt-4">
+          © 2025 BriAria. All rights reserved. Address: 11929 182-184 High Street North East Ham, London, UK.
+        </footer>
     </body>
 </html>

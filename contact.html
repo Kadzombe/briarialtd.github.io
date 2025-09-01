@@ -127,6 +127,7 @@
                         </div>
                     </div>
                 </div>
+                <p id="form-status"></p>
 
                 <div class="video-wrap">
                     <video autoplay="" loop="" muted="" class="custom-video" poster="">
@@ -149,46 +150,57 @@
 
         <!-- ✅ Firebase JS -->
         <script type="module">
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-            import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+  // Firebase SDKs
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-            // Firebase config
-            const firebaseConfig = {
-                apiKey: "AIzaSyC2kcz9hqAs3Z98OxKzcgflj3QbgrD_uW4",
-                authDomain: "briaria-ltd.firebaseapp.com",
-                projectId: "briaria-ltd",
-                storageBucket: "briaria-ltd.firebasestorage.app",
-                messagingSenderId: "329304174989",
-                appId: "1:329304174989:web:71647e9e6ae6be0175cdc4",
-                measurementId: "G-GZHEHG3DDV"
-            };
+  // ✅ Your Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyC2kcz9hqAs3Z98OxKzcgflj3QbgrD_uW4",
+    authDomain: "briaria-ltd.firebaseapp.com",
+    projectId: "briaria-ltd",
+    storageBucket: "briaria-ltd.firebasestorage.app",
+    messagingSenderId: "329304174989",
+    appId: "1:329304174989:web:71647e9e6ae6be0175cdc4",
+    measurementId: "G-GZHEHG3DDV"
+  };
 
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);
+  // Init Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-            // Handle form submit
-            document.getElementById("contactForm").addEventListener("submit", async (e) => {
-                e.preventDefault();
-                const name = document.getElementById("name").value;
-                const email = document.getElementById("email").value;
-                const message = document.getElementById("message").value;
+  // ✅ Handle form submit
+  document.getElementById("contactForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-                try {
-                    await addDoc(collection(db, "messages"), {
-                        name,
-                        email,
-                        message,
-                        timestamp: new Date()
-                    });
-                    alert("✅ Message sent successfully!");
-                    e.target.reset();
-                } catch (error) {
-                    console.error("❌ Error sending message: ", error);
-                    alert("Something went wrong. Please try again.");
-                }
-            });
-        </script>
+    // Get values
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    try {
+      await addDoc(collection(db, "messages"), {
+        name,
+        email,
+        message,
+        timestamp: new Date()
+      });
+
+      // Show success
+      document.getElementById("form-status").textContent = "✅ Message has been sent!";
+      document.getElementById("form-status").style.color = "green";
+
+      // Reset form
+      document.getElementById("contactForm").reset();
+
+    } catch (error) {
+      console.error("Error sending message:", error);
+      document.getElementById("form-status").textContent = "❌ Something went wrong. Try again.";
+      document.getElementById("form-status").style.color = "red";
+    }
+  });
+</script>
+
 
         © 2025 BriAria. All rights reserved. Address 11929 182-184 High Street North East Ham London UK.
     </body>

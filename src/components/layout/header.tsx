@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Mountain, Menu } from "lucide-react";
+import { Mountain, Menu, Linkedin, Instagram, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -8,6 +8,17 @@ const navLinks = [
   { href: "#solutions", label: "Solutions" },
   { href: "#contact", label: "Contact" },
 ];
+
+const XIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
 
 export function Header() {
   return (
@@ -30,7 +41,33 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <div className="flex flex-1 items-center justify-end">
+        <div className="flex flex-1 items-center justify-end gap-2">
+            <div className="hidden md:flex items-center gap-1">
+                 <Button variant="ghost" size="icon" asChild>
+                    <a href="https://www.linkedin.com/company/briaria-ltd/?viewAsMember=true" target="_blank" rel="noopener noreferrer">
+                    <Linkedin className="h-4 w-4" />
+                    <span className="sr-only">LinkedIn</span>
+                    </a>
+                </Button>
+                <Button variant="ghost" size="icon" asChild>
+                    <a href="https://www.instagram.com/briarialtd" target="_blank" rel="noopener noreferrer">
+                    <Instagram className="h-4 w-4" />
+                    <span className="sr-only">Instagram</span>
+                    </a>
+                </Button>
+                <Button variant="ghost" size="icon" asChild>
+                    <a href="https://www.facebook.com/briarialtd" target="_blank" rel="noopener noreferrer">
+                    <Facebook className="h-4 w-4" />
+                    <span className="sr-only">Facebook</span>
+                    </a>
+                </Button>
+                <Button variant="ghost" size="icon" asChild>
+                    <a href="https://x.com/briarialtd" target="_blank" rel="noopener noreferrer">
+                    <XIcon className="h-4 w-4" />
+                    <span className="sr-only">X</span>
+                    </a>
+                </Button>
+            </div>
           <Button asChild className="hidden md:flex">
             <a href="#contact">Request a Quote</a>
           </Button>
@@ -63,6 +100,32 @@ export function Header() {
                     <a href="#contact">Request a Quote</a>
                   </Button>
                 </nav>
+                 <div className="flex justify-center gap-2 mt-8">
+                    <Button variant="ghost" size="icon" asChild>
+                        <a href="https://www.linkedin.com/company/briaria-ltd/?viewAsMember=true" target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="h-5 w-5" />
+                        <span className="sr-only">LinkedIn</span>
+                        </a>
+                    </Button>
+                    <Button variant="ghost" size="icon" asChild>
+                        <a href="https://www.instagram.com/briarialtd" target="_blank" rel="noopener noreferrer">
+                        <Instagram className="h-5 w-5" />
+                        <span className="sr-only">Instagram</span>
+                        </a>
+                    </Button>
+                    <Button variant="ghost" size="icon" asChild>
+                        <a href="https://www.facebook.com/briarialtd" target="_blank" rel="noopener noreferrer">
+                        <Facebook className="h-5 w-5" />
+                        <span className="sr-only">Facebook</span>
+                        </a>
+                    </Button>
+                    <Button variant="ghost" size="icon" asChild>
+                        <a href="https://x.com/briarialtd" target="_blank" rel="noopener noreferrer">
+                        <XIcon className="h-5 w-5" />
+                        <span className="sr-only">X</span>
+                        </a>
+                    </Button>
+                </div>
               </div>
             </SheetContent>
           </Sheet>

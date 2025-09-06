@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Globe, Smartphone, PenTool, Cloud } from "lucide-react";
+import { ScrollAnimation } from "../scroll-animation";
 
 const services = [
   {
@@ -38,16 +39,18 @@ export function ServicesSection() {
           </p>
         </div>
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <Card key={service.title} className="flex flex-col items-center text-center p-6 transition-transform transform hover:-translate-y-2">
-              <CardHeader>
-                {service.icon}
-                <CardTitle className="mt-4">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{service.description}</p>
-              </CardContent>
-            </Card>
+          {services.map((service, index) => (
+            <ScrollAnimation key={service.title} delay={index * 0.1}>
+                <Card className="flex flex-col items-center text-center p-6 transition-transform transform hover:-translate-y-2 h-full">
+                <CardHeader>
+                    {service.icon}
+                    <CardTitle className="mt-4">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-muted-foreground">{service.description}</p>
+                </CardContent>
+                </Card>
+            </ScrollAnimation>
           ))}
         </div>
       </div>

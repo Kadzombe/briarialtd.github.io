@@ -4,8 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
-import { useFirebase } from "@/components/firebase-provider";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, Sparkles, Loader2 } from "lucide-react";
 
@@ -59,7 +57,6 @@ const timeSlots = ["09:00 AM", "11:00 AM", "02:00 PM", "04:00 PM"];
 
 
 export function QuoteAndDemoForm() {
-  const { db } = useFirebase();
   const { toast } = useToast();
   const [isGenerating, setIsGenerating] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -103,51 +100,21 @@ export function QuoteAndDemoForm() {
   };
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    if (!db) {
-       toast({
-        title: "Error",
-        description: "Database connection not available. Please try again later.",
-        variant: "destructive",
-      });
-      return;
+    console.log("Quote/Demo Form Submitted:", values);
+    
+    let toastTitle = "Quote Request Sent (Dev Mode)!";
+    let toastDescription = "We've received your request. Check console for data.";
+
+    if (values.bookDemo) {
+      toastTitle = "Demo Booked & Quote Requested (Dev Mode)!";
+      toastDescription = `We've scheduled your demo for ${format(values.date!, "PPP")} at ${values.time}. Check console for data.`;
     }
-    try {
-      const submissionData: any = {
-        name: values.name,
-        email: values.email,
-        company: values.company,
-        projectDetails: values.projectDetails,
-        submittedAt: new Date(),
-      };
-      
-      let collectionName = "quoteSubmissions";
-      let toastTitle = "Quote Request Sent!";
-      let toastDescription = "We've received your request and will get back to you with a quote soon.";
 
-      if (values.bookDemo) {
-        collectionName = "demoSubmissions";
-        submissionData.date = format(values.date!, "PPP");
-        submissionData.time = values.time;
-        toastTitle = "Demo Booked & Quote Requested!";
-        toastDescription = `We've scheduled your demo for ${format(values.date!, "PPP")} at ${values.time} and sent your project details.`;
-      }
-
-
-      await addDoc(collection(db, collectionName), submissionData);
-
-      toast({
-        title: toastTitle,
-        description: toastDescription,
-      });
-      form.reset();
-    } catch (error) {
-      console.error("Error adding document: ", error);
-      toast({
-        title: "Error",
-        description: "There was a problem sending your request. Please try again later.",
-        variant: "destructive",
-      });
-    }
+    toast({
+      title: toastTitle,
+      description: toastDescription,
+    });
+    form.reset();
   }
 
   return (

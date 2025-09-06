@@ -1,0 +1,304 @@
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { format } from "date-fns";
+import { Calendar as CalendarIcon, Sparkles, Loader2 } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
+import { Checkbox } from "./ui/checkbox";
+import { generateProjectDescription } from "@/ai/flows/generate-project-description";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+const formSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters."),
+  email: z.string().email("Please enter a valid email address."),
+  company: z.string().optional(),
+  projectDetails: z.string().min(20, "Please provide more details about your project."),
+  bookDemo: z.boolean().default(false).optional(),
+  date: z.date().optional(),
+  time: z.string().optional(),
+}).refine(data => {
+    if (data.bookDemo && !data.date) {
+        return false;
+    }
+    return true;
+}, {
+    message: "A date is required to book a demo.",
+    path: ["date"],
+}).refine(data => {
+    if (data.bookDemo && !data.time) {
+        return false;
+    }
+    return true;
+}, {
+    message: "A time is required to book a demo.",
+    path: ["time"],
+});
+
+const timeSlots = ["09:00 AM", "11:00 AM", "02:00 PM", "04:00 PM"];
+
+
+export function QuoteAndDemoForm() {
+  const { toast } = useToast();
+  const [isGenerating, setIsGenerating] = useState(false);
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      projectDetails: "",
+      bookDemo: false,
+    },
+  });
+
+  const watchBookDemo = form.watch("bookDemo");
+
+  const handleGenerateDescription = async () => {
+    const projectOutline = form.getValues("projectDetails");
+    if (!projectOutline || projectOutline.length < 10) {
+      form.setError("projectDetails", {
+        type: "manual",
+        message: "Please provide a brief outline first (at least 10 characters).",
+      });
+      return;
+    }
+    setIsGenerating(true);
+    try {
+      const result = await generateProjectDescription({ projectOutline });
+      form.setValue("projectDetails", result.projectDescription, {
+        shouldValidate: true,
+      });
+    } catch (error) {
+      console.error("Error generating project description:", error);
+      toast({
+        title: "AI Assistant Error",
+        description: "There was a problem generating the description. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const submissionData: any = {
+        name: values.name,
+        email: values.email,
+        company: values.company,
+        projectDetails: values.projectDetails,
+        submittedAt: new Date(),
+      };
+      
+      let collectionName = "quoteSubmissions";
+      let toastTitle = "Quote Request Sent!";
+      let toastDescription = "We've received your request and will get back to you with a quote soon.";
+
+      if (values.bookDemo) {
+        collectionName = "demoSubmissions";
+        submissionData.date = format(values.date!, "PPP");
+        submissionData.time = values.time;
+        toastTitle = "Demo Booked & Quote Requested!";
+        toastDescription = `We've scheduled your demo for ${format(values.date!, "PPP")} at ${values.time} and sent your project details.`;
+      }
+
+
+      await addDoc(collection(db, collectionName), submissionData);
+
+      toast({
+        title: toastTitle,
+        description: toastDescription,
+      });
+      form.reset();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your request. Please try again.",
+        variant: "destructive",
+      });
+    }
+  }
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Request a Quote & Book a Demo</CardTitle>
+        <CardDescription>Tell us about your project to receive a custom quote. You can also book a demo.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Full Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="John Doe" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email Address</FormLabel>
+                    <FormControl>
+                      <Input placeholder="you@example.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <FormField
+              control={form.control}
+              name="company"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Company (Optional)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your Company Inc." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="projectDetails"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Project Details</FormLabel>
+                  <FormControl>
+                    <Textarea rows={5} placeholder="Describe your project, goals, and key features..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+             <Button type="button" variant="outline" onClick={handleGenerateDescription} disabled={isGenerating} className="w-full">
+              {isGenerating ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
+              Generate with AI
+            </Button>
+            
+            <FormField
+                control={form.control}
+                name="bookDemo"
+                render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                        <FormControl>
+                            <Checkbox
+                                checked={field.value}
+                                onCheckedChange={field.onChange}
+                            />
+                        </FormControl>
+                        <div className="space-y-1 leading-none">
+                            <FormLabel>
+                                I also want to book a demo
+                            </FormLabel>
+                        </div>
+                    </FormItem>
+                )}
+            />
+
+            {watchBookDemo && (
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                 <FormField
+                   control={form.control}
+                   name="date"
+                   render={({ field }) => (
+                     <FormItem className="flex flex-col">
+                       <FormLabel>Date</FormLabel>
+                       <Popover>
+                         <PopoverTrigger asChild>
+                           <FormControl>
+                             <Button
+                               variant={"outline"}
+                               className={cn(
+                                 "w-full pl-3 text-left font-normal",
+                                 !field.value && "text-muted-foreground"
+                               )}
+                             >
+                               {field.value ? (
+                                 format(field.value, "PPP")
+                               ) : (
+                                 <span>Pick a date</span>
+                               )}
+                               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                             </Button>
+                           </FormControl>
+                         </PopoverTrigger>
+                         <PopoverContent className="w-auto p-0" align="start">
+                           <Calendar
+                             mode="single"
+                             selected={field.value}
+                             onSelect={field.onChange}
+                             disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
+                             initialFocus
+                           />
+                         </PopoverContent>
+                       </Popover>
+                       <FormMessage />
+                     </FormItem>
+                   )}
+                 />
+                 <FormField
+                   control={form.control}
+                   name="time"
+                   render={({ field }) => (
+                     <FormItem>
+                       <FormLabel>Time</FormLabel>
+                       <Select onValueChange={field.onChange} defaultValue={field.value}>
+                         <FormControl>
+                           <SelectTrigger>
+                             <SelectValue placeholder="Select a time slot" />
+                           </SelectTrigger>
+                         </FormControl>
+                         <SelectContent>
+                           {timeSlots.map(time => <SelectItem key={time} value={time}>{time}</SelectItem>)}
+                         </SelectContent>
+                       </Select>
+                       <FormMessage />
+                     </FormItem>
+                   )}
+                 />
+               </div>
+            )}
+           
+            <Button type="submit" className="w-full">
+             {watchBookDemo ? "Schedule Demo & Get Quote" : "Get My Quote"}
+            </Button>
+          </form>
+        </Form>
+      </CardContent>
+    </Card>
+  );
+}

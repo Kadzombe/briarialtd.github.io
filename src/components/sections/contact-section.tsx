@@ -2,8 +2,8 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ContactForm } from "@/components/contact-form";
-import { QuoteForm } from "@/components/quote-form";
-import { DemoForm } from "@/components/demo-form";
+import { QuoteAndDemoForm } from "@/components/quote-and-demo-form";
+
 
 export function ContactSection() {
   return (
@@ -20,16 +20,12 @@ export function ContactSection() {
         </div>
         <div className="max-w-xl mx-auto mt-16">
           <Tabs defaultValue="quote" className="w-full">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="quote">Request a Quote</TabsTrigger>
-              <TabsTrigger value="demo">Book a Demo</TabsTrigger>
-              <TabsTrigger value="contact">Contact Us</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="quote">Quote & Demo</TabsTrigger>
+              <TabsTrigger value="contact">General Inquiry</TabsTrigger>
             </TabsList>
             <TabsContent value="quote">
-              <QuoteForm />
-            </TabsContent>
-            <TabsContent value="demo">
-              <DemoForm />
+              <QuoteAndDemoForm />
             </TabsContent>
             <TabsContent value="contact">
               <ContactForm />

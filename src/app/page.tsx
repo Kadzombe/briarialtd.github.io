@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/components/sections/hero-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { SolutionsSection } from "@/components/sections/solutions-section";
+import { WhyChooseUsSection } from "@/components/sections/why-choose-us-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { AIChatbot } from "@/components/ai-chatbot";
 
@@ -14,6 +15,7 @@ export default function Home() {
         <HeroSection />
         <ServicesSection />
         <SolutionsSection />
+        <WhyChooseUsSection />
         <ContactSection />
       </main>
       <Footer />

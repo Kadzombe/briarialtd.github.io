@@ -1,7 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Award, Zap, Users } from "lucide-react";
-import { ScrollAnimation } from "../scroll-animation";
-
 
 const features = [
   {
@@ -35,18 +33,16 @@ export function WhyChooseUsSection() {
           </p>
         </div>
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {features.map((feature, index) => (
-             <ScrollAnimation key={feature.title} delay={index * 0.1}>
-                <Card className="bg-background/50 border-border/50 text-center h-full">
-                    <CardHeader className="items-center">
-                        {feature.icon}
-                        <CardTitle className="mt-4">{feature.title}</CardTitle>
-                    </CardHeader>
-                    <CardDescription className="px-6 pb-6">
-                        {feature.description}
-                    </CardDescription>
-                </Card>
-            </ScrollAnimation>
+          {features.map((feature) => (
+            <Card key={feature.title} className="bg-background/50 border-border/50 text-center h-full">
+                <CardHeader className="items-center">
+                    {feature.icon}
+                    <CardTitle className="mt-4">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardDescription className="px-6 pb-6">
+                    {feature.description}
+                </CardDescription>
+            </Card>
           ))}
         </div>
       </div>

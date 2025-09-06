@@ -98,11 +98,11 @@ export function SolutionsSection() {
                   className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-110"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 to-transparent"></div>
               <div className="absolute bottom-0 p-6">
                 <p className="text-sm font-medium text-primary">{solution.industry}</p>
                 <h3 className="mt-2 text-lg font-semibold text-primary-foreground">{solution.title}</h3>
-                <p className="mt-1 text-sm text-gray-300">{solution.description}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{solution.description}</p>
               </div>
             </Card>
           ))}

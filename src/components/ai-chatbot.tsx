@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { MessageSquare, SendHorizonal, Bot, User, Loader2 } from "lucide-react";
+import { MessageSquare, SendHorizonal, Bot, User, Loader2, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -85,7 +85,9 @@ export function AIChatbot() {
             <div className="space-y-4 py-4">
               <div className="flex items-start gap-3">
                 <Avatar>
-                  <AvatarFallback><Bot /></AvatarFallback>
+                  <AvatarFallback className="bg-primary/20 text-primary">
+                    <Briefcase />
+                  </AvatarFallback>
                 </Avatar>
                 <div className="bg-muted p-3 rounded-lg max-w-[80%]">
                   <p className="text-sm">
@@ -102,8 +104,8 @@ export function AIChatbot() {
                   )}
                 >
                   <Avatar>
-                    <AvatarFallback>
-                      {message.role === "user" ? <User /> : <Bot />}
+                    <AvatarFallback className={cn(message.role === 'bot' && "bg-primary/20 text-primary")}>
+                      {message.role === "user" ? <User /> : <Briefcase />}
                     </AvatarFallback>
                   </Avatar>
                   <div
@@ -121,7 +123,9 @@ export function AIChatbot() {
                {isLoading && (
                 <div className="flex items-start gap-3">
                   <Avatar>
-                    <AvatarFallback><Bot /></AvatarFallback>
+                     <AvatarFallback className="bg-primary/20 text-primary">
+                        <Briefcase />
+                     </AvatarFallback>
                   </Avatar>
                   <div className="bg-muted p-3 rounded-lg">
                     <Loader2 className="h-5 w-5 animate-spin" />

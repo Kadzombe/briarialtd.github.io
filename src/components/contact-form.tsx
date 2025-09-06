@@ -53,7 +53,7 @@ export function ContactForm() {
       console.error("Error adding document: ", error);
       toast({
         title: "Error",
-        description: "There was a problem sending your message. Please try again.",
+        description: "There was a problem sending your message. Please try again later.",
         variant: "destructive",
       });
     }

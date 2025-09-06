@@ -135,7 +135,7 @@ export function QuoteAndDemoForm() {
       console.error("Error adding document: ", error);
       toast({
         title: "Error",
-        description: "There was a problem sending your request. Please try again.",
+        description: "There was a problem sending your request. Please try again later.",
         variant: "destructive",
       });
     }

@@ -10,7 +10,7 @@ export function Footer() {
             © 2025 BriAria Ltd. All Rights Reserved.
           </p>
           <p >
-           Office 11929, 182-184 High Street North, East Ham, London, United Kingdom, E6 2JA
+           Based in London, United Kingdom
           </p>
           <p>
             Registered Company Number: 16349064

@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -42,13 +44,26 @@ export function DemoForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Demo Booked!",
-      description: `We've scheduled your demo for ${format(values.date, "PPP")} at ${values.time}.`,
-    });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      await addDoc(collection(db, "demoSubmissions"), {
+        ...values,
+        date: format(values.date, "PPP"),
+        submittedAt: new Date(),
+      });
+      toast({
+        title: "Demo Booked!",
+        description: `We've scheduled your demo for ${format(values.date, "PPP")} at ${values.time}.`,
+      });
+      form.reset();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast({
+        title: "Error",
+        description: "There was a problem booking your demo. Please try again.",
+        variant: "destructive",
+      });
+    }
   }
 
   return (

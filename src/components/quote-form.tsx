@@ -3,6 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -38,13 +40,25 @@ export function QuoteForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Quote Request Sent!",
-      description: "We've received your request and will get back to you with a quote soon.",
-    });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      await addDoc(collection(db, "quoteSubmissions"), {
+        ...values,
+        submittedAt: new Date(),
+      });
+      toast({
+        title: "Quote Request Sent!",
+        description: "We've received your request and will get back to you with a quote soon.",
+      });
+      form.reset();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your request. Please try again.",
+        variant: "destructive",
+      });
+    }
   }
 
   return (

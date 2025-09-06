@@ -62,6 +62,8 @@ export function QuoteAndDemoForm() {
   const { toast } = useToast();
   const { db } = useFirebase();
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -112,6 +114,7 @@ export function QuoteAndDemoForm() {
       return;
     }
 
+    setIsSubmitting(true);
     try {
       const collectionName = values.bookDemo ? "demoSubmissions" : "quoteSubmissions";
       
@@ -152,6 +155,8 @@ export function QuoteAndDemoForm() {
          description: "There was a problem processing your request. Please try again.",
          variant: "destructive",
        });
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -307,8 +312,8 @@ export function QuoteAndDemoForm() {
                </div>
             )}
            
-            <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-             {form.formState.isSubmitting ? "Submitting..." : (watchBookDemo ? "Schedule Demo & Get Quote" : "Get My Quote")}
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
+             {isSubmitting ? "Submitting..." : (watchBookDemo ? "Schedule Demo & Get Quote" : "Get My Quote")}
             </Button>
           </form>
         </Form>

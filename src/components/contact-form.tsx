@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { addDoc, collection } from "firebase/firestore";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -30,6 +31,8 @@ const formSchema = z.object({
 export function ContactForm() {
   const { toast } = useToast();
   const { db } = useFirebase();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,7 +51,7 @@ export function ContactForm() {
       });
       return;
     }
-
+    setIsSubmitting(true);
     try {
       await addDoc(collection(db, "contactSubmissions"), {
         ...values,
@@ -66,6 +69,8 @@ export function ContactForm() {
         description: "There was a problem sending your message. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -126,8 +131,8 @@ export function ContactForm() {
                 I'm not a robot (reCAPTCHA placeholder)
               </label>
             </div>
-            <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-              {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </Form>

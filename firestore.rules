@@ -1,25 +1,23 @@
+
 rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Deny read/write access to all documents by default
+    // Allow anyone to write to these collections for now.
+    // In a production app, you would want to restrict this further.
+    match /contactSubmissions/{docId} {
+      allow create: if true;
+    }
+    match /quoteSubmissions/{docId} {
+      allow create: if true;
+    }
+    match /demoSubmissions/{docId} {
+      allow create: if true;
+    }
+
+    // By default, deny all other reads and writes
     match /{document=**} {
       allow read, write: if false;
-    }
-
-    // Allow anyone to create a document in the contactSubmissions collection
-    match /contactSubmissions/{submissionId} {
-      allow create: if true;
-    }
-
-    // Allow anyone to create a document in the quoteSubmissions collection
-    match /quoteSubmissions/{submissionId} {
-      allow create: if true;
-    }
-
-    // Allow anyone to create a document in the demoSubmissions collection
-    match /demoSubmissions/{submissionId} {
-      allow create: if true;
     }
   }
 }

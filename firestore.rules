@@ -17,6 +17,7 @@ service cloud.firestore {
     }
 
     function isValidQuote() {
+      // Optional company field is allowed
       return request.resource.data.keys().hasAll(['name', 'email', 'projectDetails', 'submittedAt']) &&
              request.resource.data.name is string &&
              request.resource.data.email is string &&
@@ -26,6 +27,7 @@ service cloud.firestore {
     }
 
     function isValidDemo() {
+       // Optional company field is allowed
       return request.resource.data.keys().hasAll(['name', 'email', 'projectDetails', 'submittedAt', 'date', 'time']) &&
              request.resource.data.name is string &&
              request.resource.data.email is string &&

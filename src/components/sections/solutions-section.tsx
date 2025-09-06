@@ -46,7 +46,7 @@ const solutions = [
     industry: "FinTech",
     title: "Secure Payment Gateway",
     description: "We deliver robust, compliant, and highly secure payment processing solutions for global online transactions, complete with advanced fraud detection and multi-currency support.",
-    image: "https://images.pexels.com/photos/8357155/pexels-photo-8357155.jpeg",
+    image: "https://images.pexels.com/photos/7620568/pexels-photo-7620568.jpeg",
     aiHint: "secure payment",
   },
 ];

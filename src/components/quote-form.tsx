@@ -1,12 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { Sparkles, Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -22,7 +20,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Checkbox } from "./ui/checkbox";
-import { generateProjectDescription } from "@/ai/flows/generate-project-description";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -33,7 +30,6 @@ const formSchema = z.object({
 
 export function QuoteForm() {
   const { toast } = useToast();
-  const [isGenerating, setIsGenerating] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,36 +39,6 @@ export function QuoteForm() {
       projectDetails: "",
     },
   });
-
-  const handleGenerateDescription = async () => {
-    const projectOutline = form.getValues("projectDetails");
-    if (projectOutline.length < 10) {
-      toast({
-        title: "Outline is too short",
-        description: "Please provide a bit more detail for the AI to work with.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsGenerating(true);
-    try {
-      const result = await generateProjectDescription({ projectOutline });
-      form.setValue("projectDetails", result.projectDescription, {
-        shouldValidate: true,
-      });
-    } catch (error) {
-      console.error("Error generating project description:", error);
-      toast({
-        title: "Generation Failed",
-        description: "There was an issue generating the description. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -150,24 +116,7 @@ export function QuoteForm() {
               name="projectDetails"
               render={({ field }) => (
                 <FormItem>
-                  <div className="flex justify-between items-center">
-                    <FormLabel>Project Details</FormLabel>
-                     <Button
-                      type="button"
-                      variant="ghost"
-                      size="sm"
-                      onClick={handleGenerateDescription}
-                      disabled={isGenerating}
-                      className="text-primary hover:text-primary"
-                    >
-                      {isGenerating ? (
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                      ) : (
-                        <Sparkles className="h-4 w-4" />
-                      )}
-                      <span className="ml-2">Generate with AI</span>
-                    </Button>
-                  </div>
+                  <FormLabel>Project Details</FormLabel>
                   <FormControl>
                     <Textarea rows={5} placeholder="Describe your project, goals, and key features..." {...field} />
                   </FormControl>

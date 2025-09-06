@@ -5,7 +5,6 @@ import { ServicesSection } from "@/components/sections/services-section";
 import { SolutionsSection } from "@/components/sections/solutions-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { AIChatbot } from "@/components/ai-chatbot";
-import { WhyChooseUsSection } from "@/components/sections/why-choose-us-section";
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <ServicesSection />
-        <WhyChooseUsSection />
         <SolutionsSection />
         <ContactSection />
       </main>

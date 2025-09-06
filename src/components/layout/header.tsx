@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Code, Menu } from "lucide-react";
+import { Mountain, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -14,7 +14,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-white text-black">
       <div className="container flex h-16 items-center">
         <div className="mr-4 flex items-center">
-          <Code className="h-8 w-8 mr-2" />
+          <Mountain className="h-8 w-8 mr-2" />
           <a href="/" className="font-bold text-lg">
             BriAria Ltd
           </a>
@@ -44,7 +44,7 @@ export function Header() {
             <SheetContent side="right" className="bg-white text-black">
               <div className="flex flex-col pt-8">
                 <div className="mb-8 flex items-center">
-                  <Code className="h-8 w-8 mr-2" />
+                  <Mountain className="h-8 w-8 mr-2" />
                   <a href="/" className="font-bold text-lg">
                     BriAria Ltd
                   </a>

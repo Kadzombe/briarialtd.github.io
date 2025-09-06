@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { ref, push, serverTimestamp } from "firebase/database";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRef } from "react";
 
@@ -57,8 +57,7 @@ export function ContactForm() {
     }
 
     try {
-      const contactsRef = ref(db, 'contacts');
-      await push(contactsRef, {
+      await addDoc(collection(db, 'contacts'), {
         name: values.name,
         email: values.email,
         message: values.message,

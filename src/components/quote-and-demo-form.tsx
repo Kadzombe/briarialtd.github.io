@@ -6,7 +6,7 @@ import { z } from "zod";
 import { useState, useRef } from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, Sparkles, Loader2 } from "lucide-react";
-import { ref, push, serverTimestamp } from "firebase/database";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import { cn } from "@/lib/utils";
@@ -132,10 +132,10 @@ export function QuoteAndDemoForm() {
         const combinedDateTime = new Date(`${format(values.date, "yyyy-MM-dd")}T${time24h}`);
         
         const demoData = { ...quoteData, demoDateTime: combinedDateTime.toISOString() };
-        await push(ref(db, 'demo_requests'), demoData);
+        await addDoc(collection(db, 'demo_requests'), demoData);
       }
       
-      await push(ref(db, 'quotes'), quoteData);
+      await addDoc(collection(db, 'quotes'), quoteData);
       
       let toastTitle = "Quote Request Sent!";
       let toastDescription = "We've received your request and will be in touch soon.";

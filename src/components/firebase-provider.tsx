@@ -2,7 +2,7 @@
 
 import { createContext, useContext, ReactNode } from "react";
 import { initializeApp, getApps, FirebaseApp } from "firebase/app";
-import { getDatabase, Database } from "firebase/database";
+import { getFirestore, Firestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,7 +16,7 @@ const firebaseConfig = {
 };
 
 let app: FirebaseApp;
-let db: Database | null = null;
+let db: Firestore | null = null;
 
 try {
   if (!getApps().length) {
@@ -24,13 +24,13 @@ try {
   } else {
     app = getApps()[0];
   }
-  db = getDatabase(app);
+  db = getFirestore(app);
 } catch (error) {
   console.error("Failed to initialize Firebase", error);
 }
 
 // Create a context for the Firebase db instance
-const FirebaseContext = createContext<{ db: Database | null }>({ db: null });
+const FirebaseContext = createContext<{ db: Firestore | null }>({ db: null });
 
 export function useFirebase() {
   return useContext(FirebaseContext);

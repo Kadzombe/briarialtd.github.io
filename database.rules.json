@@ -1,0 +1,22 @@
+{
+  "rules": {
+    "contacts": {
+      ".read": false,
+      ".write": true
+    },
+    "demo_requests": {
+      ".read": false,
+      ".write": true
+    },
+    "quotes": {
+      ".read": false,
+      ".write": true
+    },
+    "chat_transcripts": {
+      ".read": false,
+      ".write": true
+    },
+    ".read": false,
+    ".write": false
+  }
+}

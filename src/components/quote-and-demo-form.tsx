@@ -6,7 +6,7 @@ import { z } from "zod";
 import { useState, useRef } from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, Sparkles, Loader2 } from "lucide-react";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { ref, push, serverTimestamp } from "firebase/database";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import { cn } from "@/lib/utils";
@@ -119,23 +119,23 @@ export function QuoteAndDemoForm() {
     }
 
     try {
-      const collectionName = values.bookDemo ? "demoSubmissions" : "quoteSubmissions";
-      
-      const dataToSubmit: any = {
+      const quoteData: any = {
         name: values.name,
         email: values.email,
         company: values.company || "",
         projectDetails: values.projectDetails,
-        submittedAt: new Date(),
+        submittedAt: serverTimestamp(),
       };
 
       if (values.bookDemo && values.date && values.time) {
         const time24h = new Date(`1970-01-01 ${values.time}`).toTimeString().split(' ')[0];
         const combinedDateTime = new Date(`${format(values.date, "yyyy-MM-dd")}T${time24h}`);
-        dataToSubmit.demoDateTime = Timestamp.fromDate(combinedDateTime);
+        
+        const demoData = { ...quoteData, demoDateTime: combinedDateTime.toISOString() };
+        await push(ref(db, 'demo_requests'), demoData);
       }
-
-      await addDoc(collection(db, collectionName), dataToSubmit);
+      
+      await push(ref(db, 'quotes'), quoteData);
       
       let toastTitle = "Quote Request Sent!";
       let toastDescription = "We've received your request and will be in touch soon.";

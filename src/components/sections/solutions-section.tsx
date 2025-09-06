@@ -5,49 +5,49 @@ import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-const industries = ["All", "FinTech", "Healthcare", "E-commerce"];
+const industries = ["All", "FinTech", "Healthcare", "E-commerce", "Education", "Real Estate"];
 const solutions = [
   {
     industry: "FinTech",
-    title: "Secure Payment Gateway",
-    description: "A robust and secure payment processing solution for online transactions.",
-    image: "https://images.pexels.com/photos/6771120/pexels-photo-6771120.jpeg",
-    aiHint: "secure payment",
-  },
-  {
-    industry: "Healthcare",
-    title: "Patient Data Management",
-    description: "A HIPAA-compliant platform for managing patient records and appointments.",
-    image: "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg",
-    aiHint: "patient data",
-  },
-  {
-    industry: "E-commerce",
-    title: "Personalized Shopping Cart",
-    description: "An AI-powered shopping cart that provides personalized product recommendations.",
-    image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
-    aiHint: "shopping cart",
-  },
-  {
-    industry: "FinTech",
-    title: "Robo-Advisory Platform",
-    description: "Automated investment advice and portfolio management for your clients.",
+    title: "AI-Powered Robo-Advisory",
+    description: "We build intelligent, automated investment platforms that provide data-driven financial advice and personalized portfolio management, democratizing wealth management for your clients.",
     image: "https://images.pexels.com/photos/6771120/pexels-photo-6771120.jpeg",
     aiHint: "financial chart",
   },
   {
     industry: "Healthcare",
-    title: "Telemedicine App",
-    description: "Connect doctors and patients remotely with our secure video consultation app.",
-    image: "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg",
-    aiHint: "telemedicine",
+    title: "Telemedicine & EHR Integration",
+    description: "Our solutions facilitate secure, remote patient-doctor consultations and seamlessly integrate with Electronic Health Records (EHR) for streamlined, efficient healthcare delivery.",
+    image: "https://images.pexels.com/photos/4033148/pexels-photo-4033148.jpeg",
+    aiHint: "telemedicine doctor",
   },
   {
     industry: "E-commerce",
-    title: "Inventory Management System",
-    description: "Streamline your supply chain with real-time inventory tracking and analytics.",
+    title: "Hyper-Personalized Retail",
+    description: "Leverage AI to create a unique shopping experience. Our platforms offer smart product recommendations, personalized marketing, and dynamic pricing to boost sales and customer loyalty.",
     image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
-    aiHint: "warehouse inventory",
+    aiHint: "shopping cart",
+  },
+  {
+    industry: "Education",
+    title: "Interactive e-Learning Platform",
+    description: "Engage students with a dynamic online learning environment, featuring live-video classes, collaborative tools, and progress tracking for a modern educational experience.",
+    image: "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg",
+    aiHint: "online learning",
+  },
+  {
+    industry: "Real Estate",
+    title: "Virtual Property Tour Platform",
+    description: "Transform the property viewing experience with immersive 3D virtual tours and an integrated booking system, allowing potential buyers to explore homes from anywhere, anytime.",
+    image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg",
+    aiHint: "modern house",
+  },
+  {
+    industry: "FinTech",
+    title: "Secure Payment Gateway",
+    description: "We deliver robust, compliant, and highly secure payment processing solutions for global online transactions, complete with advanced fraud detection and multi-currency support.",
+    image: "https://images.pexels.com/photos/8357155/pexels-photo-8357155.jpeg",
+    aiHint: "secure payment",
   },
 ];
 
@@ -72,7 +72,7 @@ export function SolutionsSection() {
           </p>
         </div>
 
-        <div className="flex justify-center gap-2 mt-10">
+        <div className="flex justify-center flex-wrap gap-2 mt-10">
           {industries.map((industry) => (
             <Button
               key={industry}
@@ -98,7 +98,7 @@ export function SolutionsSection() {
                   className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-110"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
               <div className="absolute bottom-0 p-6">
                 <p className="text-sm font-medium text-primary">{solution.industry}</p>
                 <h3 className="mt-2 text-lg font-semibold text-primary-foreground">{solution.title}</h3>

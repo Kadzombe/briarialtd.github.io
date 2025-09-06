@@ -5,7 +5,7 @@ export function HeroSection() {
   return (
     <section className="relative w-full h-[70vh] min-h-[500px] flex items-center justify-center text-center">
        <Image
-          src="https://picsum.photos/1920/1080?random=10"
+          src="https://images.pexels.com/photos/4744912/pexels-photo-4744912.jpeg"
           alt="A single jacaranda tree in full bloom with purple flowers"
           data-ai-hint="jacaranda tree"
           fill

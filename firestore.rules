@@ -1,14 +1,14 @@
+
 rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
 
     // Helpers
     function isAdmin() {
-      // Placeholder for admin logic.
-      return false;
+      return request.auth != null && request.auth.token.admin == true;
     }
 
-    // Basic field validations to mitigate spam/malformed writes
     function isValidContact() {
       return request.resource.data.keys().hasAll(['name', 'email', 'message', 'submittedAt']) &&
              request.resource.data.name is string &&
@@ -26,9 +26,9 @@ service cloud.firestore {
              request.resource.data.projectDetails.size() <= 4000 &&
              request.resource.data.email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
     }
-    
+
     function isValidDemo() {
-        return request.resource.data.keys().hasAll(['name', 'email', 'projectDetails', 'submittedAt', 'date', 'time']) &&
+      return request.resource.data.keys().hasAll(['name', 'email', 'projectDetails', 'submittedAt', 'date', 'time']) &&
              request.resource.data.name is string &&
              request.resource.data.email is string &&
              request.resource.data.projectDetails is string &&
@@ -38,28 +38,19 @@ service cloud.firestore {
              request.resource.data.email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
     }
 
-    // Collections
+    // Anyone can submit (no login needed)
     match /contactSubmissions/{docId} {
-      // Allow anyone to create a valid submission.
       allow create: if isValidContact();
-
-      // Only admin can read/update/delete.
       allow read, update, delete: if isAdmin();
     }
 
     match /quoteSubmissions/{docId} {
-      // Allow anyone to create a valid submission.
       allow create: if isValidQuote();
-
-      // Only admin can read/update/delete.
       allow read, update, delete: if isAdmin();
     }
 
     match /demoSubmissions/{docId} {
-      // Allow anyone to create a valid submission.
       allow create: if isValidDemo();
-      
-      // Only admin can read/update/delete.
       allow read, update, delete: if isAdmin();
     }
   }

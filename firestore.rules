@@ -2,26 +2,33 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow writes to contactSubmissions, quoteSubmissions, and demoSubmissions
-    // for any user. This is safe for public-facing forms.
-    match /contactSubmissions/{docId} {
-      allow create: if true;
-      allow read, update, delete: if false;
-    }
-
-    match /quoteSubmissions/{docId} {
-      allow create: if true;
-      allow read, update, delete: if false;
-    }
-
-    match /demoSubmissions/{docId} {
-      allow create: if true;
-      allow read, update, delete: if false;
-    }
-
-    // Deny all other read/write access to prevent unauthorized data access.
+    // Default to denying all access to all documents
     match /{document=**} {
       allow read, write: if false;
+    }
+
+    // Allow anyone to create a document in the contactSubmissions collection.
+    // This allows the public contact form to work.
+    // Reading, updating, or deleting is not allowed.
+    match /contactSubmissions/{submissionId} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+
+    // Allow anyone to create a document in the quoteSubmissions collection.
+    // This allows the public quote form to work.
+    // Reading, updating, or deleting is not allowed.
+    match /quoteSubmissions/{submissionId} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+
+    // Allow anyone to create a document in the demoSubmissions collection.
+    // This allows the public demo form to work.
+    // Reading, updating, or deleting is not allowed.
+    match /demoSubmissions/{submissionId} {
+      allow create: if true;
+      allow read, update, delete: if false;
     }
   }
 }

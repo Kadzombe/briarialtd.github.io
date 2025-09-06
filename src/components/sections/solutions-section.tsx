@@ -11,42 +11,42 @@ const solutions = [
     industry: "FinTech",
     title: "Secure Payment Gateway",
     description: "A robust and secure payment processing solution for online transactions.",
-    image: "https://picsum.photos/600/400?random=1",
+    image: "https://images.pexels.com/photos/6771120/pexels-photo-6771120.jpeg",
     aiHint: "secure payment",
   },
   {
     industry: "Healthcare",
     title: "Patient Data Management",
     description: "A HIPAA-compliant platform for managing patient records and appointments.",
-    image: "https://picsum.photos/600/400?random=2",
+    image: "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg",
     aiHint: "patient data",
   },
   {
     industry: "E-commerce",
     title: "Personalized Shopping Cart",
     description: "An AI-powered shopping cart that provides personalized product recommendations.",
-    image: "https://picsum.photos/600/400?random=3",
+    image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
     aiHint: "shopping cart",
   },
   {
     industry: "FinTech",
     title: "Robo-Advisory Platform",
     description: "Automated investment advice and portfolio management for your clients.",
-    image: "https://picsum.photos/600/400?random=4",
+    image: "https://images.pexels.com/photos/6771120/pexels-photo-6771120.jpeg",
     aiHint: "financial chart",
   },
   {
     industry: "Healthcare",
     title: "Telemedicine App",
     description: "Connect doctors and patients remotely with our secure video consultation app.",
-    image: "https://picsum.photos/600/400?random=5",
+    image: "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg",
     aiHint: "telemedicine",
   },
   {
     industry: "E-commerce",
     title: "Inventory Management System",
     description: "Streamline your supply chain with real-time inventory tracking and analytics.",
-    image: "https://picsum.photos/600/400?random=6",
+    image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
     aiHint: "warehouse inventory",
   },
 ];
@@ -94,7 +94,8 @@ export function SolutionsSection() {
                     src={solution.image} 
                     alt={solution.title}
                     data-ai-hint={solution.aiHint}
-                    fill 
+                    width={600}
+                    height={400} 
                     className="object-cover"
                    />
                 </div>

@@ -76,7 +76,7 @@ export function SolutionsSection() {
           {industries.map((industry) => (
             <Button
               key={industry}
-              variant={activeIndustry === industry ? "default" : "secondary"}
+              variant={activeIndustry === industry ? "outline" : "default"}
               onClick={() => setActiveIndustry(industry)}
               className="capitalize"
             >

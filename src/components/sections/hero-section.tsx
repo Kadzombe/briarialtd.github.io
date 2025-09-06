@@ -24,7 +24,7 @@ export function HeroSection() {
             <Button size="lg" asChild>
               <a href="#contact">Request a Quote</a>
             </Button>
-            <Button size="lg" variant="secondary" asChild>
+            <Button size="lg" asChild>
               <a href="#contact">Book a Demo</a>
             </Button>
           </div>

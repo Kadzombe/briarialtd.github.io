@@ -14,15 +14,19 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
 let app: FirebaseApp;
-if (!getApps().length) {
-  app = initializeApp(firebaseConfig);
-} else {
-  app = getApps()[0];
-}
+let db: Firestore | null = null;
 
-const db = getFirestore(app);
+try {
+  if (!getApps().length) {
+    app = initializeApp(firebaseConfig);
+  } else {
+    app = getApps()[0];
+  }
+  db = getFirestore(app);
+} catch (error) {
+  console.error("Failed to initialize Firebase", error);
+}
 
 // Create a context for the Firebase db instance
 const FirebaseContext = createContext<{ db: Firestore | null }>({ db: null });

@@ -138,7 +138,7 @@ export function QuoteAndDemoForm() {
 
       if (values.bookDemo) {
         toastTitle = "Demo Booked & Quote Requested!";
-        toastDescription = `We've scheduled your demo for ${format(values.date!, "PPP")} at ${values.time}. We'll send a confirmation email shortly.`;
+        toastDescription = `We've scheduled your demo for ${format(values.date!, "PPP")} at ${values.time}. A confirmation will be sent shortly.`;
       }
 
       toast({

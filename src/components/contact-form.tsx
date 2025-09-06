@@ -29,7 +29,7 @@ const formSchema = z.object({
 
 export function ContactForm() {
   const { toast } = useToast();
-  const db = useFirebase();
+  const { db } = useFirebase();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,8 +42,8 @@ export function ContactForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     if (!db) {
       toast({
-        title: "Error",
-        description: "Firebase is not connected. Please try again later.",
+        title: "Error: Database not connected",
+        description: "Please check your Firebase connection and try again.",
         variant: "destructive",
       });
       return;
@@ -56,7 +56,7 @@ export function ContactForm() {
       });
       toast({
         title: "Message Sent!",
-        description: "Thank you for reaching out. We'll get back to you shortly.",
+        description: "Thank you for your inquiry. We'll be in touch soon.",
       });
       form.reset();
     } catch (error) {

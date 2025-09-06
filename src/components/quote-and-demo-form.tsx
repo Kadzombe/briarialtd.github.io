@@ -60,7 +60,7 @@ const timeSlots = ["09:00 AM", "11:00 AM", "02:00 PM", "04:00 PM"];
 
 export function QuoteAndDemoForm() {
   const { toast } = useToast();
-  const db = useFirebase();
+  const { db } = useFirebase();
   const [isGenerating, setIsGenerating] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -105,8 +105,8 @@ export function QuoteAndDemoForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     if (!db) {
       toast({
-        title: "Error",
-        description: "Firebase is not connected. Please try again later.",
+        title: "Error: Database not connected",
+        description: "Please check your Firebase connection and try again.",
         variant: "destructive",
       });
       return;
@@ -124,7 +124,9 @@ export function QuoteAndDemoForm() {
       };
 
       if (values.bookDemo && values.date && values.time) {
-        dataToSubmit.demoDateTime = Timestamp.fromDate(new Date(`${format(values.date, "yyyy-MM-dd")}T${values.time.replace(' AM', ':00').replace(' PM', ':00')}`)); // A bit basic time conversion
+        const time24h = new Date(`1970-01-01 ${values.time}`).toTimeString().split(' ')[0];
+        const combinedDateTime = new Date(`${format(values.date, "yyyy-MM-dd")}T${time24h}`);
+        dataToSubmit.demoDateTime = Timestamp.fromDate(combinedDateTime);
       }
 
       await addDoc(collection(db, collectionName), dataToSubmit);
@@ -134,7 +136,7 @@ export function QuoteAndDemoForm() {
 
       if (values.bookDemo) {
         toastTitle = "Demo Booked & Quote Requested!";
-        toastDescription = `We've scheduled your demo for ${format(values.date!, "PPP")} at ${values.time}.`;
+        toastDescription = `We've scheduled your demo for ${format(values.date!, "PPP")} at ${values.time}. We'll send a confirmation email shortly.`;
       }
 
       toast({
@@ -273,7 +275,7 @@ export function QuoteAndDemoForm() {
                              mode="single"
                              selected={field.value}
                              onSelect={field.onChange}
-                             disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
+                             disabled={(date) => date < new Date(new Date().setHours(0,0,0,0))}
                              initialFocus
                            />
                          </PopoverContent>

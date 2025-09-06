@@ -76,7 +76,7 @@ export function AIChatbot() {
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetContent className="flex flex-col">
           <SheetHeader>
-            <SheetTitle>ARSMA AI</SheetTitle>
+            <SheetTitle>BriAria AI</SheetTitle>
             <SheetDescription>
               Your friendly assistant for questions about BriAria Ltd.
             </SheetDescription>

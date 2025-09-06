@@ -75,7 +75,7 @@ export function AIChatbot() {
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetContent className="flex flex-col">
           <SheetHeader>
-            <SheetTitle>AI Assistant</SheetTitle>
+            <SheetTitle>ARSMA AI</SheetTitle>
           </SheetHeader>
           <ScrollArea className="flex-1 pr-4 -mr-6" ref={scrollAreaRef}>
             <div className="space-y-4 py-4">
@@ -106,7 +106,7 @@ export function AIChatbot() {
                     className={cn(
                       "p-3 rounded-lg max-w-[80%]",
                       message.role === "user"
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-gradient-to-r from-primary to-secondary text-black"
                         : "bg-muted"
                     )}
                   >

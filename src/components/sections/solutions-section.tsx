@@ -87,24 +87,23 @@ export function SolutionsSection() {
 
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredSolutions.map((solution) => (
-            <Card key={solution.title} className="overflow-hidden transition-shadow hover:shadow-lg hover:shadow-primary/20">
-              <CardHeader className="p-0">
-                <div className="aspect-video relative">
-                  <Image 
-                    src={solution.image} 
-                    alt={solution.title}
-                    data-ai-hint={solution.aiHint}
-                    width={600}
-                    height={400} 
-                    className="object-cover"
-                   />
-                </div>
-              </CardHeader>
-              <CardContent className="p-6">
+            <Card key={solution.title} className="group overflow-hidden relative transition-shadow hover:shadow-lg hover:shadow-primary/20">
+              <div className="aspect-video overflow-hidden">
+                <Image 
+                  src={solution.image} 
+                  alt={solution.title}
+                  data-ai-hint={solution.aiHint}
+                  width={600}
+                  height={400} 
+                  className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-110"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+              <div className="absolute bottom-0 p-6">
                 <p className="text-sm font-medium text-primary">{solution.industry}</p>
-                <CardTitle className="mt-2">{solution.title}</CardTitle>
-                <CardDescription className="mt-2">{solution.description}</CardDescription>
-              </CardContent>
+                <h3 className="mt-2 text-lg font-semibold text-primary-foreground">{solution.title}</h3>
+                <p className="mt-1 text-sm text-gray-300">{solution.description}</p>
+              </div>
             </Card>
           ))}
         </div>

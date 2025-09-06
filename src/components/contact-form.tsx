@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { addDoc, collection } from "firebase/firestore";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Checkbox } from "./ui/checkbox";
+import { useFirebase } from "./firebase-provider";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -27,6 +29,7 @@ const formSchema = z.object({
 
 export function ContactForm() {
   const { toast } = useToast();
+  const db = useFirebase();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,12 +40,33 @@ export function ContactForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("Contact Form Submitted:", values);
-    toast({
-      title: "Form Submitted (Dev Mode)",
-      description: "Check the console for the form data. Firebase is disconnected.",
-    });
-    form.reset();
+    if (!db) {
+      toast({
+        title: "Error",
+        description: "Firebase is not connected. Please try again later.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "contactSubmissions"), {
+        ...values,
+        submittedAt: new Date(),
+      });
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. We'll get back to you shortly.",
+      });
+      form.reset();
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      toast({
+        title: "Submission Failed",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    }
   }
 
   return (
@@ -102,8 +126,8 @@ export function ContactForm() {
                 I'm not a robot (reCAPTCHA placeholder)
               </label>
             </div>
-            <Button type="submit" className="w-full">
-              Send Message
+            <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </Form>

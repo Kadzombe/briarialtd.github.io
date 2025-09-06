@@ -6,6 +6,7 @@ import { z } from "zod";
 import { useState } from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, Sparkles, Loader2 } from "lucide-react";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,7 @@ import { generateProjectDescription } from "@/ai/flows/generate-project-descript
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useFirebase } from "./firebase-provider";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -58,6 +60,7 @@ const timeSlots = ["09:00 AM", "11:00 AM", "02:00 PM", "04:00 PM"];
 
 export function QuoteAndDemoForm() {
   const { toast } = useToast();
+  const db = useFirebase();
   const [isGenerating, setIsGenerating] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -100,21 +103,54 @@ export function QuoteAndDemoForm() {
   };
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("Quote/Demo Form Submitted:", values);
-    
-    let toastTitle = "Quote Request Sent (Dev Mode)!";
-    let toastDescription = "We've received your request. Check console for data.";
-
-    if (values.bookDemo) {
-      toastTitle = "Demo Booked & Quote Requested (Dev Mode)!";
-      toastDescription = `We've scheduled your demo for ${format(values.date!, "PPP")} at ${values.time}. Check console for data.`;
+    if (!db) {
+      toast({
+        title: "Error",
+        description: "Firebase is not connected. Please try again later.",
+        variant: "destructive",
+      });
+      return;
     }
 
-    toast({
-      title: toastTitle,
-      description: toastDescription,
-    });
-    form.reset();
+    try {
+      const collectionName = values.bookDemo ? "demoSubmissions" : "quoteSubmissions";
+      
+      const dataToSubmit: any = {
+        name: values.name,
+        email: values.email,
+        company: values.company || "",
+        projectDetails: values.projectDetails,
+        submittedAt: new Date(),
+      };
+
+      if (values.bookDemo && values.date && values.time) {
+        dataToSubmit.demoDateTime = Timestamp.fromDate(new Date(`${format(values.date, "yyyy-MM-dd")}T${values.time.replace(' AM', ':00').replace(' PM', ':00')}`)); // A bit basic time conversion
+      }
+
+      await addDoc(collection(db, collectionName), dataToSubmit);
+      
+      let toastTitle = "Quote Request Sent!";
+      let toastDescription = "We've received your request and will be in touch soon.";
+
+      if (values.bookDemo) {
+        toastTitle = "Demo Booked & Quote Requested!";
+        toastDescription = `We've scheduled your demo for ${format(values.date!, "PPP")} at ${values.time}.`;
+      }
+
+      toast({
+        title: toastTitle,
+        description: toastDescription,
+      });
+      form.reset();
+
+    } catch (error) {
+       console.error("Error submitting form:", error);
+       toast({
+         title: "Submission Failed",
+         description: "There was a problem processing your request. Please try again.",
+         variant: "destructive",
+       });
+    }
   }
 
   return (
@@ -269,8 +305,8 @@ export function QuoteAndDemoForm() {
                </div>
             )}
            
-            <Button type="submit" className="w-full">
-             {watchBookDemo ? "Schedule Demo & Get Quote" : "Get My Quote"}
+            <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+             {form.formState.isSubmitting ? "Submitting..." : (watchBookDemo ? "Schedule Demo & Get Quote" : "Get My Quote")}
             </Button>
           </form>
         </Form>

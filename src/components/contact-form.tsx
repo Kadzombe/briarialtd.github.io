@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { useFirebase } from "@/components/firebase-provider";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -28,6 +28,7 @@ const formSchema = z.object({
 });
 
 export function ContactForm() {
+  const { db } = useFirebase();
   const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,6 +40,14 @@ export function ContactForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!db) {
+      toast({
+        title: "Error",
+        description: "Database connection not available. Please try again later.",
+        variant: "destructive",
+      });
+      return;
+    }
     try {
       await addDoc(collection(db, "contactSubmissions"), {
         ...values,

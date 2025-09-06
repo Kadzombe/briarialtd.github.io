@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { useFirebase } from "@/components/firebase-provider";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, Sparkles, Loader2 } from "lucide-react";
 
@@ -59,6 +59,7 @@ const timeSlots = ["09:00 AM", "11:00 AM", "02:00 PM", "04:00 PM"];
 
 
 export function QuoteAndDemoForm() {
+  const { db } = useFirebase();
   const { toast } = useToast();
   const [isGenerating, setIsGenerating] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -102,6 +103,14 @@ export function QuoteAndDemoForm() {
   };
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!db) {
+       toast({
+        title: "Error",
+        description: "Database connection not available. Please try again later.",
+        variant: "destructive",
+      });
+      return;
+    }
     try {
       const submissionData: any = {
         name: values.name,

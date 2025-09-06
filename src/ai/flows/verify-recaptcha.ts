@@ -9,7 +9,6 @@
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
-import fetch from 'node-fetch';
 
 const VerifyRecaptchaInputSchema = z.object({
   token: z.string().describe('The reCAPTCHA token generated on the client-side.'),

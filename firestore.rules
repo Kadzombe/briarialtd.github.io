@@ -2,24 +2,27 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Default deny all reads and writes to all documents
+    // Default to denying all access
     match /{document=**} {
       allow read, write: if false;
     }
 
-    // Allow anyone to create documents in the 'contactSubmissions' collection
-    match /contactSubmissions/{docId} {
+    // Allow anyone to submit a contact form
+    match /contactSubmissions/{submissionId} {
       allow create: if true;
+      allow read, update, delete: if false;
     }
 
-    // Allow anyone to create documents in the 'quoteSubmissions' collection
-    match /quoteSubmissions/{docId} {
+    // Allow anyone to submit a quote request
+    match /quoteSubmissions/{submissionId} {
       allow create: if true;
+      allow read, update, delete: if false;
     }
 
-    // Allow anyone to create documents in the 'demoSubmissions' collection
-    match /demoSubmissions/{docId} {
+    // Allow anyone to submit a demo request
+    match /demoSubmissions/{submissionId} {
       allow create: if true;
+      allow read, update, delete: if false;
     }
   }
 }

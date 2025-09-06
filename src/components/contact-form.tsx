@@ -4,6 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { addDoc, collection } from "firebase/firestore";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,18 +20,19 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Checkbox } from "./ui/checkbox";
 import { useFirebase } from "./firebase-provider";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.string().email("Please enter a valid email address."),
   message: z.string().min(10, "Message must be at least 10 characters."),
+  recaptcha: z.string().min(1, "Please complete the reCAPTCHA challenge."),
 });
 
 export function ContactForm() {
   const { toast } = useToast();
   const { db } = useFirebase();
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,6 +40,7 @@ export function ContactForm() {
       name: "",
       email: "",
       message: "",
+      recaptcha: "",
     },
   });
 
@@ -54,7 +58,9 @@ export function ContactForm() {
 
     try {
       await addDoc(collection(db, "contactSubmissions"), {
-        ...values,
+        name: values.name,
+        email: values.email,
+        message: values.message,
         submittedAt: new Date(),
       });
       toast({
@@ -62,6 +68,7 @@ export function ContactForm() {
         description: "Thank you for your inquiry. We'll be in touch soon.",
       });
       form.reset();
+      recaptchaRef.current?.reset();
     } catch (error) {
       console.error("Error submitting contact form:", error);
       toast({
@@ -120,15 +127,23 @@ export function ContactForm() {
                 </FormItem>
               )}
             />
-            <div className="flex items-center space-x-2">
-              <Checkbox id="recaptcha" disabled />
-              <label
-                htmlFor="recaptcha"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                I'm not a robot (reCAPTCHA placeholder)
-              </label>
-            </div>
+             <FormField
+              control={form.control}
+              name="recaptcha"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                     <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                        onChange={field.onChange}
+                        theme="dark"
+                      />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <Button type="submit" className="w-full" disabled={isSubmitting}>
               {isSubmitting ? "Sending..." : "Send Message"}
             </Button>

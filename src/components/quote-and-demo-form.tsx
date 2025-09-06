@@ -3,10 +3,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, Sparkles, Loader2 } from "lucide-react";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -37,6 +38,7 @@ const formSchema = z.object({
   bookDemo: z.boolean().default(false).optional(),
   date: z.date().optional(),
   time: z.string().optional(),
+  recaptcha: z.string().min(1, "Please complete the reCAPTCHA challenge."),
 }).refine(data => {
     if (data.bookDemo && !data.date) {
         return false;
@@ -62,6 +64,7 @@ export function QuoteAndDemoForm() {
   const { toast } = useToast();
   const { db } = useFirebase();
   const [isGenerating, setIsGenerating] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -71,6 +74,7 @@ export function QuoteAndDemoForm() {
       company: "",
       projectDetails: "",
       bookDemo: false,
+      recaptcha: ""
     },
   });
 
@@ -146,6 +150,7 @@ export function QuoteAndDemoForm() {
         description: toastDescription,
       });
       form.reset();
+      recaptchaRef.current?.reset();
 
     } catch (error) {
        console.error("Error submitting form:", error);
@@ -309,6 +314,24 @@ export function QuoteAndDemoForm() {
                </div>
             )}
            
+            <FormField
+              control={form.control}
+              name="recaptcha"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                     <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                        onChange={field.onChange}
+                        theme="dark"
+                      />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <Button type="submit" className="w-full" disabled={isSubmitting}>
              {isSubmitting ? "Submitting..." : (watchBookDemo ? "Schedule Demo & Get Quote" : "Get My Quote")}
             </Button>

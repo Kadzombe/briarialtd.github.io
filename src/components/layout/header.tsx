@@ -1,4 +1,5 @@
-import { CodeXml, Menu } from "lucide-react";
+import Image from "next/image";
+import { Code, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -10,10 +11,10 @@ const navLinks = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white text-black">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-white text-black">
       <div className="container flex h-16 items-center">
         <div className="mr-4 flex items-center">
-          <CodeXml className="h-6 w-6 mr-2 text-primary" />
+          <Code className="h-8 w-8 mr-2" />
           <a href="/" className="font-bold text-lg">
             BriAria Ltd
           </a>
@@ -43,7 +44,7 @@ export function Header() {
             <SheetContent side="right" className="bg-white text-black">
               <div className="flex flex-col pt-8">
                 <div className="mb-8 flex items-center">
-                  <CodeXml className="h-6 w-6 mr-2 text-primary" />
+                  <Code className="h-8 w-8 mr-2" />
                   <a href="/" className="font-bold text-lg">
                     BriAria Ltd
                   </a>

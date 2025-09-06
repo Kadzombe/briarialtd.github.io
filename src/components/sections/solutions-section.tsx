@@ -100,9 +100,9 @@ export function SolutionsSection() {
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 to-transparent"></div>
               <div className="absolute bottom-0 p-6">
-                <p className="text-sm font-medium text-primary">{solution.industry}</p>
-                <h3 className="mt-2 text-lg font-semibold text-primary-foreground">{solution.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{solution.description}</p>
+                <p className="text-base font-medium text-primary">{solution.industry}</p>
+                <h3 className="mt-2 text-xl font-semibold text-primary-foreground">{solution.title}</h3>
+                <p className="mt-1 text-base text-muted-foreground">{solution.description}</p>
               </div>
             </Card>
           ))}

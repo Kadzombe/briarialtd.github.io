@@ -3,11 +3,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, Sparkles, Loader2 } from "lucide-react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import ReCAPTCHA from "react-google-recaptcha";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -29,7 +28,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useFirebase } from "./firebase-provider";
-import { verifyRecaptcha } from "@/ai/flows/verify-recaptcha";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -39,7 +37,6 @@ const formSchema = z.object({
   bookDemo: z.boolean().default(false).optional(),
   date: z.date().optional(),
   time: z.string().optional(),
-  recaptcha: z.string().min(1, "Please complete the reCAPTCHA challenge."),
 }).refine(data => {
     if (data.bookDemo && !data.date) {
         return false;
@@ -60,12 +57,10 @@ const formSchema = z.object({
 
 const timeSlots = ["09:00 AM", "11:00 AM", "02:00 PM", "04:00 PM"];
 
-
 export function QuoteAndDemoForm() {
   const { toast } = useToast();
   const { db } = useFirebase();
   const [isGenerating, setIsGenerating] = useState(false);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -75,7 +70,6 @@ export function QuoteAndDemoForm() {
       company: "",
       projectDetails: "",
       bookDemo: false,
-      recaptcha: ""
     },
   });
 
@@ -120,19 +114,7 @@ export function QuoteAndDemoForm() {
     }
 
     try {
-      const recaptchaResult = await verifyRecaptcha({ token: values.recaptcha });
-      if (!recaptchaResult.success) {
-        toast({
-          title: "Submission Failed",
-          description: "Invalid reCAPTCHA. Please try again.",
-          variant: "destructive",
-        });
-        recaptchaRef.current?.reset();
-        form.setValue("recaptcha", "");
-        return;
-      }
-
-      const quoteData: any = {
+      const quoteData = {
         name: values.name,
         email: values.email,
         company: values.company || "",
@@ -141,15 +123,15 @@ export function QuoteAndDemoForm() {
       };
 
       if (values.bookDemo && values.date && values.time) {
-        const time24h = new Date(`1970-01-01 ${values.time}`).toTimeString().split(' ')[0];
-        const combinedDateTime = new Date(`${format(values.date, "yyyy-MM-dd")}T${time24h}`);
-        
+        const time24h = new Date(`1970-01-01T${values.time.replace(' AM', ':00').replace(' PM', ':00')}`).toTimeString().split(' ')[0];
+        const combinedDateTime = new Date(`${format(values.date, "yyyy-MM-dd")}T${values.time.includes('PM') ? parseInt(time24h.split(':')[0], 10) + 12 : time24h}`);
+
         const demoData = { ...quoteData, demoDateTime: combinedDateTime.toISOString() };
         await addDoc(collection(db, 'demo_requests'), demoData);
       }
-      
+
       await addDoc(collection(db, 'quotes'), quoteData);
-      
+
       let toastTitle = "Quote Request Sent!";
       let toastDescription = "We've received your request and will be in touch soon.";
 
@@ -163,7 +145,6 @@ export function QuoteAndDemoForm() {
         description: toastDescription,
       });
       form.reset();
-      recaptchaRef.current?.reset();
     } catch (error) {
        console.error("Error submitting form:", error);
        toast({
@@ -237,115 +218,94 @@ export function QuoteAndDemoForm() {
                 </FormItem>
               )}
             />
-             <Button type="button" variant="outline" onClick={handleGenerateDescription} disabled={isGenerating || isSubmitting} className="w-full">
+            <Button type="button" variant="outline" onClick={handleGenerateDescription} disabled={isGenerating || isSubmitting} className="w-full">
               {isGenerating ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
               Generate with AI
             </Button>
-            
-            <FormField
-                control={form.control}
-                name="bookDemo"
-                render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-                        <FormControl>
-                            <Checkbox
-                                checked={field.value}
-                                onCheckedChange={field.onChange}
-                            />
-                        </FormControl>
-                        <div className="space-y-1 leading-none">
-                            <FormLabel>
-                                I also want to book a demo
-                            </FormLabel>
-                        </div>
-                    </FormItem>
-                )}
-            />
-
-            {watchBookDemo && (
-                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                 <FormField
-                   control={form.control}
-                   name="date"
-                   render={({ field }) => (
-                     <FormItem className="flex flex-col">
-                       <FormLabel>Date</FormLabel>
-                       <Popover>
-                         <PopoverTrigger asChild>
-                           <FormControl>
-                             <Button
-                               variant={"outline"}
-                               className={cn(
-                                 "w-full pl-3 text-left font-normal",
-                                 !field.value && "text-muted-foreground"
-                               )}
-                             >
-                               {field.value ? (
-                                 format(field.value, "PPP")
-                               ) : (
-                                 <span>Pick a date</span>
-                               )}
-                               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                             </Button>
-                           </FormControl>
-                         </PopoverTrigger>
-                         <PopoverContent className="w-auto p-0" align="start">
-                           <Calendar
-                             mode="single"
-                             selected={field.value}
-                             onSelect={field.onChange}
-                             disabled={(date) => date < new Date(new Date().setHours(0,0,0,0))}
-                             initialFocus
-                           />
-                         </PopoverContent>
-                       </Popover>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-                 <FormField
-                   control={form.control}
-                   name="time"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>Time</FormLabel>
-                       <Select onValueChange={field.onChange} defaultValue={field.value}>
-                         <FormControl>
-                           <SelectTrigger>
-                             <SelectValue placeholder="Select a time slot" />
-                           </Trigger>
-                         </FormControl>
-                         <SelectContent>
-                           {timeSlots.map(time => <SelectItem key={time} value={time}>{time}</SelectItem>)}
-                         </SelectContent>
-                       </Select>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-               </div>
-            )}
-           
             <FormField
               control={form.control}
-              name="recaptcha"
+              name="bookDemo"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
                   <FormControl>
-                     <ReCAPTCHA
-                        ref={recaptchaRef}
-                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-                        onChange={(token) => field.onChange(token || "")}
-                        theme="dark"
-                      />
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
                   </FormControl>
-                  <FormMessage />
+                  <div className="space-y-1 leading-none">
+                    <FormLabel>
+                      I also want to book a demo
+                    </FormLabel>
+                  </div>
                 </FormItem>
               )}
             />
-
+            {watchBookDemo && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="date"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                      <FormLabel>Date</FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant={"outline"}
+                              className={cn(
+                                "w-full pl-3 text-left font-normal",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                format(field.value, "PPP")
+                              ) : (
+                                <span>Pick a date</span>
+                              )}
+                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={field.value}
+                            onSelect={field.onChange}
+                            disabled={(date) => date < new Date(new Date().setHours(0,0,0,0))}
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="time"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Time</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a time slot" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {timeSlots.map(time => <SelectItem key={time} value={time}>{time}</SelectItem>)}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            )}
             <Button type="submit" className="w-full" disabled={isSubmitting}>
-             {isSubmitting ? "Submitting..." : (watchBookDemo ? "Schedule Demo & Get Quote" : "Get My Quote")}
+              {isSubmitting ? "Submitting..." : (watchBookDemo ? "Schedule Demo & Get Quote" : "Get My Quote")}
             </Button>
           </form>
         </Form>

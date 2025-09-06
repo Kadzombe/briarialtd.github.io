@@ -4,8 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import ReCAPTCHA from "react-google-recaptcha";
-import { useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,19 +19,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useFirebase } from "./firebase-provider";
-import { verifyRecaptcha } from "@/ai/flows/verify-recaptcha";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.string().email("Please enter a valid email address."),
   message: z.string().min(10, "Message must be at least 10 characters."),
-  recaptcha: z.string().min(1, "Please complete the reCAPTCHA challenge."),
 });
 
 export function ContactForm() {
   const { toast } = useToast();
   const { db } = useFirebase();
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,7 +36,6 @@ export function ContactForm() {
       name: "",
       email: "",
       message: "",
-      recaptcha: "",
     },
   });
 
@@ -58,19 +52,6 @@ export function ContactForm() {
     }
 
     try {
-       // Verify reCAPTCHA
-      const recaptchaResult = await verifyRecaptcha({ token: values.recaptcha });
-      if (!recaptchaResult.success) {
-        toast({
-          title: "Submission Failed",
-          description: "Invalid reCAPTCHA. Please try again.",
-          variant: "destructive",
-        });
-        recaptchaRef.current?.reset();
-        form.setValue("recaptcha", "");
-        return;
-      }
-
       await addDoc(collection(db, 'contacts'), {
         name: values.name,
         email: values.email,
@@ -82,7 +63,6 @@ export function ContactForm() {
         description: "Thank you for your inquiry. We'll be in touch soon.",
       });
       form.reset();
-      recaptchaRef.current?.reset();
     } catch (error) {
       console.error("Error submitting contact form:", error);
       toast({
@@ -136,23 +116,6 @@ export function ContactForm() {
                   <FormLabel>Message</FormLabel>
                   <FormControl>
                     <Textarea placeholder="Your message..." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-             <FormField
-              control={form.control}
-              name="recaptcha"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                     <ReCAPTCHA
-                        ref={recaptchaRef}
-                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-                        onChange={(token) => field.onChange(token || "")}
-                        theme="dark"
-                      />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

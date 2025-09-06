@@ -4,25 +4,25 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Rules for existing forms
-    match /contactSubmissions/{docId} {
+    // Allow anyone to submit to the test collection for debugging purposes.
+    match /testSubmissions/{docId} {
       allow create: if true;
-      allow read, update, delete: if false;
+    }
+
+    // Secure production collections.
+    match /contactSubmissions/{docId} {
+      allow create: if request.resource.data.name is string && request.resource.data.email is string;
+      allow read, update, delete: if request.auth != null && request.auth.token.admin == true;
     }
 
     match /quoteSubmissions/{docId} {
-      allow create: if true;
-      allow read, update, delete: if false;
+      allow create: if request.resource.data.name is string && request.resource.data.email is string;
+      allow read, update, delete: if request.auth != null && request.auth.token.admin == true;
     }
 
     match /demoSubmissions/{docId} {
-      allow create: if true;
-      allow read, update, delete: if false;
-    }
-
-    // Simple rule for the new test page
-    match /testSubmissions/{docId} {
-      allow write: if true;
+      allow create: if request.resource.data.name is string && request.resource.data.email is string;
+      allow read, update, delete: if request.auth != null && request.auth.token.admin == true;
     }
   }
 }

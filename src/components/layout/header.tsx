@@ -1,5 +1,6 @@
+
 import Image from "next/image";
-import { Briefcase, Menu, Linkedin, Instagram, Facebook } from "lucide-react";
+import { Briefcase, Menu, Linkedin, Instagram, Facebook, FlaskConical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -68,6 +69,9 @@ export function Header() {
                     </a>
                 </Button>
             </div>
+            <Button variant="outline" size="sm" asChild>
+              <a href="/test"><FlaskConical className="h-4 w-4 mr-2" /> Test Page</a>
+            </Button>
           <Button asChild className="hidden md:flex">
             <a href="#contact">Request a Quote</a>
           </Button>
@@ -98,6 +102,9 @@ export function Header() {
                   ))}
                   <Button asChild className="mt-4">
                     <a href="#contact">Request a Quote</a>
+                  </Button>
+                  <Button asChild variant="outline" className="mt-4">
+                    <a href="/test">Test Page</a>
                   </Button>
                 </nav>
                  <div className="flex justify-center gap-2 mt-8">

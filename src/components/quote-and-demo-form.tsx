@@ -120,7 +120,6 @@ export function QuoteAndDemoForm() {
     }
 
     try {
-       // Verify reCAPTCHA
       const recaptchaResult = await verifyRecaptcha({ token: values.recaptcha });
       if (!recaptchaResult.success) {
         toast({
@@ -165,7 +164,6 @@ export function QuoteAndDemoForm() {
       });
       form.reset();
       recaptchaRef.current?.reset();
-
     } catch (error) {
        console.error("Error submitting form:", error);
        toast({

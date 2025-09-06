@@ -29,6 +29,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useFirebase } from "./firebase-provider";
+import { verifyRecaptcha } from "@/ai/flows/verify-recaptcha";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -119,6 +120,19 @@ export function QuoteAndDemoForm() {
     }
 
     try {
+       // Verify reCAPTCHA
+      const recaptchaResult = await verifyRecaptcha({ token: values.recaptcha });
+      if (!recaptchaResult.success) {
+        toast({
+          title: "Submission Failed",
+          description: "Invalid reCAPTCHA. Please try again.",
+          variant: "destructive",
+        });
+        recaptchaRef.current?.reset();
+        form.setValue("recaptcha", "");
+        return;
+      }
+
       const quoteData: any = {
         name: values.name,
         email: values.email,
@@ -323,7 +337,7 @@ export function QuoteAndDemoForm() {
                      <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-                        onChange={field.onChange}
+                        onChange={(token) => field.onChange(token || "")}
                         theme="dark"
                       />
                   </FormControl>

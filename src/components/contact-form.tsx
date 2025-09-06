@@ -21,6 +21,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useFirebase } from "./firebase-provider";
+import { verifyRecaptcha } from "@/ai/flows/verify-recaptcha";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -57,6 +58,19 @@ export function ContactForm() {
     }
 
     try {
+       // Verify reCAPTCHA
+      const recaptchaResult = await verifyRecaptcha({ token: values.recaptcha });
+      if (!recaptchaResult.success) {
+        toast({
+          title: "Submission Failed",
+          description: "Invalid reCAPTCHA. Please try again.",
+          variant: "destructive",
+        });
+        recaptchaRef.current?.reset();
+        form.setValue("recaptcha", "");
+        return;
+      }
+
       await addDoc(collection(db, 'contacts'), {
         name: values.name,
         email: values.email,
@@ -136,7 +150,7 @@ export function ContactForm() {
                      <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-                        onChange={field.onChange}
+                        onChange={(token) => field.onChange(token || "")}
                         theme="dark"
                       />
                   </FormControl>

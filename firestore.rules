@@ -1,27 +1,28 @@
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Allow anyone to create a new contact submission, but do not allow
-    // them to read, update, or delete existing submissions.
+
+    // Deny all reads and writes by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Allow anyone to create documents in these specific collections,
+    // but do not allow them to be read, updated, or deleted from the client.
+    // This is a secure pattern for public-facing contact forms.
     match /contactSubmissions/{submissionId} {
-      allow read, update, delete: if false;
       allow create: if true;
+      allow read, update, delete: if false;
     }
 
-    // Allow anyone to create a new quote submission, but do not allow
-    // them to read, update, or delete existing submissions.
     match /quoteSubmissions/{submissionId} {
-      allow read, update, delete: if false;
       allow create: if true;
+      allow read, update, delete: if false;
     }
-
-    // Allow anyone to create a new demo submission, but do not allow
-    // them to read, update, or delete existing submissions.
+    
     match /demoSubmissions/{submissionId} {
-      allow read, update, delete: if false;
       allow create: if true;
+      allow read, update, delete: if false;
     }
   }
 }

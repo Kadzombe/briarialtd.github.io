@@ -8,6 +8,7 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetDescription,
   SheetFooter,
 } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
@@ -76,6 +77,9 @@ export function AIChatbot() {
         <SheetContent className="flex flex-col">
           <SheetHeader>
             <SheetTitle>ARSMA AI</SheetTitle>
+            <SheetDescription>
+              Your friendly assistant for questions about BriAria Ltd.
+            </SheetDescription>
           </SheetHeader>
           <ScrollArea className="flex-1 pr-4 -mr-6" ref={scrollAreaRef}>
             <div className="space-y-4 py-4">

@@ -25,7 +25,7 @@ if (!getApps().length) {
 const db = getFirestore(app);
 
 // Create a context for the Firebase db instance
-const FirebaseContext = createContext<Firestore | null>(null);
+const FirebaseContext = createContext<{ db: Firestore | null }>({ db: null });
 
 export function useFirebase() {
   return useContext(FirebaseContext);
@@ -33,6 +33,6 @@ export function useFirebase() {
 
 export function FirebaseProvider({ children }: { children: ReactNode }) {
   return (
-    <FirebaseContext.Provider value={db}>{children}</FirebaseContext.Provider>
+    <FirebaseContext.Provider value={{ db }}>{children}</FirebaseContext.Provider>
   );
 }

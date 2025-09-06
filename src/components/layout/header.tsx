@@ -10,7 +10,7 @@ const navLinks = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white text-black">
       <div className="container flex h-16 items-center">
         <div className="mr-4 flex items-center">
           <CodeXml className="h-6 w-6 mr-2 text-primary" />
@@ -40,7 +40,7 @@ export function Header() {
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className="bg-white text-black">
               <div className="flex flex-col pt-8">
                 <div className="mb-8 flex items-center">
                   <CodeXml className="h-6 w-6 mr-2 text-primary" />

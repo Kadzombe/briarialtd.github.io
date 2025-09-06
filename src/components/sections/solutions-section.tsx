@@ -60,7 +60,7 @@ export function SolutionsSection() {
       : solutions.filter((s) => s.industry === activeIndustry);
 
   return (
-    <section id="solutions" className="py-20 sm:py-32 bg-card">
+    <section id="solutions" className="py-20 sm:py-32">
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="text-base font-semibold leading-7 text-primary">Our Work</h2>

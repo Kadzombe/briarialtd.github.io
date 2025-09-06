@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { addDoc, collection } from "firebase/firestore";
-import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -31,7 +30,6 @@ const formSchema = z.object({
 export function ContactForm() {
   const { toast } = useToast();
   const { db } = useFirebase();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,6 +40,8 @@ export function ContactForm() {
     },
   });
 
+  const { isSubmitting } = form.formState;
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     if (!db) {
       toast({
@@ -51,7 +51,7 @@ export function ContactForm() {
       });
       return;
     }
-    setIsSubmitting(true);
+
     try {
       await addDoc(collection(db, "contactSubmissions"), {
         ...values,
@@ -69,8 +69,6 @@ export function ContactForm() {
         description: "There was a problem sending your message. Please try again.",
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   }
 

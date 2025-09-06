@@ -62,7 +62,6 @@ export function QuoteAndDemoForm() {
   const { toast } = useToast();
   const { db } = useFirebase();
   const [isGenerating, setIsGenerating] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -75,6 +74,7 @@ export function QuoteAndDemoForm() {
     },
   });
 
+  const { isSubmitting } = form.formState;
   const watchBookDemo = form.watch("bookDemo");
 
   const handleGenerateDescription = async () => {
@@ -114,7 +114,6 @@ export function QuoteAndDemoForm() {
       return;
     }
 
-    setIsSubmitting(true);
     try {
       const collectionName = values.bookDemo ? "demoSubmissions" : "quoteSubmissions";
       
@@ -155,8 +154,6 @@ export function QuoteAndDemoForm() {
          description: "There was a problem processing your request. Please try again.",
          variant: "destructive",
        });
-    } finally {
-      setIsSubmitting(false);
     }
   }
 
@@ -223,7 +220,7 @@ export function QuoteAndDemoForm() {
                 </FormItem>
               )}
             />
-             <Button type="button" variant="outline" onClick={handleGenerateDescription} disabled={isGenerating} className="w-full">
+             <Button type="button" variant="outline" onClick={handleGenerateDescription} disabled={isGenerating || isSubmitting} className="w-full">
               {isGenerating ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
               Generate with AI
             </Button>

@@ -10,42 +10,42 @@ const solutions = [
   {
     industry: "FinTech",
     title: "AI-Powered Robo-Advisory",
-    description: "We build intelligent, automated investment platforms that provide data-driven financial advice and personalized portfolio management, democratizing wealth management for your clients.",
+    description: "Intelligent, automated investment platforms providing data-driven financial advice and personalized portfolio management to democratize wealth management.",
     image: "https://images.pexels.com/photos/6771120/pexels-photo-6771120.jpeg",
     aiHint: "financial chart",
   },
   {
     industry: "Healthcare",
     title: "Telemedicine & EHR Integration",
-    description: "Our solutions facilitate secure, remote patient-doctor consultations and seamlessly integrate with Electronic Health Records (EHR) for streamlined, efficient healthcare delivery.",
+    description: "Secure, remote patient-doctor consultations seamlessly integrated with Electronic Health Records for streamlined, efficient healthcare delivery.",
     image: "https://images.pexels.com/photos/4033148/pexels-photo-4033148.jpeg",
     aiHint: "telemedicine doctor",
   },
   {
     industry: "E-commerce",
     title: "Hyper-Personalized Retail",
-    description: "Leverage AI to create a unique shopping experience. Our platforms offer smart product recommendations, personalized marketing, and dynamic pricing to boost sales and customer loyalty.",
+    description: "Leverage AI for a unique shopping experience with smart recommendations, personalized marketing, and dynamic pricing to boost sales and customer loyalty.",
     image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
     aiHint: "shopping cart",
   },
   {
     industry: "Education",
     title: "Interactive e-Learning Platform",
-    description: "Engage students with a dynamic online learning environment, featuring live-video classes, collaborative tools, and progress tracking for a modern educational experience.",
+    description: "Engage students with a dynamic online learning environment, featuring live-video classes, collaborative tools, and progress tracking.",
     image: "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg",
     aiHint: "online learning",
   },
   {
     industry: "Real Estate",
     title: "Virtual Property Tour Platform",
-    description: "Transform the property viewing experience with immersive 3D virtual tours and an integrated booking system, allowing potential buyers to explore homes from anywhere, anytime.",
+    description: "Transform property viewing with immersive 3D virtual tours and an integrated booking system, allowing buyers to explore homes from anywhere.",
     image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg",
     aiHint: "modern house",
   },
   {
     industry: "FinTech",
     title: "Secure Payment Gateway",
-    description: "We deliver robust, compliant, and highly secure payment processing solutions for global online transactions, complete with advanced fraud detection and multi-currency support.",
+    description: "Robust, compliant, and highly secure payment processing for global online transactions, with advanced fraud detection and multi-currency support.",
     image: "https://images.pexels.com/photos/7620568/pexels-photo-7620568.jpeg",
     aiHint: "secure payment",
   },
@@ -76,7 +76,7 @@ export function SolutionsSection() {
           {industries.map((industry) => (
             <Button
               key={industry}
-              variant={activeIndustry === industry ? "outline" : "default"}
+              variant={activeIndustry === industry ? "default" : "outline"}
               onClick={() => setActiveIndustry(industry)}
               className="capitalize"
             >
@@ -95,14 +95,14 @@ export function SolutionsSection() {
                   data-ai-hint={solution.aiHint}
                   width={600}
                   height={400} 
-                  className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-110"
+                  className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 to-transparent"></div>
-              <div className="absolute bottom-0 p-6">
-                <p className="text-base font-medium text-primary">{solution.industry}</p>
-                <h3 className="mt-2 text-xl font-semibold text-primary-foreground">{solution.title}</h3>
-                <p className="mt-1 text-base text-muted-foreground">{solution.description}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+              <div className="absolute inset-0 flex flex-col justify-end p-4">
+                <p className="text-sm font-medium text-primary">{solution.industry}</p>
+                <h3 className="mt-1 text-lg font-semibold text-primary-foreground leading-tight">{solution.title}</h3>
+                <p className="mt-1 text-sm text-gray-300 leading-snug">{solution.description}</p>
               </div>
             </Card>
           ))}

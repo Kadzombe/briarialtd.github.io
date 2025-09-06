@@ -44,25 +44,25 @@ export function Header() {
         <div className="flex flex-1 items-center justify-end gap-2">
             <div className="hidden md:flex items-center gap-1">
                  <Button variant="ghost" size="icon" asChild>
-                    <a href="https://www.linkedin.com/company/briaria-ltd/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-foreground/60 transition-colors hover:text-primary">
+                    <a href="https://www.linkedin.com/company/briaria-ltd/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-black hover:bg-primary/90">
                     <Linkedin className="h-4 w-4" />
                     <span className="sr-only">LinkedIn</span>
                     </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                    <a href="https://www.instagram.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-foreground/60 transition-colors hover:text-primary">
+                    <a href="https://www.instagram.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-black hover:bg-primary/90">
                     <Instagram className="h-4 w-4" />
                     <span className="sr-only">Instagram</span>
                     </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                    <a href="https://www.facebook.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-foreground/60 transition-colors hover:text-primary">
+                    <a href="https://www.facebook.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-black hover:bg-primary/90">
                     <Facebook className="h-4 w-4" />
                     <span className="sr-only">Facebook</span>
                     </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                    <a href="https://x.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-foreground/60 transition-colors hover:text-primary">
+                    <a href="https://x.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-black hover:bg-primary/90">
                     <XIcon className="h-4 w-4" />
                     <span className="sr-only">X</span>
                     </a>
@@ -102,25 +102,25 @@ export function Header() {
                 </nav>
                  <div className="flex justify-center gap-2 mt-8">
                     <Button variant="ghost" size="icon" asChild>
-                        <a href="https://www.linkedin.com/company/briaria-ltd/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-foreground/60 transition-colors hover:text-primary">
+                        <a href="https://www.linkedin.com/company/briaria-ltd/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-black hover:bg-primary/90">
                         <Linkedin className="h-5 w-5" />
                         <span className="sr-only">LinkedIn</span>
                         </a>
                     </Button>
                     <Button variant="ghost" size="icon" asChild>
-                        <a href="https://www.instagram.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-foreground/60 transition-colors hover:text-primary">
+                        <a href="https://www.instagram.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-black hover:bg-primary/90">
                         <Instagram className="h-5 w-5" />
                         <span className="sr-only">Instagram</span>
                         </a>
                     </Button>
                     <Button variant="ghost" size="icon" asChild>
-                        <a href="https://www.facebook.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-foreground/60 transition-colors hover:text-primary">
+                        <a href="https://www.facebook.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-black hover:bg-primary/90">
                         <Facebook className="h-5 w-5" />
                         <span className="sr-only">Facebook</span>
                         </a>
                     </Button>
                     <Button variant="ghost" size="icon" asChild>
-                        <a href="https://x.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-foreground/60 transition-colors hover:text-primary">
+                        <a href="https://x.com/briarialtd" target="_blank" rel="noopener noreferrer" className="text-black hover:bg-primary/90">
                         <XIcon className="h-5 w-5" />
                         <span className="sr-only">X</span>
                         </a>

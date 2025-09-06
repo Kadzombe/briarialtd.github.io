@@ -1,17 +1,66 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    // Helpers
+    function isAdmin() {
+      // Placeholder for admin logic.
+      return false;
+    }
+
+    // Basic field validations to mitigate spam/malformed writes
+    function isValidContact() {
+      return request.resource.data.keys().hasAll(['name', 'email', 'message', 'submittedAt']) &&
+             request.resource.data.name is string &&
+             request.resource.data.email is string &&
+             request.resource.data.message is string &&
+             request.resource.data.message.size() <= 2000 &&
+             request.resource.data.email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
+    }
+
+    function isValidQuote() {
+      return request.resource.data.keys().hasAll(['name', 'email', 'projectDetails', 'submittedAt']) &&
+             request.resource.data.name is string &&
+             request.resource.data.email is string &&
+             request.resource.data.projectDetails is string &&
+             request.resource.data.projectDetails.size() <= 4000 &&
+             request.resource.data.email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
+    }
+    
+    function isValidDemo() {
+        return request.resource.data.keys().hasAll(['name', 'email', 'projectDetails', 'submittedAt', 'date', 'time']) &&
+             request.resource.data.name is string &&
+             request.resource.data.email is string &&
+             request.resource.data.projectDetails is string &&
+             request.resource.data.projectDetails.size() <= 4000 &&
+             request.resource.data.date is string &&
+             request.resource.data.time is string &&
+             request.resource.data.email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
+    }
+
+    // Collections
     match /contactSubmissions/{docId} {
-      allow read, update, delete: if false;
-      allow create: if true;
+      // Allow anyone to create a valid submission.
+      allow create: if isValidContact();
+
+      // Only admin can read/update/delete.
+      allow read, update, delete: if isAdmin();
     }
+
     match /quoteSubmissions/{docId} {
-      allow read, update, delete: if false;
-      allow create: if true;
+      // Allow anyone to create a valid submission.
+      allow create: if isValidQuote();
+
+      // Only admin can read/update/delete.
+      allow read, update, delete: if isAdmin();
     }
-     match /demoSubmissions/{docId} {
-      allow read, update, delete: if false;
-      allow create: if true;
+
+    match /demoSubmissions/{docId} {
+      // Allow anyone to create a valid submission.
+      allow create: if isValidDemo();
+      
+      // Only admin can read/update/delete.
+      allow read, update, delete: if isAdmin();
     }
   }
 }

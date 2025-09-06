@@ -156,7 +156,7 @@ export function QuoteAndDemoForm() {
 
       if (values.bookDemo) {
         toastTitle = "Demo Booked & Quote Requested!";
-        toastDescription = `We've scheduled your demo for ${format(values.date!, "PPP")} at ${values.time}. A confirmation will be sent shortly.`;
+        toastDescription = `We've scheduled your demo for ${values.date ? format(values.date, "PPP") : ''} at ${values.time}. A confirmation will be sent shortly.`;
       }
 
       toast({
@@ -315,7 +315,7 @@ export function QuoteAndDemoForm() {
                          <FormControl>
                            <SelectTrigger>
                              <SelectValue placeholder="Select a time slot" />
-                           </SelectTrigger>
+                           </Trigger>
                          </FormControl>
                          <SelectContent>
                            {timeSlots.map(time => <SelectItem key={time} value={time}>{time}</SelectItem>)}

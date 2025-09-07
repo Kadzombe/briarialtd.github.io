@@ -1,0 +1,979 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="BriAria Ltd — Software, AI, Web Design & Digital Marketing studio based in the UK. We build reliable, modern tech for startups and SMBs." />
+
+  <title>BriAria Ltd — Software & AI Studio</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="manifest" href="site.webmanifest">
+
+  <meta property="og:title" content="BriAria Ltd — Software & AI Studio" />
+  <meta property="og:image" content="https://kadzombe.github.io/briarialtd.github.io/briArialog.jpg" />
+  <meta property="og:description" content="Software, AI, Web Design & Digital Marketing studio based in the UK." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kadzombe.github.io/briarialtd.github.io/" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BriAria Ltd — Software & AI Studio" />
+  <meta name="twitter:description" content="Software, AI, Web Design & Digital Marketing studio based in the UK." />
+  <meta name="twitter:image" content="https://kadzombe.github.io/briarialtd.github.io/briArialog.jpg" />
+  <meta name="twitter:url" content="https://kadzombe.github.io/briarialtd.github.io/" />
+
+  <meta name="msapplication-TileImage" content="https://kadzombe.github.io/briarialtd.github.io/briArialog-192.png" />
+  <meta name="msapplication-TileColor" content="#0b0d12" />
+
+  <meta name="theme-color" content="#0b0d12">
+
+  <style>
+    :root {
+      --bg:#0b0d12;--panel:#121521;--muted:#8a93a6;--text:#e9edf5;
+      --brand1:#6ee7f3;--brand2:#a78bfa;--accent:#22d3ee;
+      --ok:#10b981;--warn:#f59e0b;--err:#ef4444;
+    }
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:radial-gradient(1200px 800px at 85% -10%, rgba(167,139,250,.20), transparent 60%),linear-gradient(180deg,#0b0d12,#0b0d12 50%,#0e1220);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-flex;gap:.5rem;align-items:center;border:1px solid rgba(255,255,255,.12);background:linear-gradient(135deg, rgba(110,231,243,.15), rgba(167,139,250,.15));color:var(--text);padding:.8rem 1.1rem;border-radius:14px;backdrop-filter:blur(4px);transition:.2s ease;cursor:pointer}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(103,232,249,.15)}
+    .btn.primary{background:linear-gradient(135deg, var(--accent), var(--brand2));border:none;color:#071018;font-weight:700}
+    .btn.ghost{background:transparent}
+    header{position:sticky;top:0;z-index:50;background:rgba(11,13,18,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.3px}
+    .logo-mark{width:28px;height:28px;border-radius:10px;background:conic-gradient(from 180deg at 50% 50%, var(--brand2), var(--brand1));box-shadow:0 0 0 2px rgba(255,255,255,.06) inset}
+    .nav a{opacity:.9}
+    .nav-links{display:flex;gap:1rem;align-items:center}
+    .mobile-toggle{display:none}
+
+    .hero{padding:72px 0 36px}
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+    .kicker{display:inline-flex;gap:.5rem;align-items:center;padding:.2rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-size:.78rem;color:var(--muted)}
+    .title{font-size:clamp(2rem, 3.6vw, 3.2rem);line-height:1.1;margin:.6rem 0 1rem;font-weight:900;background:linear-gradient(180deg,#fff, #cbd5e1);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .subtitle{color:#c3c9d7;max-width:60ch}
+    .hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.1rem}
+    .hero-visual{position:relative;min-height:320px;border-radius:18px;background: url('bria.jpg') center/cover no-repeat, radial-gradient(300px 200px at 20% 20%, rgba(34,211,238,.18), transparent),radial-gradient(400px 300px at 80% 10%, rgba(167,139,250,.18), transparent),linear-gradient(180deg,#0f1320,#0b0d12);border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 50px rgba(0,0,0,.35)}
+    .hero-visual:after{content:"";position:absolute;inset:0;border-radius:18px;background:repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 2px, transparent 2px 10px);mask:linear-gradient(#000,#000),linear-gradient(#000,#000);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.3}
+    .stat-badges{position:absolute;bottom:14px;left:14px;display:flex;gap:.6rem;flex-wrap:wrap}
+    .badge{padding:.4rem .7rem;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:.8rem;color:#d2d8e6}
+
+    section{padding:64px 0;border-top:1px solid rgba(255,255,255,.06)}
+    .section-title{font-size:1.9rem;margin:0 0 14px;font-weight:800}
+    .section-sub{color:var(--muted);margin:0 0 22px}
+
+    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{grid-column:span 4;min-height:180px;padding:18px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08)}
+    .card h3{margin:4px 0 8px;font-size:1.1rem}
+    .card p{color:#cbd3e4}
+    .chip{display:inline-flex;gap:.4rem;align-items:center;font-size:.75rem;color:#b4bdd1;padding:.25rem .6rem;border-radius:999px;border:1px dashed rgba(255,255,255,.18)}
+
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .list{display:grid;gap:8px}
+    .list li{display:flex;gap:.6rem;align-items:flex-start}
+    .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand1),var(--brand2));margin-top:6px;box-shadow:0 0 20px rgba(167,139,250,.5)}
+
+    .accordion{border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden}
+    .acc-item{border-top:1px solid rgba(255,255,255,.06)}
+    .acc-item:first-child{border-top:none}
+    .acc-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;cursor:pointer;background:rgba(255,255,255,.02)}
+    .acc-body{display:none;padding:0 16px 16px;color:#cbd3e4}
+
+    .solutions .card{grid-column:span 3}
+
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+    form{display:grid;gap:10px}
+    input, textarea, select{width:100%;padding:12px 2px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(11, 13, 18);color:var(--text);outline:none}
+    input:focus, textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(34,211,238,.15)}
+    label{font-size:.9rem;color:#cbd3e4}
+    .help{font-size:.8rem;color:var(--muted)}
+
+    .map{min-height:260px;border-radius:14px;overflow:hidden;border: 0px solid rgba(255,255,255,.08)}
+
+    footer{padding:26px 0;color:#b4bdd1}
+    .foot-grid{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+
+    /* Chatbot */
+    .chat-fab{position:fixed;right:20px;bottom:20px;z-index:60;display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1rem;border-radius:999px;background:linear-gradient(135deg,var(--brand2),var(--brand1));color:#0b0d12;font-weight:800;border:none;box-shadow:0 10px 30px rgba(0,0,0,.35);cursor:pointer}
+    .chat-window{position:fixed;right:20px;bottom:84px;width:min(420px, calc(100vw - 40px));max-height:min(70vh, 640px);display:none;flex-direction:column;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(11,13,18,.95);backdrop-filter:blur(8px);z-index:70;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    .chat-header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .chat-body{padding:12px;overflow:auto;display:flex;flex-direction:column;gap:8px}
+    .msg{max-width:85%;padding:10px 12px;border-radius:14px;line-height:1.3}
+    .msg.user{align-self:flex-end;background:linear-gradient(135deg, rgba(110,231,243,.18), rgba(167,139,250,.18));border:1px solid rgba(255,255,255,.08)}
+    .msg.bot{align-self:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    .chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(255,255,255,.06)}
+    .chat-input input{flex:1}
+
+    /* Utilities */
+    .hide{display:none!important}
+    .center{display:flex;align-items:center;justify-content:center}
+
+    /* Responsive */
+    @media(max-width: 980px){
+      .hero .wrap, .contact{grid-template-columns:1fr}
+      .hero-visual{min-height:240px}
+      .cards .card{grid-column:span 6}
+      .solutions .card{grid-column:span 6}
+    }
+    @media(max-width: 640px){
+      .cards .card, .solutions .card{grid-column:span 12}
+      .nav-links{display:none}
+      .mobile-toggle{display:inline-flex}
+    }
+
+    .logo img {
+      max-height: 60px;
+      height: auto;
+      width: auto;
+    }
+
+    .hero-visual {
+      background-size: cover !important;
+      background-position: center !important;
+    }
+    @media(max-width: 640px){
+      .logo img {
+        max-height: 40px;
+      }
+    }
+
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home" aria-label="BriAria Home"><img src="briArialog.jpg" alt="BriAria Logo" style="height:60px;margin-right:10px;">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>BriAria<span style="opacity:.6">LTD</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#about">About</a>
+        <a href="#services">Products & Services</a>
+        <a href="#why">Why BriAria</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#contact">Contact</a>
+        <button class="btn ghost" id="openDemo">Book a demo</button>
+      </nav>
+      <button class="mobile-toggle btn ghost" id="mobileToggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="container wrap">
+      <div>
+        <span class="kicker">Modern software, real outcomes</span>
+        <h1 class="title">BriAria builds fast, reliable software, AI tools, and digital experiences for startups & SMBs.</h1>
+        <p class="subtitle">We design, develop, and launch production-grade web apps, AI features, and engaging content — from idea to deployment. UK-based, global delivery.</p>
+        <div class="hero-cta">
+          <button class="btn primary" id="heroDemoBtn">Book a demo</button>
+          <a class="btn" href="#services">See what we build</a>
+        </div>
+        <div class="hero-cta">
+          <span class="chip">✔ GDPR-aware practices</span>
+          <span class="chip">✔ Transparent delivery</span>
+          <span class="chip">✔ No vendor lock‑in</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="stat-badges">
+          <span class="badge">Web Apps</span>
+          <span class="badge">AI Assistants</span>
+          <span class="badge">Video & Animation</span>
+          <span class="badge">Marketing Sites</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About BriAria</h2>
+      <p class="section-sub">We’re a UK technology studio delivering software development, AI integrations, web design, and digital marketing under one roof. Our approach blends craftsmanship with speed — shipping value early, then iterating with data.</p>
+      <div class="grid-2">
+        <ul class="list">
+          <li><span class="dot"></span>Human‑centered design and accessible UX.</li>
+          <li><span class="dot"></span>Modern stacks (Node, React, Python, Firebase, Postgres).</li>
+          <li><span class="dot"></span>Clear project management and versioned releases.</li>
+          <li><span class="dot"></span>Ethical AI usage with privacy in mind.</li>
+        </ul>
+        <div class="accordion" id="aboutAcc">
+          <div class="acc-item">
+            <div class="acc-header" data-acc>
+              <strong>Our mission</strong>
+              <span>＋</span>
+            </div>
+            <div class="acc-body">Help ambitious teams ship dependable tech that customers love — while staying simple, secure, and scalable.</div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-header" data-acc>
+              <strong>How we work</strong>
+              <span>＋</span>
+            </div>
+            <div class="acc-body">Start small, learn fast. We begin with a clear spec and a demo, then iterate in weekly sprints with measurable outcomes.</div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-header" data-acc>
+              <strong>Tooling & quality</strong>
+              <span>＋</span>
+            </div>
+            <div class="acc-body">Version control, code reviews, automated checks, and performance budgets are standard. We hand over clean docs — no black boxes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Products & Services</h2>
+      <p class="section-sub">Choose one service or bundle a solution. We’ll tailor scope and timelines to your goals.</p>
+      <div class="cards">
+        <article class="card" aria-labelledby="svc-web">
+          <h3 id="svc-web">Web & App Development</h3>
+          <p>Responsive websites, dashboards, and cross‑platform apps built with modern frameworks and robust APIs.</p>
+          <div class="hero-cta">
+            <button class="btn" data-modal="web-details">View details</button>
+            <button class="btn" data-quote="Web & App Development">Request a quote</button>
+          </div>
+        </article>
+        <article class="card" aria-labelledby="svc-ai">
+          <h3 id="svc-ai">AI Features & Automation</h3>
+          <p>Chatbots, content helpers, data extraction, and workflow automation — designed for safety and reliability.</p>
+          <div class="hero-cta">
+            <button class="btn" data-modal="ai-details">View details</button>
+            <button class="btn" data-quote="AI Features & Automation">Request a quote</button>
+          </div>
+        </article>
+        <article class="card" aria-labelledby="svc-video">
+          <h3 id="svc-video">Video, Animation & Creative</h3>
+          <p>Brand videos, explainers, and social content with crisp audio and motion — from script to final export.</p>
+          <div class="hero-cta">
+            <button class="btn" data-modal="video-details">View details</button>
+            <button class="btn" data-quote="Video, Animation & Creative">Request a quote</button>
+          </div>
+        </article>
+        <article class="card" aria-labelledby="svc-marketing">
+          <h3 id="svc-marketing">Sites & Digital Marketing</h3>
+          <p>High‑performance landing pages, SEO setup, on‑brand design systems, and analytics that inform decisions.</p>
+          <div class="hero-cta">
+            <button class="btn" data-modal="marketing-details">View details</button>
+            <button class="btn" data-quote="Sites & Digital Marketing">Request a quote</button>
+          </div>
+        </article>
+        <article class="card" aria-labelledby="svc-support">
+          <h3 id="svc-support">Care & Support</h3>
+          <p>Monitored hosting, updates, and small enhancements. We keep your product fast, secure, and stable.</p>
+          <div class="hero-cta">
+            <button class="btn" data-modal="support-details">View details</button>
+            <button class="btn" data-quote="Care & Support">Request a quote</button>
+          </div>
+        </article>
+        <article class="card" aria-labelledby="svc-training">
+          <h3 id="svc-training">Workshops & Training</h3>
+          <p>Hands‑on sessions to help your team adopt new tools, improve content workflows, and ship features faster.</p>
+          <div class="hero-cta">
+            <button class="btn" data-modal="training-details">View details</button>
+            <button class="btn" data-quote="Workshops & Training">Request a quote</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+      <h2 class="section-title">Why choose BriAria</h2>
+      <p class="section-sub">We combine senior engineering with careful design. No fluff, just dependable delivery.</p>
+      <div class="grid-2">
+        <ul class="list">
+          <li><span class="dot"></span>Transparent plans, honest timelines, and a clear point of contact.</li>
+          <li><span class="dot"></span>Security‑minded by default: sensible permissions, encrypted data in transit, no exposed keys.</li>
+          <li><span class="dot"></span>Performance first: we design for speed across devices and networks.</li>
+          <li><span class="dot"></span>Documentation and handover so you can run independently.</li>
+        </ul>
+        <div class="accordion" id="whyAcc">
+          <div class="acc-item">
+            <div class="acc-header" data-acc>
+              <strong>Delivery process</strong>
+              <span>＋</span>
+            </div>
+            <div class="acc-body">Kickoff → Spec → Design preview → Dev sprints → Weekly demos → Launch → Care plan. You always see progress and own your data.</div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-header" data-acc>
+              <strong>Tech we like</strong>
+              <span>＋</span>
+            </div>
+            <div class="acc-body">React, Node, TypeScript, Python, Firebase, Postgres, Next.js, Tailwind, FFmpeg, and pragmatic AI where it truly helps.</div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-header" data-acc>
+              <strong>Engagement options</strong>
+              <span>＋</span>
+            </div>
+            <div class="acc-body">Fixed‑scope projects, retained delivery teams, or focused workshops. We adapt to your budget and timeline.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solutions" class="solutions">
+    <div class="container">
+      <h2 class="section-title">Solutions by industry</h2>
+      <p class="section-sub">Explore curated packages that match common needs. Everything is customizable.</p>
+
+      <div class="hero-cta" style="margin-bottom:14px">
+        <label for="solFilter" class="help">Filter:</label>
+        <select id="solFilter" style="max-width:260px">
+          <option value="all">All</option>
+          <option value="startup">Startups</option>
+          <option value="smb">Small Business</option>
+          <option value="education">Education</option>
+          <option value="health">Health & Fitness</option>
+          <option value="creative">Creators & Media</option>
+        </select>
+      </div>
+
+      <div class="cards" id="solutionsGrid">
+        <article class="card" data-tag="startup">
+          <h3>Startup Launch Kit</h3>
+          <p>Brand site, landing pages, analytics, and a contact funnel — shipped in weeks.</p>
+          <button class="btn" data-quote="Startup Launch Kit">Get this</button>
+        </article>
+        <article class="card" data-tag="smb">
+          <h3>SMB Online Storefront</h3>
+          <p>High‑performance site with product pages, SEO basics, and automated lead capture.</p>
+          <button class="btn" data-quote="SMB Online Storefront">Get this</button>
+        </article>
+        <article class="card" data-tag="education">
+          <h3>Education Portal</h3>
+          <p>Secure content areas, forms, and lightweight dashboards for schools & programs.</p>
+          <button class="btn" data-quote="Education Portal">Get this</button>
+        </article>
+        <article class="card" data-tag="health">
+          <h3>Wellness Platform</h3>
+          <p>Booking pages, content hub, and privacy‑minded forms for health professionals.</p>
+          <button class="btn" data-quote="Wellness Platform">Get this</button>
+        </article>
+        <article class="card" data-tag="creative">
+          <h3>Creator Studio</h3>
+          <p>Portfolio, media gallery, and video pipeline setup for YouTube & social.</p>
+          <button class="btn" data-quote="Creator Studio">Get this</button>
+        </article>
+        <article class="card" data-tag="startup">
+          <h3>AI Assistant Mini</h3>
+          <p>Embed a safe Q&A assistant into your site to answer product questions.</p>
+          <button class="btn" data-quote="AI Assistant Mini">Get this</button>
+        </article>
+        <article class="card" data-tag="smb">
+          <h3>Bookings + Payments</h3>
+          <p>Accept bookings and payments with a clean UI and clear notifications.</p>
+          <button class="btn" data-quote="Bookings + Payments">Get this</button>
+        </article>
+        <article class="card" data-tag="creative">
+          <h3>Video Explainer Pack</h3>
+          <p>Script, storyboard, voice, and animation for your homepage hero.</p>
+          <button class="btn" data-quote="Video Explainer Pack">Get this</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact">
+      <div>
+        <h2 class="section-title">Contact BriAria LTD</h2>
+        <p class="section-sub">Tell us about your project. We typically respond within 1–2 business days.</p>
+        <form id="contactForm" novalidate>
+          <div>
+            <label for="name">Full name</label>
+            <input id="name" name="name" autocomplete="name" required placeholder="Jane Doe" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic" required>
+              <option value="">Select a topic</option>
+              <option>Web & App Development</option>
+              <option>AI Features & Automation</option>
+              <option>Video, Animation & Creative</option>
+              <option>Sites & Digital Marketing</option>
+              <option>Care & Support</option>
+              <option>Workshops & Training</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" minlength="10" required placeholder="Share goals, scope, timeline, and budget range if known."></textarea>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <button class="g-recaptcha btn primary" data-sitekey="6LeVsrwrAAAAAGIuREYZ2iA_NUVomazySqg68L3k" data-callback="onContactSubmit" data-action="submit">Send message</button>
+            <span id="formStatus" class="help" role="status"></span>
+          </div>
+        </form>
+      </div>
+      <div>
+        <div class="map" aria-label="Map to BriAria, UK">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.6142784932927!2d0.05178750000000001!3d51.538634200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a64a3353d8bb%3A0x326da32e4b620905!2sIcon%20Office%2C%20182-184%20High%20St%20N%2C%20London%20E6%202JA!5e0!3m2!1sen!2suk!4v1756811348361!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p class="help" style="margin-top:10px">Prefer email? <a href="mailto:briakundaim@gmail.com?subject=Inquiry%20for%20BriAria" aria-label="Email BriAria">briakundaim@gmail.com</a></p>
+        <p class="help" style="margin-top:10px">Address? <a href="Icon Office, 182-184 High St N, London E6 2JA" aria-label="Email BriAria">Icon Office, 182-184 High St N, London E6 2JA<br>Phone :+447412863449</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot-grid">
+      <div>© <span id="year"></span> BriAria Ltd — UK. All rights reserved.</div>
+      <div style="display:flex;gap:8px">
+        <a class="chip" href="#about">About</a>
+        <a class="chip" href="#services">Services</a>
+        <a class="chip" href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="demoModal" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
+    <form method="dialog" id="demoForm" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
+      <div style="grid-column:1/-1;display:flex;align-items:center;justify-content:space-between">
+        <h3 style="margin:0">Book a live demo</h3>
+        <button value="cancel" class="btn ghost" aria-label="Close demo">✕</button>
+      </div>
+      <div>
+        <label for="demoName">Full name</label>
+        <input id="demoName" required placeholder="Jane Doe" />
+      </div>
+      <div>
+        <label for="demoEmail">Email</label>
+        <input id="demoEmail" type="email" required placeholder="you@example.com" />
+      </div>
+      <div>
+        <label for="demoDate">Preferred date</label>
+        <input id="demoDate" type="date" required />
+      </div>
+      <div>
+        <label for="demoTime">Preferred time</label>
+        <input id="demoTime" type="time" required />
+      </div>
+      <div style="grid-column:1/-1">
+        <label for="demoNotes">Notes</label>
+        <textarea id="demoNotes" rows="4" placeholder="What do you want to see? Share context so we can tailor the demo."></textarea>
+      </div>
+      <div style="grid-column:1/-1;display:flex;gap:10px;align-items:center">
+        <button class="btn primary" id="confirmDemo" value="default">Confirm booking</button>
+        <span id="demoStatus" class="help" role="status"></span>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="web-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
+  <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
+    <h3 style="margin-top:0">Web & App Development</h3>
+    <ul class="list">
+      <li><span class="dot"></span>Responsive websites, dashboards, and admin tools.</li>
+      <li><span class="dot"></span>APIs, databases, auth, and payments.</li>
+      <li><span class="dot"></span>Accessibility, performance, and SEO basics included.</li>
+    </ul>
+    <div style="display:flex;justify-content:flex-end">
+      <button type="submit" class="btn ghost" aria-label="Close details">Close</button>
+    </div>
+  </form>
+</dialog>
+
+  <dialog id="ai-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
+    <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
+      <h3 style="margin-top:0">AI Features & Automation</h3>
+      <ul class="list">
+        <li><span class="dot"></span>On‑site Q&A assistants and content helpers.</li>
+        <li><span class="dot"></span>Data extraction, file processing, and task automation.</li>
+        <li><span class="dot"></span>Privacy‑aware designs and clear fallbacks.</li>
+      </ul>
+      <div style="display:flex;justify-content:flex-end"><button class="btn ghost" aria-label="Close details">Close</button></div>
+    </form>
+  </dialog>
+  <dialog id="video-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
+    <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
+      <h3 style="margin-top:0">Video, Animation & Creative</h3>
+      <ul class="list">
+        <li><span class="dot"></span>Explainer videos, promos, and motion assets.</li>
+        <li><span class="dot"></span>Script, storyboard, voice, and edit.</li>
+        <li><span class="dot"></span>Export for web and social channels.</li>
+      </ul>
+      <div style="display:flex;justify-content:flex-end"><button class="btn ghost" aria-label="Close details">Close</button></div>
+    </form>
+  </dialog>
+  <dialog id="marketing-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
+    <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
+      <h3 style="margin-top:0">Sites & Digital Marketing</h3>
+      <ul class="list">
+        <li><span class="dot"></span>Design systems, brand‑consistent components.</li>
+        <li><span class="dot"></span>SEO setup, analytics, and fast hosting guidance.</li>
+        <li><span class="dot"></span>Copy support and conversion testing.</li>
+      </ul>
+      <div style="display:flex;justify-content:flex-end"><button class="btn ghost" aria-label="Close details">Close</button></div>
+    </form>
+  </dialog>
+  <dialog id="support-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
+    <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
+      <h3 style="margin-top:0">Care & Support</h3>
+      <ul class="list">
+        <li><span class="dot"></span>Monitored uptime, backups, and updates.</li>
+        <li><span class="dot"></span>Small enhancements and security fixes.</li>
+        <li><span class="dot"></span>Clear monthly reporting.</li>
+      </ul>
+      <div style="display:flex;justify-content:flex-end"><button class="btn ghost" aria-label="Close details">Close</button></div>
+    </form>
+  </dialog>
+  <dialog id="training-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
+    <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
+      <h3 style="margin-top:0">Workshops & Training</h3>
+      <ul class="list">
+        <li><span class="dot"></span>Practical, project‑based sessions.</li>
+        <li><span class="dot"></span>Tailored to your team’s stack and tools.</li>
+        <li><span class="dot"></span>Cheat‑sheets and recordings provided.</li>
+      </ul>
+      <div style="display:flex;justify-content:flex-end"><button class="btn ghost" aria-label="Close details">Close</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="quoteModal" style="border:none;border-radius:16px;max-width:640px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
+    <form method="dialog" id="quoteForm" style="display:grid;gap:12px;padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <h3 id="quoteTitle" style="margin:0">Request a quote</h3>
+        <button value="cancel" class="btn ghost" aria-label="Close quote">✕</button>
+      </div>
+      <input id="quoteService" type="hidden" />
+      <div>
+        <label for="qName">Full name</label>
+        <input id="qName" required placeholder="Jane Doe" />
+      </div>
+      <div>
+        <label for="qEmail">Email</label>
+        <input id="qEmail" type="email" required placeholder="you@example.com" />
+      </div>
+      <div>
+        <label for="qBrief">Brief</label>
+        <textarea id="qBrief" rows="4" required placeholder="What are you building? Include scope, timeline, and constraints."></textarea>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="btn primary" id="sendQuote" value="default">Send request</button>
+        <span id="quoteStatus" class="help" role="status"></span>
+      </div>
+    </form>
+  </dialog>
+
+  <button class="chat-fab" id="chatToggle" aria-haspopup="dialog">💬 Chat</button>
+  <div class="chat-window" id="chatWindow" role="dialog" aria-label="BriAria Chatbot">
+    <div class="chat-header">
+      <strong>BriAria Assistant</strong>
+      <button class="btn ghost" id="chatClose" aria-label="Close chat">✕</button>
+    </div>
+    <div class="chat-body" id="chatBody" aria-live="polite"></div>
+    <form class="chat-input" id="chatForm">
+      <input id="chatText" placeholder="Ask about services, quotes, demos…" autocomplete="off" />
+      <button class="btn primary" type="submit">Send</button>
+    </form>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+  <script>
+    (function(){
+      const $ = (s,ctx=document)=>ctx.querySelector(s);
+      const $$ = (s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
+      const yearEl = $('#year'); if(yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // --- Firebase init ---
+      // Replace these placeholder values with your actual Firebase project config
+      const firebaseConfig = {
+        apiKey: "REPLACE_WITH_YOUR_API_KEY",
+        authDomain: "REPLACE_WITH_YOUR_AUTH_DOMAIN",
+        databaseURL: "REPLACE_WITH_YOUR_DATABASE_URL", // important for realtime DB
+        projectId: "REPLACE_WITH_YOUR_PROJECT_ID",
+        storageBucket: "REPLACE_WITH_YOUR_STORAGE_BUCKET",
+        messagingSenderId: "REPLACE_WITH_YOUR_MESSAGING_SENDER_ID",
+        appId: "REPLACE_WITH_YOUR_APP_ID"
+      };
+      try {
+        if(window.firebase && !firebase.apps.length){
+          firebase.initializeApp(firebaseConfig);
+          window._briaria_db = firebase.database();
+        }
+      } catch(err){
+        console.warn('Firebase init failed (placeholder config?)', err);
+      }
+
+      // Mobile nav
+      const mobileToggle = $('#mobileToggle');
+      mobileToggle?.addEventListener('click', ()=>{
+        const nav = $('.nav-links');
+        if(!nav) return;
+        const open = getComputedStyle(nav).display !== 'none';
+        nav.style.display = open ? 'none' : 'flex';
+      });
+
+      // Accordion
+      $$('[data-acc]').forEach(h=>{
+        h.addEventListener('click', ()=>{
+          const body = h.parentElement.querySelector('.acc-body');
+          const open = body.style.display === 'block';
+          body.style.display = open ? 'none' : 'block';
+          h.querySelector('span').textContent = open ? '＋' : '－';
+        });
+      });
+      })(); // <-- ADD THIS LINE
+  </script>
+  <script type="module">
+    // Firebase modular SDK imports (CDN)
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+    // Your provided Firebase config (placed here as requested)
+    const firebaseConfig = {
+  apiKey: "AIzaSyCBpx5fCa5n_1eLcU3nYTMHzsFlV1e1FyU",
+  authDomain: "briaria-ltd-862ae.firebaseapp.com",
+  projectId: "briaria-ltd-862ae",
+  storageBucket: "briaria-ltd-862ae.appspot.com",  // ✅ correct
+  messagingSenderId: "778017308723",
+  appId: "1:778017308723:web:684eba289693cb411ea346",
+  measurementId: "G-9BV80C1V9B"
+    };
+
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    // analytics may fail on some environments (File://), wrap briefly
+    try { getAnalytics(app); } catch(e) { /* ignore analytics init failures */ }
+
+    // Firestore reference
+    const db = getFirestore(app);
+    // expose for debugging (optional)
+    window.__BRIARIA_DB = db;
+
+    // Small helpers
+    const $ = (s, ctx = document) => ctx.querySelector(s);
+    const $$ = (s, ctx = document) => Array.from(ctx.querySelectorAll(s));
+    const yearEl = $('#year'); if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Save to Firestore helper
+    async function saveToFirestore(collectionName, data) {
+      try {
+        const docRef = await addDoc(collection(db, collectionName), { ...data, createdAt: serverTimestamp() });
+        return { success: true, id: docRef.id };
+      } catch (err) {
+        console.warn('Firestore write error', collectionName, err);
+        return { success: false, error: err };
+      }
+    }
+
+    // UI behaviors (mobile nav, accordion)
+    const mobileToggle = $('#mobileToggle');
+    mobileToggle?.addEventListener('click', () => {
+      const nav = $('.nav-links');
+      if (!nav) return;
+      const open = getComputedStyle(nav).display !== 'none';
+      nav.style.display = open ? 'none' : 'flex';
+    });
+
+    $$('[data-acc]').forEach(h => {
+      h.addEventListener('click', () => {
+        const body = h.parentElement.querySelector('.acc-body');
+        const open = body.style.display === 'block';
+        body.style.display = open ? 'none' : 'block';
+        h.querySelector('span').textContent = open ? '＋' : '－';
+      });
+    });
+
+    // Demo modal controls (fully functional)
+    const demoModal = $('#demoModal');
+    const openDemoBtns = [$('#openDemo'), $('#heroDemoBtn')].filter(Boolean);
+    openDemoBtns.forEach(btn => btn.addEventListener('click', () => demoModal.showModal()));
+
+    $('#closeDemoBtn')?.addEventListener('click', () => demoModal.close());
+
+    $('#confirmDemo')?.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const demoForm = $('#demoForm');
+      const demoStatus = $('#demoStatus');
+      if (!demoForm.checkValidity()) {
+        demoStatus.textContent = 'Please complete all required fields.';
+        return;
+      }
+
+      const payload = {
+        name: $('#demoName').value.trim(),
+        email: $('#demoEmail').value.trim(),
+        date: $('#demoDate').value,
+        time: $('#demoTime').value,
+        notes: $('#demoNotes').value.trim(),
+        ts: new Date().toISOString()
+      };
+
+      // local save (still useful as fallback)
+      const list = JSON.parse(localStorage.getItem('BriAria_demo_requests') || '[]');
+      list.push(payload);
+      localStorage.setItem('BriAria_demo_requests', JSON.stringify(list));
+
+      // persist to Firestore
+      const res = await saveToFirestore('demo_requests', payload);
+      if (res.success) {
+        demoStatus.textContent = 'Booked! We will email you to confirm.';
+        // optionally open mail client to send copy
+        const subject = encodeURIComponent('Demo booking — BriAria');
+        const body = encodeURIComponent(`Name: ${payload.name}\nEmail: ${payload.email}\nDate: ${payload.date}\nTime: ${payload.time}\nNotes:\n${payload.notes}`);
+        window.open(`mailto:briakundaim@gmail.com?subject=${subject}&body=${body}`, '_blank');
+        demoForm.reset();
+        setTimeout(() => demoModal.close(), 600);
+      } else {
+        demoStatus.textContent = 'Saved locally. There was an issue saving to the cloud.';
+      }
+    });
+
+    // Quote modal (make sure it's functional and saves to Firestore)
+    const quoteModal = $('#quoteModal');
+    $$('[data-quote]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const svc = btn.getAttribute('data-quote');
+        $('#quoteTitle').textContent = `Request a quote — ${svc}`;
+        $('#quoteService').value = svc;
+        quoteModal.showModal();
+      });
+    });
+
+    $('#sendQuote')?.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const status = $('#quoteStatus');
+      const name = $('#qName').value.trim();
+      const email = $('#qEmail').value.trim();
+      const brief = $('#qBrief').value.trim();
+      if (!name || !email || !brief) {
+        status.textContent = 'Please fill in all fields.';
+        return;
+      }
+      const entry = { name, email, brief, service: $('#quoteService').value, ts: new Date().toISOString() };
+      // local save
+      const list = JSON.parse(localStorage.getItem('BriAria_quotes') || '[]');
+      list.push(entry);
+      localStorage.setItem('BriAria_quotes', JSON.stringify(list));
+      // firestore
+      const res = await saveToFirestore('quotes', entry);
+      if (res.success) {
+        status.textContent = 'Request sent! We\'ll reply by email.';
+        const subject = encodeURIComponent(`Quote request — ${entry.service}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nService: ${entry.service}\nBrief:\n${brief}`);
+        window.open(`mailto:briakundaim@gmail.com?subject=${subject}&body=${body}`, '_blank');
+        $('#quoteForm').reset();
+        setTimeout(() => quoteModal.close(), 600);
+      } else {
+        status.textContent = 'Saved locally. There was an issue saving to the cloud.';
+      }
+    });
+
+    // MODIFIED: Contact form logic updated for reCAPTCHA
+    const cf = $('#contactForm');
+    const fs = $('#formStatus');
+
+    // Make the callback globally accessible for the reCAPTCHA button
+    window.onContactSubmit = async function(token) {
+      if (!cf.checkValidity()) {
+        fs.textContent = 'Please complete all required fields.';
+        grecaptcha.reset(); // Reset the captcha so the user can try again.
+        return;
+      }
+
+      fs.textContent = 'Sending...';
+
+      const data = {
+        name: $('#name').value.trim(),
+        email: $('#email').value.trim(),
+        topic: $('#topic').value,
+        message: $('#message').value.trim(),
+        ts: new Date().toISOString(),
+        recaptcha_token: token // You should verify this token on your server
+      };
+
+      // local save
+      const list = JSON.parse(localStorage.getItem('BriAria_contact_messages') || '[]');
+      list.push(data);
+      localStorage.setItem('BriAria_contact_messages', JSON.stringify(list));
+
+      // firestore save
+      const res = await saveToFirestore('contacts', data);
+      if (res.success) {
+        fs.textContent = 'Message sent! Check your email for a copy.';
+        const subject = encodeURIComponent(`Contact — ${data.topic}`);
+        const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nTopic: ${data.topic}\nMessage:\n${data.message}`);
+        window.open(`mailto:briakundaim@gmail.com?subject=${subject}&body=${body}`, '_blank');
+        cf.reset();
+      } else {
+        fs.textContent = 'Saved locally. There was an issue saving to the cloud.';
+      }
+    };
+
+
+    // Solutions filter (unchanged)
+    const solFilter = $('#solFilter');
+    solFilter?.addEventListener('change', () => {
+      const v = solFilter.value;
+      $$('.solutions .card').forEach(card => {
+        const tag = card.getAttribute('data-tag');
+        card.style.display = (v === 'all' || tag === v) ? 'block' : 'none';
+      });
+    });
+
+    // Chatbot: basic flow (OpenAI proxy integration left as-is if you have /api/openai)
+    const chatToggle = $('#chatToggle');
+    const chatWindow = $('#chatWindow');
+    const chatBody = $('#chatBody');
+    const chatClose = $('#chatClose');
+    const chatForm = $('#chatForm');
+    const chatText = $('#chatText');
+    const chatStatus = $('#chatStatus');
+
+    function appendMsg(text, who = 'bot') {
+      const m = document.createElement('div');
+      m.className = 'msg ' + who;
+      m.textContent = text;
+      chatBody.appendChild(m);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function getChatLog() {
+      return JSON.parse(sessionStorage.getItem('BriAria_chat') || '[]');
+    }
+    function saveChatLog(log) {
+      sessionStorage.setItem('BriAria_chat', JSON.stringify(log));
+    }
+
+    function localReply(user) {
+      const t = user.toLowerCase();
+      if (/(hi|hello|hey|morning|afternoon)/.test(t)) return 'Hi! I\'m BriAria\'s assistant. Ask me about services, quotes, or booking a demo.';
+      if (/(price|pricing|cost|quote)/.test(t)) return 'We provide tailored quotes based on scope and timeline. Click any “Request a quote” button or tell me what you need and your timeframe.';
+      if (/(service|offer|do you (do|offer)|build)/.test(t)) return 'We build web/apps, AI features, video & animation, marketing sites, training, and care plans. Which area should we explore?';
+      if (/(contact|email|phone)/.test(t)) return 'You can use the contact form below or email briakundaim@gmail.com. I\'ll also pass details to the team.';
+      if (/(demo|book|meeting|call)/.test(t)) return 'Great! Use the “Book a demo” button — pick a date/time and we\'ll confirm by email.';
+      if (/(support|issue|bug|help)/.test(t)) return 'We provide monitored care plans and ad‑hoc support. Share the issue and we\'ll route it to engineering.';
+      if (/(ai|assistant|chatbot)/.test(t)) return 'Yes, we implement safe AI assistants and automation. Tell me the use case and data sources you have.';
+      return null;
+    }
+
+    async function callOpenAI(messages) {
+      try {
+        const res = await fetch('/api/openai', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages, model: 'gpt-3.5-turbo' })
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error('OpenAI proxy error: ' + text);
+        }
+        const json = await res.json();
+        return json.reply;
+      } catch (err) {
+        console.warn('OpenAI call failed', err);
+        return null;
+      }
+    }
+
+    async function handleUserMessage(text) {
+      appendMsg(text, 'user');
+      const log = getChatLog();
+      log.push({ role: 'user', content: text, ts: Date.now() });
+
+      const canned = localReply(text);
+      chatStatus.classList.remove('hide');
+
+      const messagesForAI = log.map(m => {
+        if (m.role === 'user') return { role: 'user', content: m.content || m.text };
+        if (m.role === 'bot') return { role: 'assistant', content: m.content || m.text || m.reply };
+        return { role: 'user', content: m.content || m.text };
+      });
+
+      const aiReply = await callOpenAI(messagesForAI);
+      chatStatus.classList.add('hide');
+
+      const replyText = aiReply || canned || "Sorry, I couldn't reach the assistant. I've noted your message for the team.";
+
+      appendMsg(replyText, 'bot');
+      log.push({ role: 'bot', content: replyText, ts: Date.now() });
+      saveChatLog(log);
+
+      // store transcript to Firestore (best-effort)
+      try {
+        await saveToFirestore('chat_transcripts', {
+          messages: log.map(m => ({ role: m.role, content: m.content, ts: m.ts })),
+          summary: replyText,
+          createdAt: new Date().toISOString()
+        });
+      } catch (e) {
+        // ignore
+      }
+    }
+
+    function initChat() {
+      chatBody.innerHTML = '';
+      appendMsg('Welcome to BriAria! How can I help today? (services, quotes, demo booking)');
+      const log = getChatLog();
+      if (log.length) {
+        log.forEach(m => appendMsg(m.content, m.role === 'user' ? 'user' : 'bot'));
+      }
+    }
+
+    chatToggle?.addEventListener('click', () => {
+      chatWindow.style.display = 'flex';
+      initChat();
+      chatText.focus();
+    });
+    chatClose?.addEventListener('click', () => {
+      chatWindow.style.display = 'none';
+    });
+
+    chatForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const val = chatText.value.trim();
+      if (!val) return;
+      chatText.value = '';
+      await handleUserMessage(val);
+    });
+
+    // Accessibility: close dialog on backdrop click
+    $$('dialog').forEach(dlg => {
+      dlg.addEventListener('click', (e) => {
+        const rect = dlg.getBoundingClientRect();
+        const inDialog = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+        if (!inDialog) dlg.close();
+      });
+    });
+
+    // Robust close fallback for 'X' / Close buttons
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      if (btn.classList.contains('ghost') || btn.getAttribute('aria-label')?.toLowerCase().includes('close') || btn.textContent.trim().toLowerCase() === 'close' || btn.value === 'cancel') {
+        const dlg = btn.closest('dialog');
+        if (dlg) {
+          const form = btn.closest('form[method="dialog"]');
+          if (form && (btn.type === '' || btn.type === 'submit')) return;
+          dlg.close();
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }
+    }, { capture: true });
+
+  </script>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>

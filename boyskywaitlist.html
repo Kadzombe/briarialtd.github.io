@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BoySky Waitlist</title>
+  <meta name="description" content="Join the BoySky waitlist — Get Started Free. No credit card required." />
+  <style>
+    :root{
+      --bg:#071018; --text:#e9eef8; --muted:#94a3b8; --cta:#10b981;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+      color:var(--text);
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    /* Background with flipping animation */
+    body::before {
+      content:"";
+      position:fixed;
+      inset:0;
+      background:url('bria.jpg') center/cover no-repeat;
+      z-index:-1;
+      animation: flipBg 8s infinite linear;
+      transform-origin:center;
+    }
+
+    @keyframes flipBg {
+      0%   { transform: rotateY(0deg); }
+      50%  { transform: rotateY(180deg); }
+      100% { transform: rotateY(360deg); }
+    }
+
+    /* Overlay for readability */
+    body::after {
+      content:"";
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.55);
+      z-index:-1;
+    }
+
+    .wrap{max-width:760px;margin:40px auto;padding:20px}
+    .hero{position:relative;border-radius:12px;min-height:220px;border:1px solid rgba(255,255,255,.04);overflow:hidden;background:rgba(0,0,0,.3)}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.4));pointer-events:none}
+    .hero-cta{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px}
+    .hero-cta .btn{background:var(--cta);color:#061014;border:none;padding:12px 18px;border-radius:999px;font-weight:800;text-decoration:none;box-shadow:0 10px 30px rgba(16,185,129,.14)}
+    .hero-cta .note{background:#fff;color:#061014;padding:6px 10px;border-radius:999px;font-weight:700;font-size:.9rem}
+    .card{background:rgba(255,255,255,.08);padding:18px;border-radius:12px;margin-top:18px;border:1px solid rgba(255,255,255,.04)}
+    form{display:grid;gap:10px}
+    label{font-size:.9rem;color:var(--muted);display:block}
+    input,select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.06);background:rgba(11,13,18,.6);color:var(--text)}
+    .consent{display:flex;gap:8px;align-items:center}
+    .submit{background:var(--cta);color:#061014;padding:12px;border-radius:10px;border:none;font-weight:800;cursor:pointer}
+    .submit[disabled]{opacity:.6;cursor:not-allowed}
+    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+    .result{margin-top:12px}
+    .success{padding:12px;border-radius:8px;background:rgba(16,185,129,.08);color:var(--cta);border:1px solid rgba(16,185,129,.12)}
+    .error{padding:12px;border-radius:8px;background:rgba(239,68,68,.06);color:#ef4444;border:1px solid rgba(239,68,68,.12)}
+    @media(max-width:640px){.hero{min-height:160px}.wrap{margin:20px 16px}}
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main">
+    <div class="hero" aria-hidden="false">
+      <div class="hero-cta">
+        <div class="btn" style="pointer-events:none">Get Started Free</div>
+        <div class="note">No credit card required</div>
+      </div>
+    </div>
+
+    <div class="card" role="region" aria-labelledby="waitlist-title">
+      <h1 id="waitlist-title" style="margin:0 0 8px">Join the BoySky Waitlist</h1>
+      <p style="margin:0 0 10px;color:var(--muted)">Be first to access BoySky when we launch. No credit card required.</p>
+
+      <div id="status" aria-live="polite" class="result"></div>
+
+      <form id="waitlistForm" novalidate>
+        <label for="hp" class="sr-only">Leave this empty</label>
+        <input id="hp" class="sr-only" autocomplete="off" />
+
+        <div>
+          <label for="name">Name (optional)</label>
+          <input id="name" name="name" type="text" placeholder="Jane Doe" />
+        </div>
+
+        <div>
+          <label for="email">Email (required)</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div>
+          <label for="phone">Phone (optional)</label>
+          <input id="phone" name="phone" type="tel" placeholder="+44 7..." />
+        </div>
+
+        <div>
+          <label for="reason">Why are you interested?</label>
+          <select id="reason" name="reason">
+            <option value="">Select...</option>
+            <option value="personal">For personal use</option>
+            <option value="business">For business use</option>
+            <option value="curious">Just curious</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="consent">
+          <input id="consent" type="checkbox" />
+          <label for="consent">I agree to receive updates about BoySky.</label>
+        </div>
+
+        <button id="submitBtn" class="submit" type="submit">Get Started Free — No credit card required</button>
+
+        <p style="font-size:.85rem;color:var(--muted);text-align:center;margin-top:8px">No spam. We’ll only contact you when BoySky is ready.</p>
+      </form>
+
+      <div id="success" class="hidden" style="margin-top:12px" aria-live="polite">
+        <div class="success">
+          <strong>🎉 You’re on the waitlist!</strong>
+          <div style="margin-top:8px;color:var(--muted)">Thanks — we’ll notify you when BoySky launches.</div>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button id="share-tw" style="background:transparent;border:1px solid rgba(255,255,255,.06);padding:8px;border-radius:8px;cursor:pointer">Share on Twitter</button>
+            <button id="share-fb" style="background:transparent;border:1px solid rgba(255,255,255,.06);padding:8px;border-radius:8px;cursor:pointer">Share on Facebook</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BoySky — AI Video Editing Revolution</title>
+  <meta name="description" content="Join the waitlist for BoySky - the all-in-one AI video editor that combines editing, messaging, and calls in one powerful platform.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #000 0%, #1a0f3a 100%);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      background: linear-gradient(135deg, #000 0%, #1a0f3a 70%, #0f1093 100%);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(0, 240, 163, 0.1);
+      border: 1px solid rgba(0, 240, 163, 0.3);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      color: #00f0a3;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 900;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #00f5ff, #ff00ff, #ffff00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.9;
+    }
+
+    .hero-img {
+      max-width: 500px;
+      width: 100%;
+      border-radius: 15px;
+      margin: 30px 0;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #00f0a3;
+      color: #000;
+      box-shadow: 0 4px 20px rgba(0, 240, 163, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 240, 163, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #00f5ff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #00f5ff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 60px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Problem/Solution */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .problem-card, .solution-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 40px 30px;
+    }
+
+    .card-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    .problem-list {
+      list-style: none;
+    }
+
+    .problem-list li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .problem-icon {
+      width: 35px;
+      height: 35px;
+      background: linear-gradient(135deg, #ff4757, #ff6b6b);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .solution-icon {
+      width: 35px;
+      height: 35px;
+      background: #00f0a3;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Grid layouts */
+    .grid {
+      display: grid;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .features-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .pricing-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 30px 25px;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 240, 163, 0.3);
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+    }
+
+    .card img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 10px;
+      margin: 15px 0;
+    }
+
+    .price {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #00f5ff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 20px 0;
+    }
+
+    /* Waitlist */
+    .waitlist {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(0, 240, 163, 0.2);
+      border-radius: 25px;
+      padding: 50px 30px;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .waitlist h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #00f5ff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-input {
+      width: 100%;
+      max-width: 350px;
+      padding: 15px 20px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .form-input:focus {
+      border-color: #00f0a3;
+      box-shadow: 0 0 15px rgba(0, 240, 163, 0.3);
+    }
+
+    .form-input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .testimonial {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 30px;
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-size: 3rem;
+      color: #00f0a3;
+      font-weight: 900;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .stats {
+        gap: 30px;
+      }
+
+      .hero {
+        padding: 60px 20px 40px;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="badge">🚀 Revolutionary AI Video Editor</div>
+    <h1>BoySky AI</h1>
+    <p>The world's first all-in-one platform combining AI video editing, team messaging, and video calls. <strong>Faster. Smarter. ALL IN ONE.</strong></p>
+
+    <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop" alt="BoySky Interface" class="hero-img">
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number">12,847</div>
+        <div class="stat-label">Early Adopters</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">85%</div>
+        <div class="stat-label">Time Saved</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">3-in-1</div>
+        <div class="stat-label">Tools Combined</div>
+      </div>
+    </div>
+
+    <a href="#waitlist" class="btn btn-primary">Join the Revolution</a>
+  </section>
+
+  <!-- Problem & Solution -->
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div class="problem-card">
+          <h2 class="card-title">The Problem</h2>
+          <ul class="problem-list">
+            <li>
+              <div class="problem-icon">⏰</div>
+              <span>Teams waste <strong>3+ hours daily</strong> switching between apps</span>
+            </li>
+            <li>
+              <div class="problem-icon">💸</div>
+              <span>Multiple subscriptions cost <strong>$200+/month</strong> per user</span>
+            </li>
+            <li>
+              <div class="problem-icon">📉</div>
+              <span>Fragmented workflows kill <strong>40% productivity</strong></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="solution-card">
+          <h2 class="card-title">The Solution</h2>
+          <p style="margin-bottom: 30px; opacity: 0.9;">BoySky unites AI editing, messaging, and video calls in one revolutionary platform.</p>
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=300&h=200&fit=crop" alt="Solution" style="width: 100%; border-radius: 10px;">
+          <div style="display: flex; align-items: center; gap: 15px; margin-top: 20px;">
+            <div class="solution-icon">✓</div>
+            <span><strong>One platform, infinite possibilities</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Powerful Features</h2>
+      <p class="section-subtitle">Everything you need to create, collaborate, and communicate</p>
+
+      <div class="grid features-grid">
+        <div class="card">
+          <h3>🪄 AI Magic Editor</h3>
+          <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=200&h=120&fit=crop" alt="AI Editing">
+          <p>One-click background removal, noise reduction, auto-subtitles, and smart scene detection.</p>
+        </div>
+
+        <div class="card">
+          <h3>💬 Team Messaging</h3>
+          <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=200&h=120&fit=crop" alt="Messaging">
+          <p>Project-based chat directly in your editor. No more switching apps to discuss edits.</p>
+        </div>
+
+        <div class="card">
+          <h3>📹 HD Video Calls</h3>
+          <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=200&h=120&fit=crop" alt="Video Calls">
+          <p>Collaborate live with screen sharing and real-time cursor tracking included.</p>
+        </div>
+
+        <div class="card">
+          <h3>👥 Team Workspace</h3>
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=200&h=120&fit=crop" alt="Collaboration">
+          <p>Real-time collaborative editing with version control and project templates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Simple Pricing</h2>
+      <p class="section-subtitle">Choose the plan that scales with your creativity</p>
+
+      <div class="grid pricing-grid">
+        <div class="card">
+          <h3>Starter</h3>
+          <div class="price">£0</div>
+          <p>Perfect for individual creators</p>
+          <ul style="list-style: none; text-align: left; margin-top: 20px; line-height: 2;">
+            <li>✓ Basic AI editing tools</li>
+            <li>✓ 720p exports</li>
+            <li>✓ 5GB cloud storage</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-color: #00f0a3; transform: scale(1.05);">
+          <h3>Pro</h3>
+          <div class="price">£12<span style="font-size: 1rem; opacity: 0.7;">/mo</span></div>
+          <p>For professional creators</p>
+          <ul style="list-style: none; text-align: left; margin-top: 20px; line-height: 2;">
+            <li>✓ Advanced AI features</li>
+            <li>✓ 4K HD exports</li>
+            <li>✓ No watermark</li>
+            <li>✓ 100GB storage</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Team</h3>
+          <div class="price">£25<span style="font-size: 1rem; opacity: 0.7;">/user</span></div>
+          <p>For growing businesses</p>
+          <ul style="list-style: none; text-align: left; margin-top: 20px; line-height: 2;">
+            <li>✓ Everything in Pro</li>
+            <li>✓ Team collaboration</li>
+            <li>✓ 1TB shared storage</li>
+            <li>✓ Admin dashboard</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Creators Love BoySky</h2>
+      <p class="section-subtitle">Join thousands of creators who've transformed their workflow</p>
+
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>BoySky cut my editing time from 8 hours to 2 hours. The AI features are incredible!</p>
+          <strong>— Sarah Chen, YouTube Creator</strong>
+        </div>
+
+        <div class="testimonial">
+          <p>Finally, a tool that gets it. No more juggling multiple apps. Everything in one place.</p>
+          <strong>— Marcus Rodriguez, Creative Director</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist -->
+  <section class="section" id="waitlist">
+    <div class="container">
+      <div class="waitlist">
+        <h2>Get Early Access</h2>
+        <p style="margin-bottom: 30px; opacity: 0.9;">Be the first to try BoySky when we launch 🚀</p>
+
+        <form id="waitlistForm">
+          <div class="form-group">
+            <input type="text" id="name" class="form-input" placeholder="Your Name (optional)">
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" class="form-input" placeholder="Your Email" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Join Waitlist</button>
+        </form>
+
+        <div id="status" style="margin-top: 20px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 BriAria Ltd — BoySky</p>
+  </footer>
+
+  <script>
+    // Simple form handling
+    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const name = document.getElementById('name').value.trim();
+      const status = document.getElementById('status');
+
+      if (!email) {
+        status.innerHTML = '<div style="color: #ff4757;">Please enter your email</div>';
+        return;
+      }
+
+      // Show loading
+      status.innerHTML = '<div style="color: #00f0a3;">Adding you to the waitlist...</div>';
+
+      // Simulate API call
+      setTimeout(() => {
+        try {
+          // Store locally
+          const waitlist = JSON.parse(localStorage.getItem('boysky_waitlist') || '[]');
+          waitlist.push({ email, name, timestamp: new Date().toISOString() });
+          localStorage.setItem('boysky_waitlist', JSON.stringify(waitlist));
+
+          // Success message
+          status.innerHTML = '<div style="color: #00f0a3; font-weight: 600;">🎉 Welcome to the BoySky revolution! We\'ll notify you when we launch.</div>';
+
+          // Reset form
+          document.getElementById('waitlistForm').reset();
+
+          // Update counter
+          const counter = document.querySelector('.stat-number');
+          if (counter && counter.textContent.includes('12,847')) {
+            counter.textContent = '12,848';
+          }
+
+        } catch (err) {
+          status.innerHTML = '<div style="color: #ff4757;">Something went wrong. Please try again.</div>';
+        }
+      }, 1000);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

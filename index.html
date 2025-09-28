@@ -3,1020 +3,1469 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="BriAria Ltd — Software, AI, Web Design & Digital Marketing studio based in the UK. We build reliable, modern tech for startups and SMBs." />
-
-  <title>BriAria Ltd — Software & AI Studio</title>
-
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="shortcut icon" href="favicon.svg">
-  <link rel="apple-touch-icon" href="favicon.svg">
-  <link rel="manifest" href="site.webmanifest">
-
-  <meta property="og:title" content="BriAria Ltd — Software & AI Studio" />
-  <meta property="og:image" content="https://kadzombe.github.io/briarialtd.github.io/briArialog.jpg" />
-  <meta property="og:description" content="Software, AI, Web Design & Digital Marketing studio based in the UK." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://kadzombe.github.io/briarialtd.github.io/" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="BriAria Ltd — Software & AI Studio" />
-  <meta name="twitter:description" content="Software, AI, Web Design & Digital Marketing studio based in the UK." />
-  <meta name="twitter:image" content="https://kadzombe.github.io/briarialtd.github.io/briArialog.jpg" />
-  <meta name="twitter:url" content="https://kadzombe.github.io/briarialtd.github.io/" />
-
-  <meta name="msapplication-TileImage" content="https://kadzombe.github.io/briarialtd.github.io/briArialog-192.png" />
-  <meta name="msapplication-TileColor" content="#0b0d12" />
-
-  <meta name="theme-color" content="#0b0d12">
-
+  <title>BriAria Ltd — Premium Software & AI Studio</title>
+  <meta name="description" content="BriAria Ltd — Elite Software, AI, Web Design & Digital Marketing studio. We build revolutionary tech solutions for ambitious startups and enterprises." />
+  <meta name="theme-color" content="#6ee7f3">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:#0b0d12;--panel:#121521;--muted:#8a93a6;--text:#e9edf5;
-      --brand1:#6ee7f3;--brand2:#a78bfa;--accent:#22d3ee;
-      --ok:#10b981;--warn:#f59e0b;--err:#ef4444;
+      --primary-gradient: linear-gradient(135deg, #6ee7f3 0%, #a78bfa 25%, #22d3ee 50%, #10b981 75%, #f59e0b 100%);
+      --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --neon-gradient: linear-gradient(135deg, #00f5ff 0%, #ff00ff 50%, #ffff00 100%);
+      --dark-gradient: linear-gradient(135deg, #0b0d12 0%, #121521 50%, #0e1220 100%);
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --text-primary: #e9edf5;
+      --text-secondary: #c3c9d7;
+      --text-muted: #8a93a6;
+      --neon-cyan: #6ee7f3;
+      --neon-purple: #a78bfa;
+      --neon-green: #10b981;
+      --shadow-glow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      --neon-glow: 0 0 30px rgba(110, 231, 243, 0.4);
     }
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:radial-gradient(1200px 800px at 85% -10%, rgba(167,139,250,.20), transparent 60%),linear-gradient(180deg,#0b0d12,#0b0d12 50%,#0e1220);color:var(--text)}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-    .btn{display:inline-flex;gap:.5rem;align-items:center;border:1px solid rgba(255,255,255,.12);background:linear-gradient(135deg, rgba(110,231,243,.15), rgba(167,139,250,.15));color:var(--text);padding:.8rem 1.1rem;border-radius:14px;backdrop-filter:blur(4px);transition:.2s ease;cursor:pointer}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(103,232,249,.15)}
-    .btn.primary{background:linear-gradient(135deg, var(--accent), var(--brand2));border:none;color:#071018;font-weight:700}
-    .btn.ghost{background:transparent}
-    header{position:sticky;top:0;z-index:50;background:rgba(11,13,18,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.3px}
-    .logo-mark{width:28px;height:28px;border-radius:10px;background:conic-gradient(from 180deg at 50% 50%, var(--brand2), var(--brand1));box-shadow:0 0 0 2px rgba(255,255,255,.06) inset}
-    .nav a{opacity:.9}
-    .nav-links{display:flex;gap:1rem;align-items:center}
-    .mobile-toggle{display:none}
 
-    .hero{padding:72px 0 36px}
-    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-    .kicker{display:inline-flex;gap:.5rem;align-items:center;padding:.2rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-size:.78rem;color:var(--muted)}
-    .title{font-size:clamp(2rem, 3.6vw, 3.2rem);line-height:1.1;margin:.6rem 0 1rem;font-weight:900;background:linear-gradient(180deg,#fff, #cbd5e1);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .subtitle{color:#c3c9d7;max-width:60ch}
-    .hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.1rem}
-    .hero-visual{position:relative;min-height:320px;border-radius:18px;background: url('bria.jpg') center/cover no-repeat, radial-gradient(300px 200px at 20% 20%, rgba(34,211,238,.18), transparent),radial-gradient(400px 300px at 80% 10%, rgba(167,139,250,.18), transparent),linear-gradient(180deg,#0f1320,#0b0d12);border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 50px rgba(0,0,0,.35)}
-    .hero-visual:after{content:"";position:absolute;inset:0;border-radius:18px;background:repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 2px, transparent 2px 10px);mask:linear-gradient(#000,#000),linear-gradient(#000,#000);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.3}
-    .stat-badges{position:absolute;bottom:14px;left:14px;display:flex;gap:.6rem;flex-wrap:wrap}
-    .badge{padding:.4rem .7rem;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:.8rem;color:#d2d8e6}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    /* ---- ADDED: Hero-top CTA overlay styles ----
-       Minimal, self-contained styles. Inserted per your request:
-       a high-contrast rounded button sits on top of bria.jpg and links
-       to a separate waitlist page (boysky_waitlist.html).
-    */
-    .hero-top-cta {
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--dark-gradient);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* Animated background with floating particles */
+    .bg-effects {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(110,231,243,0.15), transparent 40%),
+        radial-gradient(800px 600px at 85% 90%, rgba(167,139,250,0.15), transparent 40%),
+        radial-gradient(600px 400px at 50% 50%, rgba(34,211,238,0.08), transparent 50%),
+        var(--dark-gradient);
+    }
+
+    .particle {
       position: absolute;
-      top: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 60;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      pointer-events: auto; /* ensure clickable */
-      text-align: center;
-    }
-    .hero-top-cta .cta-btn {
-      background: #10b981; /* bright green */
-      color: #061014;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(16,185,129,.14);
-      display: inline-block;
-      line-height: 1;
-      text-decoration: none;
-    }
-    .hero-top-cta .cta-note {
-      background: rgba(255,255,255,.95);
-      color: #061014;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 13px;
-    }
-    @media(max-width: 640px) {
-      .hero-top-cta { position: static; transform: none; margin-top: 12px; }
-    }
-    /* ---- end added block ---- */
-
-    section{padding:64px 0;border-top:1px solid rgba(255,255,255,.06)}
-    .section-title{font-size:1.9rem;margin:0 0 14px;font-weight:800}
-    .section-sub{color:var(--muted);margin:0 0 22px}
-
-    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .card{grid-column:span 4;min-height:180px;padding:18px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08)}
-    .card h3{margin:4px 0 8px;font-size:1.1rem}
-    .chip{display:inline-flex;gap:.4rem;align-items:center;font-size:.75rem;color:#b4bdd1;padding:.25rem .6rem;border-radius:999px;border:1px dashed rgba(255,255,255,.18)}
-
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    .list{display:grid;gap:8px}
-    .list li{display:flex;gap:.6rem;align-items:flex-start}
-    .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand1),var(--brand2));margin-top:6px;box-shadow:0 0 20px rgba(167,139,250,.5)}
-
-    .accordion{border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden}
-    .acc-item{border-top:1px solid rgba(255,255,255,.06)}
-    .acc-item:first-child{border-top:none}
-    .acc-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;cursor:pointer;background:rgba(255,255,255,.02)}
-    .acc-body{display:none;padding:0 16px 16px;color:#cbd3e4}
-
-    .solutions .card{grid-column:span 3}
-
-    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
-    form{display:grid;gap:10px}
-    input, textarea, select{width:100%;padding:12px 2px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(11, 13, 18);color:var(--text);outline:none}
-    input:focus, textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(34,211,238,.15)}
-    label{font-size:.9rem;color:#cbd3e4}
-    .help{font-size:.8rem;color:var(--muted)}
-
-    .map{min-height:260px;border-radius:14px;overflow:hidden;border: 0px solid rgba(255,255,255,.08)}
-
-    footer{padding:26px 0;color:#b4bdd1}
-    .foot-grid{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
-
-    /* Chatbot */
-    .chat-fab{position:fixed;right:20px;bottom:20px;z-index:60;display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1rem;border-radius:999px;background:linear-gradient(135deg,var(--brand2),var(--brand1));color:#0b0d12;font-weight:800;border:none;box-shadow:0 10px 30px rgba(0,0,0,.35);cursor:pointer}
-    .chat-window{position:fixed;right:20px;bottom:84px;width:min(420px, calc(100vw - 40px));max-height:min(70vh, 640px);display:none;flex-direction:column;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(11,13,18,.95);backdrop-filter:blur(8px);z-index:70;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-    .chat-header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06)}
-    .chat-body{padding:12px;overflow:auto;display:flex;flex-direction:column;gap:8px}
-    .msg{max-width:85%;padding:10px 12px;border-radius:14px;line-height:1.3}
-    .msg.user{align-self:flex-end;background:linear-gradient(135deg, rgba(110,231,243,.18), rgba(167,139,250,.18));border:1px solid rgba(255,255,255,.08)}
-    .msg.bot{align-self:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
-    .chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(255,255,255,.06)}
-    .chat-input input{flex:1}
-
-    /* Utilities */
-    .hide{display:none!important}
-    .center{display:flex;align-items:center;justify-content:center}
-    .sr-only{position:absolute !important;height:1px;width:1px;overflow:hidden;clip:rect(1px, 1px, 1px, 1px);white-space:nowrap}
-
-    /* Responsive */
-    @media(max-width: 980px){
-      .hero .wrap, .contact{grid-template-columns:1fr}
-      .hero-visual{min-height:240px}
-      .cards .card{grid-column:span 6}
-      .solutions .card{grid-column:span 6}
-    }
-    @media(max-width: 640px){
-      .cards .card, .solutions .card{grid-column:span 12}
-      .nav-links{display:none}
-      .mobile-toggle{display:inline-flex}
+      width: 3px;
+      height: 3px;
+      background: var(--primary-gradient);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
+      opacity: 0.6;
     }
 
-    .logo img {
-      max-height: 60px;
-      height: auto;
-      width: auto;
-    }
-
-    .hero-visual {
-      background-size: cover !important;
-      background-position: center !important;
-    }
-    @media(max-width: 640px){
-      .logo img {
-        max-height: 40px;
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0.6;
+      }
+      33% {
+        transform: translateY(-30px) translateX(20px) rotate(120deg);
+        opacity: 0.8;
+      }
+      66% {
+        transform: translateY(-10px) translateX(-15px) rotate(240deg);
+        opacity: 0.4;
       }
     }
 
+    /* Premium header with glassmorphism */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(11, 13, 18, 0.85);
+      backdrop-filter: blur(25px) saturate(180%);
+      border-bottom: 1px solid var(--glass-border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.02);
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: conic-gradient(from 180deg at 50% 50%, var(--neon-purple), var(--neon-cyan));
+      box-shadow: 0 0 20px rgba(110, 231, 243, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b0d12;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .logo-text {
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-gradient);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Premium buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary {
+      background: var(--primary-gradient);
+      color: #0b0d12;
+      box-shadow: var(--neon-glow);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 40px rgba(110, 231, 243, 0.6);
+    }
+
+    .btn-ghost {
+      background: var(--glass-bg);
+      color: var(--text-primary);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(110, 231, 243, 0.5);
+    }
+
+    /* Hero section with auto-sliding */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-container {
+      max-width: 1400px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      align-items: center;
+      z-index: 10;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+      }
+    }
+
+    .hero-content {
+      animation: slideInLeft 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: all 0.8s ease;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: all 0.8s ease;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      line-height: 1.6;
+      transition: all 0.8s ease;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    /* Hero visual with auto-sliding */
+    .hero-visual {
+      position: relative;
+      height: 600px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-glow);
+      animation: slideInRight 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      background: var(--dark-gradient);
+      border: 1px solid var(--glass-border);
+    }
+
+    .slide-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(11,13,18,0.4) 0%, rgba(18,21,33,0.6) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+    }
+
+    .slide-content {
+      color: white;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.8s ease 0.3s;
+    }
+
+    .slide.active .slide-content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .slide-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .slide-description {
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+    }
+
+    /* Premium chips */
+    .chip-container {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 50px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .chip:hover {
+      background: rgba(110, 231, 243, 0.1);
+      border-color: rgba(110, 231, 243, 0.3);
+      color: var(--neon-cyan);
+      transform: translateY(-1px);
+    }
+
+    /* Services section */
+    .services {
+      padding: 8rem 2rem;
+      background: linear-gradient(135deg,
+        rgba(11,13,18,0.95) 0%,
+        rgba(18,21,33,0.95) 50%,
+        rgba(14,18,32,0.95) 100%
+      );
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 1rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      margin-bottom: 4rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .services-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(25px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      group: hover;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--primary-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(110,231,243,0.03) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .service-card:hover::after {
+      opacity: 1;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.3),
+        0 0 40px rgba(110,231,243,0.1);
+      border-color: rgba(110,231,243,0.2);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: #0b0d12;
+      font-weight: 700;
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .service-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .service-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .feature-check {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--neon-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b0d12;
+      font-size: 10px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Video showcase section */
+    .showcase {
+      padding: 8rem 2rem;
+      background: var(--dark-gradient);
+      position: relative;
+    }
+
+    .showcase-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .video-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-glow);
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      transition: transform 0.4s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-placeholder {
+      color: var(--text-muted);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .video-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      padding: 2rem;
+      color: white;
+    }
+
+    .video-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Contact section */
+    .contact {
+      padding: 8rem 2rem;
+      background: linear-gradient(135deg,
+        rgba(18,21,33,0.95) 0%,
+        rgba(11,13,18,0.95) 100%
+      );
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-info h3 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+      padding: 1rem;
+      background: var(--glass-bg);
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      border-color: rgba(110, 231, 243, 0.3);
+      background: rgba(110, 231, 243, 0.05);
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b0d12;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    footer {
+      padding: 4rem 2rem 2rem;
+      background: #0b0d12;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--neon-cyan);
+    }
+
+    /* Animations */
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-60px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(60px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 0 30px rgba(110, 231, 243, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 50px rgba(110, 231, 243, 0.8);
+      }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        height: 400px;
+      }
+    }
+
+    /* Loading screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--dark-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      transition: opacity 0.8s ease;
+    }
+
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 3px solid transparent;
+      border-top: 3px solid var(--neon-cyan);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      box-shadow: 0 0 30px rgba(110, 231, 243, 0.3);
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="logo" href="#home" aria-label="BriAria Home"><img src="briArialog.jpg" alt="BriAria Logo" style="height:60px;margin-right:10px;">
-        <span class="logo-mark" aria-hidden="true"></span>
-        <span>BriAria<span style="opacity:.6">LTD</span></span>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Animated Background Effects -->
+  <div class="bg-effects" id="bgEffects"></div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="header-content">
+      <a href="#home" class="logo">
+        <div class="logo-mark">B</div>
+        <span class="logo-text">BriAria<span style="opacity:0.6">LTD</span></span>
       </a>
-      <nav class="nav-links" aria-label="Primary Navigation">
-        <a href="#about">About</a>
-        <a href="#services">Products & Services</a>
-        <a href="#why">Why BriAria</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#contact">Contact</a>
-        <button class="btn ghost" id="openDemo">Book a demo</button>
-        <!-- Header CTA: unchanged -->
+      <nav class="nav-links">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#showcase" class="nav-link">Portfolio</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button class="btn btn-primary" onclick="scrollToContact()">Get Started</button>
       </nav>
-      <button class="mobile-toggle btn ghost" id="mobileToggle" aria-label="Toggle navigation">☰</button>
     </div>
   </header>
 
-  <main id="home" class="hero">
-    <div class="container wrap">
-      <div>
-        <span class="kicker">Modern software, real outcomes</span>
-        <h1 class="title">BriAria builds fast, reliable software, AI tools, and digital experiences for startups & SMBs.</h1>
-        <p class="subtitle">We design, develop, and launch production-grade web apps, AI features, and engaging content — from idea to deployment. UK-based, global delivery.</p>
-        <div class="hero-cta">
-          <button class="btn primary" id="heroDemoBtn">Book a demo</button>
-          <a class="btn" href="#services">See what we build</a>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge" id="heroBadge">
+          🚀 Elite Software & AI Solutions
         </div>
+        <h1 class="hero-title" id="heroTitle">
+          BriAria builds revolutionary software, AI tools, and digital experiences
+        </h1>
+        <p class="hero-subtitle" id="heroSubtitle">
+          We design, develop, and launch production-grade applications, AI features, and engaging content — from concept to global deployment. UK-based expertise, worldwide impact.
+        </p>
         <div class="hero-cta">
-          <span class="chip">✔ GDPR-aware practices</span>
-          <span class="chip">✔ Transparent delivery</span>
-          <span class="chip">✔ No vendor lock‑in</span>
+          <button class="btn btn-primary" onclick="scrollToContact()">Start Your Project</button>
+          <button class="btn btn-ghost" onclick="scrollToServices()">Explore Services</button>
+          <a href="waiting-list.html" class="btn btn-ghost" target="_blank">BoySky</a>
+          <a href="https://wa.me/447412863449" class="btn btn-ghost" target="_blank">WhatsApp Us</a>
+        </div>
+        <div class="chip-container">
+          <div class="chip">✓ Enterprise Security</div>
+          <div class="chip">✓ 24/7 Support</div>
+          <div class="chip">✓ Global Delivery</div>
+          <div class="chip">✓ No Vendor Lock-in</div>
         </div>
       </div>
+
       <div class="hero-visual">
-        <!-- START: Inserted CTA overlay exactly where bria.jpg is shown.
-             This is minimal and only adds a button that opens a separate waitlist page.
-             Place 'boysky_waitlist.html' in the same folder as this index.html.
-        -->
-        <div class="hero-top-cta" aria-hidden="false" role="region" aria-label="Primary call to action">
-          <a href="boyskywaitlist.html" class="cta-btn" id="startFreeBtn" aria-label="Get Started Free — No credit card required">BoySky<br>Get Started Free</a>
-
-        </div>
-        <!-- END inserted CTA overlay -->
-
-        <div class="stat-badges">
-          <span class="badge">Web Apps</span>
-          <span class="badge">AI Assistants</span>
-          <span class="badge">Video & Animation</span>
-          <span class="badge">Marketing Sites</span>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">About BriAria</h2>
-      <p class="section-sub">We’re a UK technology studio delivering software development, AI integrations, web design, and digital marketing under one roof. Our approach blends craftsmanship with speed — shipping value early, then iterating with data.</p>
-      <div class="grid-2">
-        <ul class="list">
-          <li><span class="dot"></span>Human‑centered design and accessible UX.</li>
-          <li><span class="dot"></span>Modern stacks (Node, React, Python, Firebase, Postgres).</li>
-          <li><span class="dot"></span>Clear project management and versioned releases.</li>
-          <li><span class="dot"></span>Ethical AI usage with privacy in mind.</li>
-        </ul>
-        <div class="accordion" id="aboutAcc">
-          <div class="acc-item">
-            <div class="acc-header" data-acc>
-              <strong>Our mission</strong>
-              <span>＋</span>
+        <div class="slide-container">
+          <div class="slide active" style="background-image: linear-gradient(135deg, rgba(110,231,243,0.2) 0%, rgba(167,139,250,0.2) 100%), url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop')">
+            <div class="slide-overlay">
+              <div class="slide-content">
+                <h3 class="slide-title">Web & App Development</h3>
+                <p class="slide-description">Enterprise-grade applications built with cutting-edge technologies</p>
+              </div>
             </div>
-            <div class="acc-body">Help ambitious teams ship dependable tech that customers love — while staying simple, secure, and scalable.</div>
           </div>
-          <div class="acc-item">
-            <div class="acc-header" data-acc>
-              <strong>How we work</strong>
-              <span>＋</span>
+          <div class="slide" style="background-image: linear-gradient(135deg, rgba(167,139,250,0.2) 0%, rgba(16,185,129,0.2) 100%), url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop')">
+            <div class="slide-overlay">
+              <div class="slide-content">
+                <h3 class="slide-title">AI & Automation Solutions</h3>
+                <p class="slide-description">Intelligent systems that transform business operations</p>
+              </div>
             </div>
-            <div class="acc-body">Start small, learn fast. We begin with a clear spec and a demo, then iterate in weekly sprints with measurable outcomes.</div>
           </div>
-          <div class="acc-item">
-            <div class="acc-header" data-acc>
-              <strong>Tooling & quality</strong>
-              <span>＋</span>
+          <div class="slide" style="background-image: linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(245,158,11,0.2) 100%), url('https://images.unsplash.com/photo-1626785774625-0b1c2c4eab67?w=800&h=600&fit=crop')">
+            <div class="slide-overlay">
+              <div class="slide-content">
+                <h3 class="slide-title">Digital Marketing & Design</h3>
+                <p class="slide-description">Brand experiences that captivate and convert</p>
+              </div>
             </div>
-            <div class="acc-body">Version control, code reviews, automated checks, and performance budgets are standard. We hand over clean docs — no black boxes.</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="services">
-    <div class="container">
-      <h2 class="section-title">Products & Services</h2>
-      <p class="section-sub">Choose one service or bundle a solution. We’ll tailor scope and timelines to your goals.</p>
-      <div class="cards">
-        <article class="card" aria-labelledby="svc-web">
-          <h3 id="svc-web">Web & App Development</h3>
-          <p>Responsive websites, dashboards, and cross‑platform apps built with modern frameworks and robust APIs.</p>
-          <div class="hero-cta">
-            <button class="btn" data-modal="web-details">View details</button>
-            <button class="btn" data-quote="Web & App Development">Request a quote</button>
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <h2 class="section-title">Premium Services</h2>
+    <p class="section-subtitle">Transform your business with our comprehensive technology solutions</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h3 class="service-title">Web & App Development</h3>
+        <p class="service-description">Enterprise-grade applications built with modern frameworks and robust architectures.</p>
+        <div class="service-features">
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>React, Node.js, TypeScript</span>
           </div>
-        </article>
-        <article class="card" aria-labelledby="svc-ai">
-          <h3 id="svc-ai">AI Features & Automation</h3>
-          <p>Chatbots, content helpers, data extraction, and workflow automation — designed for safety and reliability.</p>
-          <div class="hero-cta">
-            <button class="btn" data-modal="ai-details">View details</button>
-            <button class="btn" data-quote="AI Features & Automation">Request a quote</button>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Cloud deployment & scaling</span>
           </div>
-        </article>
-        <article class="card" aria-labelledby="svc-video">
-          <h3 id="svc-video">Video, Animation & Creative</h3>
-          <p>Brand videos, explainers, and social content with crisp audio and motion — from script to final export.</p>
-          <div class="hero-cta">
-            <button class="btn" data-modal="video-details">View details</button>
-            <button class="btn" data-quote="Video, Animation & Creative">Request a quote</button>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Security & performance optimized</span>
           </div>
-        </article>
-        <article class="card" aria-labelledby="svc-marketing">
-          <h3 id="svc-marketing">Sites & Digital Marketing</h3>
-          <p>High‑performance landing pages, SEO setup, on‑brand design systems, and analytics that inform decisions.</p>
-          <div class="hero-cta">
-            <button class="btn" data-modal="marketing-details">View details</button>
-            <button class="btn" data-quote="Sites & Digital Marketing">Request a quote</button>
+        </div>
+        <button class="btn btn-primary" onclick="openQuoteModal('Web & App Development')">Get Quote</button>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3 class="service-title">AI & Automation</h3>
+        <p class="service-description">Intelligent systems that automate workflows and enhance decision-making.</p>
+        <div class="service-features">
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Custom AI assistants</span>
           </div>
-        </article>
-        <article class="card" aria-labelledby="svc-support">
-          <h3 id="svc-support">Care & Support</h3>
-          <p>Monitored hosting, updates, and small enhancements. We keep your product fast, secure, and stable.</p>
-          <div class="hero-cta">
-            <button class="btn" data-modal="support-details">View details</button>
-            <button class="btn" data-quote="Care & Support">Request a quote</button>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Process automation</span>
           </div>
-        </article>
-        <article class="card" aria-labelledby="svc-training">
-          <h3 id="svc-training">Workshops & Training</h3>
-          <p>Hands‑on sessions to help your team adopt new tools, improve content workflows, and ship features faster.</p>
-          <div class="hero-cta">
-            <button class="btn" data-modal="training-details">View details</button>
-            <button class="btn" data-quote="Workshops & Training">Request a quote</button>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Data analytics & insights</span>
           </div>
-        </article>
+        </div>
+        <button class="btn btn-primary" onclick="openQuoteModal('AI & Automation')">Get Quote</button>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3 class="service-title">Digital Marketing</h3>
+        <p class="service-description">Strategic campaigns that drive engagement and accelerate growth.</p>
+        <div class="service-features">
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Brand design & strategy</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>SEO & content marketing</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Analytics & optimization</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="openQuoteModal('Digital Marketing')">Get Quote</button>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎬</div>
+        <h3 class="service-title">Video & Animation</h3>
+        <p class="service-description">Compelling visual content that tells your story and engages audiences.</p>
+        <div class="service-features">
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Explainer videos</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Motion graphics</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Brand animations</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="openQuoteModal('Video & Animation')">Get Quote</button>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🛠️</div>
+        <h3 class="service-title">Support & Maintenance</h3>
+        <p class="service-description">Ongoing care to keep your systems running smoothly and securely.</p>
+        <div class="service-features">
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>24/7 monitoring</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Security updates</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Performance optimization</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="openQuoteModal('Support & Maintenance')">Get Quote</button>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📚</div>
+        <h3 class="service-title">Training & Workshops</h3>
+        <p class="service-description">Empower your team with hands-on training and skill development.</p>
+        <div class="service-features">
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Custom training programs</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Team skill development</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <span>Best practices guidance</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="openQuoteModal('Training & Workshops')">Get Quote</button>
       </div>
     </div>
   </section>
 
-  <section id="why">
-    <div class="container">
-      <h2 class="section-title">Why choose BriAria</h2>
-      <p class="section-sub">We combine senior engineering with careful design. No fluff, just dependable delivery.</p>
-      <div class="grid-2">
-        <ul class="list">
-          <li><span class="dot"></span>Transparent plans, honest timelines, and a clear point of contact.</li>
-          <li><span class="dot"></span>Security‑minded by default: sensible permissions, encrypted data in transit, no exposed keys.</li>
-          <li><span class="dot"></span>Performance first: we design for speed across devices and networks.</li>
-          <li><span class="dot"></span>Documentation and handover so you can run independently.</li>
-        </ul>
-        <div class="accordion" id="whyAcc">
-          <div class="acc-item">
-            <div class="acc-header" data-acc>
-              <strong>Delivery process</strong>
-              <span>＋</span>
-            </div>
-            <div class="acc-body">Kickoff → Spec → Design preview → Dev sprints → Weekly demos → Launch → Care plan. You always see progress and own your data.</div>
+  <!-- Showcase Section -->
+  <section class="showcase" id="showcase">
+    <h2 class="section-title">Our Work in Action</h2>
+    <p class="section-subtitle">Watch how we transform ideas into reality</p>
+
+    <div class="showcase-grid">
+      <div class="video-card">
+        <div class="video-container">
+          <div class="video-placeholder">
+            <h4>Software Development Process</h4>
+            <p>See how we build scalable applications from concept to deployment</p>
+            <button class="btn btn-ghost" style="margin-top: 1rem;">Watch Demo</button>
           </div>
-          <div class="acc-item">
-            <div class="acc-header" data-acc>
-              <strong>Tech we like</strong>
-              <span>＋</span>
-            </div>
-            <div class="acc-body">React, Node, TypeScript, Python, Firebase, Postgres, Next.js, Tailwind, FFmpeg, and pragmatic AI where it truly helps.</div>
+        </div>
+        <div class="video-overlay">
+          <div class="video-title">Development Workflow</div>
+          <p>From wireframe to production-ready application</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-container">
+          <div class="video-placeholder">
+            <h4>AI Integration Demo</h4>
+            <p>Experience how AI enhances business automation and user experience</p>
+            <button class="btn btn-ghost" style="margin-top: 1rem;">View Case Study</button>
           </div>
-          <div class="acc-item">
-            <div class="acc-header" data-acc>
-              <strong>Engagement options</strong>
-              <span>＋</span>
-            </div>
-            <div class="acc-body">Fixed‑scope projects, retained delivery teams, or focused workshops. We adapt to your budget and timeline.</div>
-          </div>
+        </div>
+        <div class="video-overlay">
+          <div class="video-title">AI Solutions</div>
+          <p>Intelligent automation that drives results</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="solutions" class="solutions">
-    <div class="container">
-      <h2 class="section-title">Solutions by industry</h2>
-      <p class="section-sub">Explore curated packages that match common needs. Everything is customizable.</p>
+  <!-- About Section -->
+  <section class="services" id="about">
+    <h2 class="section-title">Why Choose BriAria</h2>
+    <p class="section-subtitle">We combine senior engineering expertise with innovative design thinking</p>
 
-      <div class="hero-cta" style="margin-bottom:14px">
-        <label for="solFilter" class="help">Filter:</label>
-        <select id="solFilter" style="max-width:260px">
-          <option value="all">All</option>
-          <option value="startup">Startups</option>
-          <option value="smb">Small Business</option>
-          <option value="education">Education</option>
-          <option value="health">Health & Fitness</option>
-          <option value="creative">Creators & Media</option>
-        </select>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3 class="service-title">Results-Driven</h3>
+        <p class="service-description">Every project is measured by real business outcomes and user satisfaction.</p>
       </div>
 
-      <div class="cards" id="solutionsGrid">
-        <article class="card" data-tag="startup">
-          <h3>Startup Launch Kit</h3>
-          <p>Brand site, landing pages, analytics, and a contact funnel — shipped in weeks.</p>
-          <button class="btn" data-quote="Startup Launch Kit">Get this</button>
-        </article>
-        <article class="card" data-tag="smb">
-          <h3>SMB Online Storefront</h3>
-          <p>High‑performance site with product pages, SEO basics, and automated lead capture.</p>
-          <button class="btn" data-quote="SMB Online Storefront">Get this</button>
-        </article>
-        <article class="card" data-tag="education">
-          <h3>Education Portal</h3>
-          <p>Secure content areas, forms, and lightweight dashboards for schools & programs.</p>
-          <button class="btn" data-quote="Education Portal">Get this</button>
-        </article>
-        <article class="card" data-tag="health">
-          <h3>Wellness Platform</h3>
-          <p>Booking pages, content hub, and privacy‑minded forms for health professionals.</p>
-          <button class="btn" data-quote="Wellness Platform">Get this</button>
-        </article>
-        <article class="card" data-tag="creative">
-          <h3>Creator Studio</h3>
-          <p>Portfolio, media gallery, and video pipeline setup for YouTube & social.</p>
-          <button class="btn" data-quote="Creator Studio">Get this</button>
-        </article>
-        <article class="card" data-tag="startup">
-          <h3>AI Assistant Mini</h3>
-          <p>Embed a safe Q&A assistant into your site to answer product questions.</p>
-          <button class="btn" data-quote="AI Assistant Mini">Get this</button>
-        </article>
-        <article class="card" data-tag="smb">
-          <h3>Bookings + Payments</h3>
-          <p>Accept bookings and payments with a clean UI and clear notifications.</p>
-          <button class="btn" data-quote="Bookings + Payments">Get this</button>
-        </article>
-        <article class="card" data-tag="creative">
-          <h3>Video Explainer Pack</h3>
-          <p>Script, storyboard, voice, and animation for your homepage hero.</p>
-          <button class="btn" data-quote="Video Explainer Pack">Get this</button>
-        </article>
+      <div class="service-card">
+        <div class="service-icon">🔒</div>
+        <h3 class="service-title">Security First</h3>
+        <p class="service-description">Enterprise-grade security practices built into every solution from day one.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3 class="service-title">Performance Optimized</h3>
+        <p class="service-description">Lightning-fast applications that scale seamlessly with your business growth.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🌍</div>
+        <h3 class="service-title">Global Reach</h3>
+        <p class="service-description">UK-based team with international experience serving clients worldwide.</p>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <div class="container contact">
-      <div>
-        <h2 class="section-title">Contact BriAria LTD</h2>
-        <p class="section-sub">Tell us about your project. We typically respond within 1–2 business days.</p>
-        <form id="contactForm" novalidate>
-          <div>
-            <label for="name">Full name</label>
-            <input id="name" name="name" autocomplete="name" required placeholder="Jane Doe" />
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Let's Build Something Amazing</h3>
+        <p class="hero-subtitle">Ready to transform your business with cutting-edge technology? Get in touch and let's discuss your project.</p>
+
+        <div style="margin-top: 2rem;">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <strong>London Office</strong><br>
+              Icon Office, 182-184 High St N<br>
+              London E6 2JA, UK
+            </div>
           </div>
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Phone</strong><br>
+              <a href="tel:+447412863449" style="color: inherit;">+44 7412 863449</a>
+            </div>
           </div>
-          <div>
-            <label for="topic">Topic</label>
-            <select id="topic" name="topic" required>
-              <option value="">Select a topic</option>
-              <option>Web & App Development</option>
-              <option>AI Features & Automation</option>
-              <option>Video, Animation & Creative</option>
-              <option>Sites & Digital Marketing</option>
-              <option>Care & Support</option>
-              <option>Workshops & Training</option>
-            </select>
+
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <strong>Email</strong><br>
+              <a href="mailto:briakundaim@gmail.com" style="color: inherit;">briakundaim@gmail.com</a>
+            </div>
           </div>
-          <div>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" minlength="10" required placeholder="Share goals, scope, timeline, and budget range if known."></textarea>
+
+          <div class="contact-item">
+            <div class="contact-icon">🕒</div>
+            <div>
+              <strong>Business Hours</strong><br>
+              Mon-Fri: 9AM-6PM GMT<br>
+              Weekend: By appointment
+            </div>
           </div>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-            <button class="g-recaptcha btn primary" data-sitekey="6LeVsrwrAAAAAGIuREYZ2iA_NUVomazySqg68L3k" data-callback="onContactSubmit" data-action="submit">Send message</button>
-            <span id="formStatus" class="help" role="status"></span>
-          </div>
+        </div>
+      </div>
+
+      <div style="background: var(--glass-bg); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px); border: 1px solid var(--glass-border);">
+        <h4 style="margin-bottom: 1.5rem; color: var(--text-primary);">Start Your Project</h4>
+        <form id="contactForm" style="display: grid; gap: 1rem;">
+          <input type="text" id="name" placeholder="Your Name" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none;">
+          <input type="email" id="email" placeholder="Your Email" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none;">
+          <select id="service" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none;">
+            <option value="">Select a service...</option>
+            <option value="Web & App Development">Web & App Development</option>
+            <option value="AI & Automation">AI & Automation</option>
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="Video & Animation">Video & Animation</option>
+            <option value="Support & Maintenance">Support & Maintenance</option>
+            <option value="Training & Workshops">Training & Workshops</option>
+          </select>
+          <textarea id="message" rows="4" placeholder="Tell us about your project..." required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none; resize: vertical;"></textarea>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
         </form>
-      </div>
-      <div>
-        <div class="map" aria-label="Map to BriAria, UK">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.6142784932927!2d0.05178750000000001!3d51.538634200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a64a3353d8bb%3A0x326da32e4b620905!2sIcon%20Office%2C%20182-184%20High%20St%20N%2C%20London%20E6%202JA!5e0!3m2!1sen!2suk!4v1756811348361!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <p class="help" style="margin-top:10px">Prefer email? <a href="mailto:briakundaim@gmail.com?subject=Inquiry%20for%20BriAria" aria-label="Email BriAria">briakundaim@gmail.com</a></p>
-        <p class="help" style="margin-top:10px">Address? <a href="Icon Office, 182-184 High St N, London E6 2JA" aria-label="Email BriAria">Icon Office, 182-184 High St N, London E6 2JA<br>Phone :+447412863449</a></p>
+        <div id="formStatus" style="margin-top: 1rem; text-align: center;"></div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <div class="container foot-grid">
-      <div>© <span id="year"></span> BriAria Ltd — UK. All rights reserved.</div>
-      <div style="display:flex;gap:8px">
-        <a class="chip" href="#about">About</a>
-        <a class="chip" href="#services">Services</a>
-        <a class="chip" href="#contact">Contact</a>
+    <div class="footer-content">
+      <div style="color: var(--text-muted);">
+        © <span id="year">2024</span> BriAria Ltd — UK. All rights reserved.
+      </div>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:briakundaim@gmail.com">Email</a>
       </div>
     </div>
   </footer>
 
-  <dialog id="demoModal" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
-    <form method="dialog" id="demoForm" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
-      <div style="grid-column:1/-1;display:flex;align-items:center;justify-content:space-between">
-        <h3 style="margin:0">Book a live demo</h3>
-        <button value="cancel" class="btn ghost" aria-label="Close demo">✕</button>
+  <!-- Quote Modal -->
+  <div id="quoteModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 2000; backdrop-filter: blur(10px);">
+    <div style="background: var(--glass-bg); backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h3 id="quoteTitle" style="color: var(--text-primary); margin: 0;">Request Quote</h3>
+        <button onclick="closeQuoteModal()" style="background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; padding: 0.5rem;">&times;</button>
       </div>
-      <div>
-        <label for="demoName">Full name</label>
-        <input id="demoName" required placeholder="Jane Doe" />
-      </div>
-      <div>
-        <label for="demoEmail">Email</label>
-        <input id="demoEmail" type="email" required placeholder="you@example.com" />
-      </div>
-      <div>
-        <label for="demoDate">Preferred date</label>
-        <input id="demoDate" type="date" required />
-      </div>
-      <div>
-        <label for="demoTime">Preferred time</label>
-        <input id="demoTime" type="time" required />
-      </div>
-      <div style="grid-column:1/-1">
-        <label for="demoNotes">Notes</label>
-        <textarea id="demoNotes" rows="4" placeholder="What do you want to see? Share context so we can tailor the demo."></textarea>
-      </div>
-      <div style="grid-column:1/-1;display:flex;gap:10px;align-items:center">
-        <button class="btn primary" id="confirmDemo" value="default">Confirm booking</button>
-        <span id="demoStatus" class="help" role="status"></span>
-      </div>
-    </form>
-  </dialog>
 
-  <!-- remaining dialogs, chat, scripts unchanged... (kept as in your original index) -->
-  <dialog id="web-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
-    <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
-      <h3 style="margin-top:0">Web & App Development</h3>
-      <ul class="list">
-        <li><span class="dot"></span>Responsive websites, dashboards, and admin tools.</li>
-        <li><span class="dot"></span>APIs, databases, auth, and payments.</li>
-        <li><span class="dot"></span>Accessibility, performance, and SEO basics included.</li>
-      </ul>
-      <div style="display:flex;justify-content:flex-end">
-        <button type="submit" class="btn ghost" aria-label="Close details">Close</button>
-      </div>
-    </form>
-  </dialog>
-
-  <dialog id="ai-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
-    <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
-      <h3 style="margin-top:0">AI Features & Automation</h3>
-      <ul class="list">
-        <li><span class="dot"></span>On‑site Q&A assistants and content helpers.</li>
-        <li><span class="dot"></span>Data extraction, file processing, and task automation.</li>
-        <li><span class="dot"></span>Privacy‑aware designs and clear fallbacks.</li>
-      </ul>
-      <div style="display:flex;justify-content:flex-end"><button class="btn ghost" aria-label="Close details">Close</button></div>
-    </form>
-  </dialog>
-
-  <dialog id="video-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
-    <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
-      <h3 style="margin-top:0">Video, Animation & Creative</h3>
-      <ul class="list">
-        <li><span class="dot"></span>Explainer videos, promos, and motion assets.</li>
-        <li><span class="dot"></span>Script, storyboard, voice, and edit.</li>
-        <li><span class="dot"></span>Export for web and social channels.</li>
-      </ul>
-      <div style="display:flex;justify-content:flex-end"><button class="btn ghost" aria-label="Close details">Close</button></div>
-    </form>
-  </dialog>
-
-  <dialog id="marketing-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
-    <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
-      <h3 style="margin-top:0">Sites & Digital Marketing</h3>
-      <ul class="list">
-        <li><span class="dot"></span>Design systems, brand‑consistent components.</li>
-        <li><span class="dot"></span>SEO setup, analytics, and fast hosting guidance.</li>
-        <li><span class="dot"></span>Copy support and conversion testing.</li>
-      </ul>
-      <div style="display:flex;justify-content:flex-end"><button class="btn ghost" aria-label="Close details">Close</button></div>
-    </form>
-  </dialog>
-
-  <dialog id="support-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
-    <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
-      <h3 style="margin-top:0">Care & Support</h3>
-      <ul class="list">
-        <li><span class="dot"></span>Monitored uptime, backups, and updates.</li>
-        <li><span class="dot"></span>Small enhancements and security fixes.</li>
-        <li><span class="dot"></span>Clear monthly reporting.</li>
-      </ul>
-      <div style="display:flex;justify-content:flex-end"><button class="btn ghost" aria-label="Close details">Close</button></div>
-    </form>
-  </dialog>
-
-  <dialog id="training-details" class="detail" style="border:none;border-radius:16px;max-width:720px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
-    <form method="dialog" style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
-      <h3 style="margin-top:0">Workshops & Training</h3>
-      <ul class="list">
-        <li><span class="dot"></span>Practical, project‑based sessions.</li>
-        <li><span class="dot"></span>Tailored to your team’s stack and tools.</li>
-        <li><span class="dot"></span>Cheat‑sheets and recordings provided.</li>
-      </ul>
-      <div style="display:flex;justify-content:flex-end"><button class="btn ghost" aria-label="Close details">Close</button></div>
-    </form>
-  </dialog>
-
-  <dialog id="quoteModal" style="border:none;border-radius:16px;max-width:640px;width:calc(100% - 32px);padding:0;background:#0c111b;color:var(--text)">
-    <form method="dialog" id="quoteForm" style="display:grid;gap:12px;padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:16px">
-      <div style="display:flex;align-items:center;justify-content:space-between">
-        <h3 id="quoteTitle" style="margin:0">Request a quote</h3>
-        <button value="cancel" class="btn ghost" aria-label="Close quote">✕</button>
-      </div>
-      <input id="quoteService" type="hidden" />
-      <div>
-        <label for="qName">Full name</label>
-        <input id="qName" required placeholder="Jane Doe" />
-      </div>
-      <div>
-        <label for="qEmail">Email</label>
-        <input id="qEmail" type="email" required placeholder="you@example.com" />
-      </div>
-      <div>
-        <label for="qBrief">Brief</label>
-        <textarea id="qBrief" rows="4" required placeholder="What are you building? Include scope, timeline, and constraints."></textarea>
-      </div>
-      <div style="display:flex;gap:10px;align-items:center">
-        <button class="btn primary" id="sendQuote" value="default">Send request</button>
-        <span id="quoteStatus" class="help" role="status"></span>
-      </div>
-    </form>
-  </dialog>
-
-  <button class="chat-fab" id="chatToggle" aria-haspopup="dialog">💬 Chat</button>
-  <div class="chat-window" id="chatWindow" role="dialog" aria-label="BriAria Chatbot">
-    <div class="chat-header">
-      <strong>BriAria Assistant</strong>
-      <button class="btn ghost" id="chatClose" aria-label="Close chat">✕</button>
+      <form id="quoteForm" style="display: grid; gap: 1rem;">
+        <input type="hidden" id="quoteService">
+        <input type="text" id="quoteName" placeholder="Your Name" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none;">
+        <input type="email" id="quoteEmail" placeholder="Your Email" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none;">
+        <textarea id="quoteBrief" rows="4" placeholder="Project details, timeline, and requirements..." required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none; resize: vertical;"></textarea>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Quote Request</button>
+      </form>
+      <div id="quoteStatus" style="margin-top: 1rem; text-align: center;"></div>
     </div>
-    <div class="chat-body" id="chatBody" aria-live="polite"></div>
-    <form class="chat-input" id="chatForm">
-      <input id="chatText" placeholder="Ask about services, quotes, demos…" autocomplete="off" />
-      <button class="btn primary" type="submit">Send</button>
-    </form>
   </div>
 
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
   <script>
-    (function(){
-      const $ = (s,ctx=document)=>ctx.querySelector(s);
-      const $$ = (s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
-      const yearEl = $('#year'); if(yearEl) yearEl.textContent = new Date().getFullYear();
+    // Initialize everything when DOM loads
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeParticles();
+      initializeSlider();
+      initializeScrollEffects();
+      initializeForms();
+      hideLoadingScreen();
 
-      // --- Firebase init (unchanged) ---
-      const firebaseConfig = {
-        apiKey: "REPLACE_WITH_YOUR_API_KEY",
-        authDomain: "REPLACE_WITH_YOUR_AUTH_DOMAIN",
-        databaseURL: "REPLACE_WITH_YOUR_DATABASE_URL",
-        projectId: "REPLACE_WITH_YOUR_PROJECT_ID",
-        storageBucket: "REPLACE_WITH_YOUR_STORAGE_BUCKET",
-        messagingSenderId: "REPLACE_WITH_YOUR_MESSAGING_SENDER_ID",
-        appId: "REPLACE_WITH_YOUR_APP_ID"
-      };
-      try {
-        if(window.firebase && !firebase.apps.length){
-          firebase.initializeApp(firebaseConfig);
-          window._briaria_db = firebase.database();
-        }
-      } catch(err){
-        console.warn('Firebase init failed (placeholder config?)', err);
-      }
+      // Set current year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
 
-      // Mobile nav
-      const mobileToggle = $('#mobileToggle');
-      mobileToggle?.addEventListener('click', ()=>{ const nav = $('.nav-links'); if(!nav) return; const open = getComputedStyle(nav).display !== 'none'; nav.style.display = open ? 'none' : 'flex'; });
+    // Create animated particles
+    function initializeParticles() {
+      const bgEffects = document.getElementById('bgEffects');
+      const particleCount = 40;
 
-      // Accordion
-      $$('[data-acc]').forEach(h=>{ h.addEventListener('click', ()=>{ const body = h.parentElement.querySelector('.acc-body'); const open = body.style.display === 'block'; body.style.display = open ? 'none' : 'block'; h.querySelector('span').textContent = open ? '＋' : '－'; }); });
-
-      // --- New: No extra JS required for CTA anchor; it links to boysky_waitlist.html ---
-      // Optional: if you want the CTA to open in a new tab, change the anchor in the markup to include target="_blank" rel="noopener".
-    })();
-  </script>
-
-  <script type="module">
-    // Firebase modular SDK imports (CDN) and remaining JS (unchanged)
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
-    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCBpx5fCa5n_1eLcU3nYTMHzsFlV1e1FyU",
-      authDomain: "briaria-ltd-862ae.firebaseapp.com",
-      projectId: "briaria-ltd-862ae",
-      storageBucket: "briaria-ltd-862ae.appspot.com",
-      messagingSenderId: "778017308723",
-      appId: "1:778017308723:web:684eba289693cb411ea346",
-      measurementId: "G-9BV80C1V9B"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    try { getAnalytics(app); } catch(e) { /* ignore analytics init failures */ }
-    const db = getFirestore(app);
-    window.__BRIARIA_DB = db;
-
-    const $ = (s, ctx = document) => ctx.querySelector(s);
-    const $$ = (s, ctx = document) => Array.from(ctx.querySelectorAll(s));
-    const yearEl = $('#year'); if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    async function saveToFirestore(collectionName, data) {
-      try {
-        const docRef = await addDoc(collection(db, collectionName), { ...data, createdAt: serverTimestamp() });
-        return { success: true, id: docRef.id };
-      } catch (err) {
-        console.warn('Firestore write error', collectionName, err);
-        return { success: false, error: err };
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        bgEffects.appendChild(particle);
       }
     }
 
-    // UI behaviors (mobile nav, accordion)
-    const mobileToggle2 = $('#mobileToggle');
-    mobileToggle2?.addEventListener('click', () => {
-      const nav = $('.nav-links');
-      if (!nav) return;
-      const open = getComputedStyle(nav).display !== 'none';
-      nav.style.display = open ? 'none' : 'flex';
-    });
-
-    $$('[data-acc]').forEach(h => {
-      h.addEventListener('click', () => {
-        const body = h.parentElement.querySelector('.acc-body');
-        const open = body.style.display === 'block';
-        body.style.display = open ? 'none' : 'block';
-        h.querySelector('span').textContent = open ? '＋' : '－';
-      });
-    });
-
-    // Demo modal controls (existing handlers remain unchanged)
-    const demoModal = $('#demoModal');
-    const openDemoBtns = [$('#openDemo'), $('#heroDemoBtn')].filter(Boolean);
-    openDemoBtns.forEach(btn => btn.addEventListener('click', () => demoModal.showModal()));
-
-    $('#closeDemoBtn')?.addEventListener('click', () => demoModal.close());
-
-    $('#confirmDemo')?.addEventListener('click', async (e) => {
-      e.preventDefault();
-      const demoForm = $('#demoForm');
-      const demoStatus = $('#demoStatus');
-      if (!demoForm.checkValidity()) {
-        demoStatus.textContent = 'Please complete all required fields.';
-        return;
+    // Auto-sliding hero images
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const heroContent = {
+      0: {
+        badge: '🚀 Elite Software & AI Solutions',
+        title: 'BriAria builds revolutionary software, AI tools, and digital experiences',
+        subtitle: 'We design, develop, and launch production-grade applications, AI features, and engaging content — from concept to global deployment. UK-based expertise, worldwide impact.'
+      },
+      1: {
+        badge: '🤖 Advanced AI Integration',
+        title: 'Transform your business with intelligent automation and AI-powered solutions',
+        subtitle: 'Leverage cutting-edge artificial intelligence to streamline operations, enhance decision-making, and create exceptional user experiences that drive growth.'
+      },
+      2: {
+        badge: '🎨 Premium Digital Experiences',
+        title: 'Captivating designs and marketing strategies that convert prospects into customers',
+        subtitle: 'From brand identity to digital campaigns, we create compelling visual experiences that resonate with your audience and accelerate business growth.'
       }
+    };
 
-      const payload = {
-        name: $('#demoName').value.trim(),
-        email: $('#demoEmail').value.trim(),
-        date: $('#demoDate').value,
-        time: $('#demoTime').value,
-        notes: $('#demoNotes').value.trim(),
-        ts: new Date().toISOString()
+    function initializeSlider() {
+      if (slides.length === 0) return;
+
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+
+        // Update hero content
+        const content = heroContent[currentSlide];
+        if (content) {
+          updateHeroContent(content);
+        }
+      }, 5000);
+    }
+
+    function updateHeroContent(content) {
+      const badge = document.getElementById('heroBadge');
+      const title = document.getElementById('heroTitle');
+      const subtitle = document.getElementById('heroSubtitle');
+
+      if (badge) badge.textContent = content.badge;
+      if (title) title.textContent = content.title;
+      if (subtitle) subtitle.textContent = content.subtitle;
+    }
+
+    // Scroll effects
+    function initializeScrollEffects() {
+      const header = document.getElementById('header');
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        // Header background opacity
+        if (currentScrollY > 100) {
+          header.style.background = 'rgba(11, 13, 18, 0.95)';
+        } else {
+          header.style.background = 'rgba(11, 13, 18, 0.85)';
+        }
+
+        lastScrollY = currentScrollY;
+      });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
       };
 
-      const list = JSON.parse(localStorage.getItem('BriAria_demo_requests') || '[]');
-      list.push(payload);
-      localStorage.setItem('BriAria_demo_requests', JSON.stringify(list));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
 
-      const res = await saveToFirestore('demo_requests', payload);
-      if (res.success) {
-        demoStatus.textContent = 'Booked! We will email you to confirm.';
-        const subject = encodeURIComponent('Demo booking — BriAria');
-        const body = encodeURIComponent(`Name: ${payload.name}\nEmail: ${payload.email}\nDate: ${payload.date}\nTime: ${payload.time}\nNotes:\n${payload.notes}`);
-        window.open(`mailto:briakundaim@gmail.com?subject=${subject}&body=${body}`, '_blank');
-        demoForm.reset();
-        setTimeout(() => demoModal.close(), 600);
-      } else {
-        demoStatus.textContent = 'Saved locally. There was an issue saving to the cloud.';
+      // Observe service cards
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        observer.observe(card);
+      });
+    }
+
+    // Form handling
+    function initializeForms() {
+      const contactForm = document.getElementById('contactForm');
+      const quoteForm = document.getElementById('quoteForm');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', handleContactSubmit);
+      }
+
+      if (quoteForm) {
+        quoteForm.addEventListener('submit', handleQuoteSubmit);
+      }
+    }
+
+    async function handleContactSubmit(e) {
+      e.preventDefault();
+      const statusEl = document.getElementById('formStatus');
+
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        service: document.getElementById('service').value,
+        message: document.getElementById('message').value,
+        timestamp: new Date().toISOString()
+      };
+
+      statusEl.innerHTML = '<div style="color: var(--neon-cyan);">Sending message...</div>';
+
+      // Simulate sending (replace with actual API call)
+      setTimeout(() => {
+        statusEl.innerHTML = '<div style="color: var(--neon-green);">✓ Message sent successfully! We\'ll get back to you soon.</div>';
+        e.target.reset();
+
+        // Open email client
+        const subject = encodeURIComponent(`New inquiry: ${formData.service}`);
+        const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.service}\n\nMessage:\n${formData.message}`);
+        window.open(`mailto:briakundaim@gmail.com?subject=${subject}&body=${body}`);
+      }, 1500);
+    }
+
+    async function handleQuoteSubmit(e) {
+      e.preventDefault();
+      const statusEl = document.getElementById('quoteStatus');
+
+      const formData = {
+        name: document.getElementById('quoteName').value,
+        email: document.getElementById('quoteEmail').value,
+        service: document.getElementById('quoteService').value,
+        brief: document.getElementById('quoteBrief').value,
+        timestamp: new Date().toISOString()
+      };
+
+      statusEl.innerHTML = '<div style="color: var(--neon-cyan);">Sending quote request...</div>';
+
+      setTimeout(() => {
+        statusEl.innerHTML = '<div style="color: var(--neon-green);">✓ Quote request sent! We\'ll respond within 24 hours.</div>';
+
+        const subject = encodeURIComponent(`Quote Request: ${formData.service}`);
+        const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.service}\n\nProject Brief:\n${formData.brief}`);
+        window.open(`mailto:briakundaim@gmail.com?subject=${subject}&body=${body}`);
+
+        setTimeout(() => {
+          closeQuoteModal();
+        }, 2000);
+      }, 1500);
+    }
+
+    // Navigation functions
+    function scrollToContact() {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function scrollToServices() {
+      document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Quote modal functions
+    function openQuoteModal(service) {
+      const modal = document.getElementById('quoteModal');
+      const title = document.getElementById('quoteTitle');
+      const serviceInput = document.getElementById('quoteService');
+
+      title.textContent = `Request Quote — ${service}`;
+      serviceInput.value = service;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeQuoteModal() {
+      const modal = document.getElementById('quoteModal');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      document.getElementById('quoteForm').reset();
+      document.getElementById('quoteStatus').innerHTML = '';
+    }
+
+    // Hide loading screen
+    function hideLoadingScreen() {
+      setTimeout(() => {
+        const loadingScreen = document.getElementById('loadingScreen');
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+        }, 800);
+      }, 1200);
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('quoteModal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        closeQuoteModal();
       }
     });
 
-    // Quote modal (existing handlers remain unchanged)
-    const quoteModal = $('#quoteModal');
-    $$('[data-quote]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const svc = btn.getAttribute('data-quote');
-        $('#quoteTitle').textContent = `Request a quote — ${svc}`;
-        $('#quoteService').value = svc;
-        quoteModal.showModal();
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeQuoteModal();
+      }
+    });
+
+    // Mouse movement effects for particles
+    document.addEventListener('mousemove', (e) => {
+      const particles = document.querySelectorAll('.particle');
+      const mouseX = e.clientX / window.innerWidth;
+      const mouseY = e.clientY / window.innerHeight;
+
+      particles.forEach((particle, index) => {
+        const speed = (index % 3 + 1) * 0.5;
+        const x = mouseX * speed;
+        const y = mouseY * speed;
+        particle.style.transform = `translate(${x}px, ${y}px) rotate(${x * 10}deg)`;
       });
     });
-
-    $('#sendQuote')?.addEventListener('click', async (e) => {
-      e.preventDefault();
-      const status = $('#quoteStatus');
-      const name = $('#qName').value.trim();
-      const email = $('#qEmail').value.trim();
-      const brief = $('#qBrief').value.trim();
-      if (!name || !email || !brief) {
-        status.textContent = 'Please fill in all fields.';
-        return;
-      }
-      const entry = { name, email, brief, service: $('#quoteService').value, ts: new Date().toISOString() };
-      const list = JSON.parse(localStorage.getItem('BriAria_quotes') || '[]');
-      list.push(entry);
-      localStorage.setItem('BriAria_quotes', JSON.stringify(list));
-      const res = await saveToFirestore('quotes', entry);
-      if (res.success) {
-        status.textContent = 'Request sent! We\'ll reply by email.';
-        const subject = encodeURIComponent(`Quote request — ${entry.service}`);
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nService: ${entry.service}\nBrief:\n${brief}`);
-        window.open(`mailto:briakundaim@gmail.com?subject=${subject}&body=${body}`, '_blank');
-        $('#quoteForm').reset();
-        setTimeout(() => quoteModal.close(), 600);
-      } else {
-        status.textContent = 'Saved locally. There was an issue saving to the cloud.';
-      }
-    });
-  <!-- Contact & Footer (kept minimal) -->
-  <section id="contact" style="padding:36px 0">
-    <div class="container">
-      <h2>Contact</h2>
-      <p class="muted">Prefer email? <a href="mailto:briakundaim@gmail.com" style="color:inherit;text-decoration:underline">briakundaim@gmail.com</a></p>
-    </div>
-  </section>
-
-  <footer style="padding:26px 0">
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted)">
-      <div>© <span id="year"></span> BriAria Ltd — UK. All rights reserved.</div>
-      <div style="display:flex;gap:8px">
-        <a href="#about" class="small">About</a>
-        <a href="#services" class="small">Services</a>
-        <a href="#contact" class="small">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Optional Dialogs & Chat omitted for brevity but can be added if you want them included exactly -->
-
-  <!-- ------------------------
-       Scripts: Waitlist behavior
-       - robust, DOMContentLoaded binding
-       - localStorage fallback
-       - optional Firestore save (commented)
-       ------------------------ -->
-  <script>
-    (function () {
-      // Small helpers
-      const $ = (sel, ctx = document) => ctx.querySelector(sel);
-      const $$ = (sel, ctx = document) => Array.from((ctx || document).querySelectorAll(sel));
-
-      // Elements
-      const navGetStarted = $('#navGetStarted');
-      const heroTopGetStarted = $('#heroTopGetStarted');
-      const heroDemo = $('#heroDemo');
-      const openDemo = $('#openDemo');
-
-      const form = $('#boyskyForm');
-      const statusEl = $('#status');
-      const successEl = $('#ws-success');
-      const submitBtn = $('#ws-submit');
-
-      const inputName = $('#ws-name');
-      const inputEmail = $('#ws-email');
-      const inputPhone = $('#ws-phone');
-      const selectReason = $('#ws-reason');
-      const checkboxConsent = $('#ws-consent');
-      const hp = $('#hp');
-      const emailError = $('#ws-email-error');
-
-      const shareTw = $('#shareTw');
-      const shareFb = $('#shareFb');
-
-      const year = $('#year');
-      if (year) year.textContent = new Date().getFullYear();
-
-      // Simple validators
-      function isEmailValid(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || '').trim());
-      }
-      function isPhoneValid(phone) {
-        if (!phone) return true;
-        return /^[0-9+\-\s()]{7,25}$/.test(String(phone || '').trim());
-      }
-
-      // Scroll helper
-      function scrollTo(el) {
-        el && el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-
-      // Attach handlers when DOM is ready
-      document.addEventListener('DOMContentLoaded', () => {
-        // CTA handlers — scroll to waitlist
-        const goToWaitlist = (e) => {
-          e && e.preventDefault();
-          const target = $('#waitlist') || $('#contact') || document.body;
-          scrollTo(target);
-          // give focus to email input for faster completion
-          setTimeout(() => inputEmail && inputEmail.focus(), 600);
-        };
-
-        navGetStarted && navGetStarted.addEventListener('click', goToWaitlist);
-        heroTopGetStarted && heroTopGetStarted.addEventListener('click', goToWaitlist);
-        heroDemo && heroDemo.addEventListener('click', (e) => { e.preventDefault(); scrollTo($('#contact')); });
-
-        openDemo && openDemo.addEventListener('click', (e) => {
-          e.preventDefault();
-          // If you have a demo modal, open it; otherwise just scroll to contact
-          scrollTo($('#contact'));
-        });
-
-        // Form submit
-        form && form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          // clear status
-          statusEl.innerHTML = '';
-          statusEl.className = '';
-
-          // read values
-          const name = inputName.value.trim();
-          const email = inputEmail.value.trim();
-          const phone = inputPhone.value.trim();
-          const reason = selectReason.value;
-          const consent = checkboxConsent.checked;
-          const honeypot = hp.value.trim();
-
-          // spam check
-          if (honeypot) {
-            statusEl.className = 'result-error';
-            statusEl.textContent = 'Submission rejected.';
-            console.warn('honeypot triggered; likely spam');
-            return;
-          }
-
-          // validation
-          if (!isEmailValid(email)) {
-            emailError.textContent = 'Please enter a valid email address.';
-            emailError.className = '';
-            emailError.style.display = 'block';
-            statusEl.className = 'result-error';
-            statusEl.textContent = 'Please enter a valid email address.';
-            inputEmail.focus();
-            return;
-          } else {
-            emailError.textContent = '';
-            emailError.style.display = 'none';
-          }
-
-          if (!isPhoneValid(phone)) {
-            statusEl.className = 'result-error';
-            statusEl.textContent = 'Please enter a valid phone number or leave it blank.';
-            inputPhone.focus();
-            return;
-          }
-
-          if (!consent) {
-            statusEl.className = 'result-error';
-            statusEl.textContent = 'Please confirm you agree to receive updates.';
-            checkboxConsent.focus();
-            return;
-          }
-
-          // disable submit
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Saving...';
-
-          const payload = {
-            name, email, phone, reason: reason || 'unspecified', source: 'web-waitlist', ts: new Date().toISOString()
-          };
-
-          // local save fallback (always store locally)
-          try {
-            const existing = JSON.parse(localStorage.getItem('boysky_waitlist') || '[]');
-            existing.push(payload);
-            localStorage.setItem('boysky_waitlist', JSON.stringify(existing));
-            console.info('Waitlist: saved to localStorage');
-          } catch (err) {
-            console.warn('localStorage save failed', err);
-          }
-
-          // OPTIONAL: Cloud save via Firestore or your API
-          // If you want cloud saves, set `enableCloudSave` to true and configure firebaseConfig below.
-          const enableCloudSave = false;
-
-          if (enableCloudSave) {
-            try {
-              // Example: If you want Firestore direct client writes,
-              // add your firebaseConfig object and include 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js'
-              // and 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js' or use modular imports.
-              // For security, it's recommended to POST this data to your server and let server write to Firestore.
-              //
-              // This block is intentionally left as a placeholder and will not run by default.
-            } catch (err) {
-              console.warn('cloud save failed', err);
-            }
-          }
-
-          // show success UI
-          form.classList.add('hidden');
-          successEl.classList.remove('hidden');
-
-          // wire sharing buttons
-          shareTw && shareTw.addEventListener('click', () => {
-            const text = encodeURIComponent("I joined the BoySky waitlist! 🚀 https://boysky.ai");
-            window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank', 'noopener');
-          });
-          shareFb && shareFb.addEventListener('click', () => {
-            const url = encodeURIComponent("https://boysky.ai");
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'noopener');
-          });
-
-          // re-enable UI if you want to allow re-submission later
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Get Started Free — No credit card required';
-        });
-      }); // DOMContentLoaded
-    })();
   </script>
 </body>
 </html>
-
-

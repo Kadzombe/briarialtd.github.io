@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VirgilERP — Enterprise Resource Planning Solution</title>
+  <meta name="description" content="VirgilERP - Advanced enterprise resource planning solution designed to streamline operations, enhance productivity, and drive business growth." />
+  <meta name="theme-color" content="#00ffff">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cyan: #00ffff;
+      --cyan-dark: #00cccc;
+      --black: #000000;
+      --black-light: #0a0a0a;
+      --text-primary: #ffffff;
+      --text-secondary: #b3b3b3;
+      --shadow-glow: 0 0 30px rgba(0, 255, 255, 0.3);
+      --shadow-glow-intense: 0 0 50px rgba(0, 255, 255, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--cyan);
+      border-radius: 6px;
+      box-shadow: var(--shadow-glow);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--cyan-dark);
+      box-shadow: var(--shadow-glow-intense);
+    }
+
+    /* Firefox scrollbar */
+    * {
+      scrollbar-color: var(--cyan) var(--black);
+      scrollbar-width: thin;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--black);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    /* Animated background with grid */
+    .bg-effects {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: var(--black);
+      pointer-events: none;
+    }
+
+    .bg-grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: moveGrid 20s linear infinite;
+    }
+
+    @keyframes moveGrid {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(50px);
+      }
+    }
+
+    /* Glowing orbs */
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.1;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .glow-orb-1 {
+      width: 400px;
+      height: 400px;
+      background: var(--cyan);
+      top: -100px;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .glow-orb-2 {
+      width: 300px;
+      height: 300px;
+      background: var(--cyan-dark);
+      bottom: -100px;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(30px);
+      }
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(15px);
+      border-bottom: 2px solid var(--cyan);
+      box-shadow: var(--shadow-glow);
+      transition: all 0.4s ease;
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+      box-shadow: var(--shadow-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--black);
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .logo-text {
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: left 0.5s ease;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+      color: var(--black);
+      box-shadow: var(--shadow-glow);
+      font-weight: 700;
+      border: 2px solid var(--cyan);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow-intense);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--cyan);
+      box-shadow: inset 0 0 20px rgba(0, 255, 255, 0.1);
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+      background: rgba(0, 255, 255, 0.1);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(0, 255, 255, 0.1);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-container {
+      max-width: 1400px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      z-index: 10;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-content {
+      animation: slideInLeft 1.2s ease-out;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 255, 255, 0.1);
+      border: 2px solid var(--cyan);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-glow);
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    .hero-title {
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      height: 500px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-glow);
+      animation: slideInRight 1.2s ease-out;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(0, 204, 204, 0.05) 100%);
+      border: 2px solid var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
+    }
+
+    .section-title {
+      font-size: 26px;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 4rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .feature-card {
+      background: rgba(0, 255, 255, 0.05);
+      border: 2px solid rgba(0, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--cyan-dark));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .feature-card:hover::after {
+      opacity: 1;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--cyan);
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.3), inset 0 0 30px rgba(0, 255, 255, 0.1);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: rotate(12deg) scale(1.15);
+      box-shadow: var(--shadow-glow-intense);
+    }
+
+    .feature-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+    }
+
+    .feature-description {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-item {
+      background: rgba(0, 255, 255, 0.05);
+      border: 2px solid rgba(0, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .service-item:hover {
+      border-color: var(--cyan);
+      background: rgba(0, 255, 255, 0.1);
+      transform: translateX(8px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+    }
+
+    .service-check {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--black);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+      box-shadow: var(--shadow-glow);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
+        transform: scale(1.1);
+      }
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(0, 204, 204, 0.05) 100%);
+      border: 2px solid var(--cyan);
+      border-radius: 16px;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin: 4rem 0;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+
+    .cta-title {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 2;
+      font-weight: 300;
+    }
+
+    footer {
+      padding: 3rem 2rem 1.5rem;
+      background: var(--black-light);
+      border-top: 2px solid var(--cyan);
+      text-align: center;
+      color: var(--text-secondary);
+      position: relative;
+      z-index: 5;
+      box-shadow: inset 0 1px 0 var(--cyan);
+    }
+
+    footer a {
+      color: var(--cyan);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+      text-decoration: underline;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-60px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(60px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 20px;
+      }
+
+      .section-title {
+        font-size: 20px;
+      }
+
+      .cta-title {
+        font-size: 20px;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+
+      .section {
+        padding: 3rem 1.5rem;
+      }
+
+      .hero-visual {
+        height: 300px;
+      }
+
+      .cta-section {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-effects">
+    <div class="bg-grid"></div>
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+  </div>
+
+  <header>
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">V</div>
+        <span class="logo-text">VirgilERP</span>
+      </a>
+      <a href="index.html" class="btn btn-ghost">← Back to BriAria</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          ⚡ Enterprise Resource Planning
+        </div>
+        <h1 class="hero-title">
+          VirgilERP: The Future of Business Management
+        </h1>
+        <p class="hero-subtitle">
+          Streamline your entire business operation with our comprehensive enterprise resource planning solution. Integrate finance, supply chain, manufacturing, and human resources in one powerful platform.
+        </p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="scrollToServices()">Explore Services</button>
+          <button class="btn btn-ghost" onclick="scrollToContact()">Request Demo</button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        📊
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Core Features</h2>
+    <p class="section-subtitle">Powerful tools designed to optimize every aspect of your business</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3 class="feature-title">Financial Management</h3>
+        <p class="feature-description">Complete control over accounting, budgeting, and financial reporting with real-time analytics and comprehensive audit trails.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📦</div>
+        <h3 class="feature-title">Supply Chain</h3>
+        <p class="feature-description">Optimize inventory, procurement, and logistics with end-to-end visibility and automated workflows.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🏭</div>
+        <h3 class="feature-title">Manufacturing</h3>
+        <p class="feature-description">Production planning, quality control, and resource management to maximize efficiency and reduce costs.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3 class="feature-title">Human Resources</h3>
+        <p class="feature-description">Comprehensive HR solutions including payroll, recruitment, performance management, and employee development.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3 class="feature-title">Business Intelligence</h3>
+        <p class="feature-description">Advanced analytics and reporting tools that transform data into actionable insights for strategic decision-making.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3 class="feature-title">Security & Compliance</h3>
+        <p class="feature-description">Enterprise-grade security, compliance management, and regulatory adherence built into every module.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-subtitle">Comprehensive support throughout your ERP journey</p>
+
+    <div class="services-list">
+      <div class="service-item">
+        <div class="service-check">✓</div>
+        <div>
+          <strong style="color: var(--text-primary);">Implementation & Setup</strong>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; font-weight: 300;">Custom deployment tailored to your business needs</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-check">✓</div>
+        <div>
+          <strong style="color: var(--text-primary);">Data Migration</strong>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; font-weight: 300;">Safe and seamless transfer of your existing data</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-check">✓</div>
+        <div>
+          <strong style="color: var(--text-primary);">Training & Support</strong>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; font-weight: 300;">Comprehensive training for your entire team</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-check">✓</div>
+        <div>
+          <strong style="color: var(--text-primary);">Customization</strong>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; font-weight: 300;">Tailor modules to match your unique workflows</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-check">✓</div>
+        <div>
+          <strong style="color: var(--text-primary);">24/7 Support</strong>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; font-weight: 300;">Round-the-clock technical assistance</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-check">✓</div>
+        <div>
+          <strong style="color: var(--text-primary);">Continuous Updates</strong>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; font-weight: 300;">Regular updates with new features and improvements</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-check">✓</div>
+        <div>
+          <strong style="color: var(--text-primary);">Integration Services</strong>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; font-weight: 300;">Seamless connection with your existing tools</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-check">✓</div>
+        <div>
+          <strong style="color: var(--text-primary);">Performance Optimization</strong>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; font-weight: 300;">Continuous monitoring and optimization</p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-check">✓</div>
+        <div>
+          <strong style="color: var(--text-primary);">Consulting</strong>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; font-weight: 300;">Expert guidance on best practices and strategies</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2 class="cta-title">Ready to Transform Your Business?</h2>
+    <p class="cta-subtitle">Join hundreds of companies leveraging VirgilERP to streamline operations and drive growth</p>
+    <button class="btn btn-primary" onclick="scrollToContact()">Request a Demo Today</button>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Why Choose VirgilERP?</h2>
+    <p class="section-subtitle">Industry-leading ERP solution built for modern enterprises</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3 class="feature-title">Lightning Fast</h3>
+        <p class="feature-description">Optimized performance with minimal latency ensures your team stays productive</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3 class="feature-title">Cloud-Based</h3>
+        <p class="feature-description">Access from anywhere, anytime with enterprise-grade cloud infrastructure</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3 class="feature-title">Scalable</h3>
+        <p class="feature-description">Grows with your business, from startups to enterprise organizations</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <h3 class="feature-title">Innovative</h3>
+        <p class="feature-description">Continuously updated with AI and machine learning capabilities</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <h3 class="feature-title">Collaborative</h3>
+        <p class="feature-description">Built-in collaboration tools for seamless team communication</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3 class="feature-title">Data-Driven</h3>
+        <p class="feature-description">Real-time dashboards and analytics for informed decision-making</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="contact">
+    <h2 class="cta-title">Let's Get Started</h2>
+    <p class="cta-subtitle">Contact our team to schedule your personalized VirgilERP demonstration</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; position: relative; z-index: 2;">
+      <a href="mailto:salesbriarialtd@gmail.com" class="btn btn-primary">Email Us</a>
+      <a href="tel:+447414450821" class="btn btn-ghost">Call Us</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2020 VirgilERP by BriAria Ltd — UK. All rights reserved.</p>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">
+      <a href="index.html">Back to BriAria</a>
+    </p>
+  </footer>
+
+  <script>
+    function scrollToServices() {
+      document.querySelector('[id="services"]').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function scrollToContact() {
+      document.querySelector('[id="contact"]').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Add scroll animation to elements
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.feature-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'all 0.8s ease';
+      observer.observe(card);
+    });
+
+    document.querySelectorAll('.service-item').forEach(item => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(30px)';
+      item.style.transition = 'all 0.8s ease';
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>

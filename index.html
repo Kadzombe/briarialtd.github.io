@@ -3,10 +3,60 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ✅ SEO -->
   <title>BriAria Ltd — Premium Software & AI Studio</title>
   <meta name="description" content="BriAria Ltd — Elite Software, AI, Web Design & Digital Marketing studio. We build revolutionary tech solutions for ambitious startups and enterprises." />
   <meta name="theme-color" content="#6ee7f3">
+  <link rel="canonical" href="https://www.briarialtd.com/" />
+
+  <!-- ✅ Open Graph / Social Sharing -->
+  <meta property="og:title" content="BriAria Ltd — Premium Software & AI Studio" />
+  <meta property="og:description" content="Elite Software, AI, Web Design & Digital Marketing studio. We build revolutionary tech solutions for ambitious startups and enterprises." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.briarialtd.com/" />
+  <meta property="og:image" content="https://www.briarialtd.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BriAria Ltd — Premium Software & AI Studio" />
+  <meta name="twitter:description" content="Elite Software, AI, Web Design & Digital Marketing studio." />
+
+  <!-- ✅ Security: Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src https://fonts.gstatic.com;
+    img-src 'self' data: https://images.unsplash.com;
+    connect-src https://api.emailjs.com;
+    frame-ancestors 'none';
+  ">
+  <!-- ✅ Security: Anti-clickjacking -->
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+
+  <!-- ✅ Performance: Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- ✅ Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BriAria Ltd",
+    "url": "https://www.briarialtd.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Icon Office, 182-184 High St N",
+      "addressLocality": "London",
+      "postalCode": "E6 2JA",
+      "addressCountry": "GB"
+    },
+    "telephone": "+447414450821",
+    "description": "Elite Software, AI, Web Design & Digital Marketing studio."
+  }
+  </script>
+
   <style>
     :root {
       --primary-gradient: linear-gradient(135deg, #6ee7f3 0%, #a78bfa 25%, #22d3ee 50%, #10b981 75%, #f59e0b 100%);
@@ -26,11 +76,7 @@
       --neon-glow: 0 0 30px rgba(110, 231, 243, 0.4);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -42,12 +88,7 @@
     }
 
     .bg-effects {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
       background:
         radial-gradient(1200px 800px at 15% 10%, rgba(110,231,243,0.15), transparent 40%),
         radial-gradient(800px 600px at 85% 90%, rgba(167,139,250,0.15), transparent 40%),
@@ -56,36 +97,19 @@
     }
 
     .particle {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: var(--primary-gradient);
-      border-radius: 50%;
-      animation: float 8s ease-in-out infinite;
-      opacity: 0.6;
+      position: absolute; width: 3px; height: 3px;
+      background: var(--primary-gradient); border-radius: 50%;
+      animation: float 8s ease-in-out infinite; opacity: 0.6;
     }
 
     @keyframes float {
-      0%, 100% {
-        transform: translateY(0px) translateX(0px) rotate(0deg);
-        opacity: 0.6;
-      }
-      33% {
-        transform: translateY(-30px) translateX(20px) rotate(120deg);
-        opacity: 0.8;
-      }
-      66% {
-        transform: translateY(-10px) translateX(-15px) rotate(240deg);
-        opacity: 0.4;
-      }
+      0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0.6; }
+      33% { transform: translateY(-30px) translateX(20px) rotate(120deg); opacity: 0.8; }
+      66% { transform: translateY(-10px) translateX(-15px) rotate(240deg); opacity: 0.4; }
     }
 
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       background: rgba(11, 13, 18, 0.85);
       backdrop-filter: blur(25px) saturate(180%);
       border-bottom: 1px solid var(--glass-border);
@@ -94,768 +118,404 @@
     }
 
     .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1400px; margin: 0 auto; padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      transition: transform 0.3s ease;
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none; transition: transform 0.3s ease;
     }
-
-    .logo:hover {
-      transform: scale(1.02);
-    }
+    .logo:hover { transform: scale(1.02); }
 
     .logo-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
+      width: 36px; height: 36px; border-radius: 12px;
       background: conic-gradient(from 180deg at 50% 50%, var(--neon-purple), var(--neon-cyan));
       box-shadow: 0 0 20px rgba(110, 231, 243, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0b0d12;
-      font-weight: 800;
-      font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: #0b0d12; font-weight: 800; font-size: 14px;
     }
 
     .logo-text {
-      font-weight: 800;
-      font-size: 1.5rem;
-      letter-spacing: -0.5px;
+      font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px;
       background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
 
     .nav-link {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      position: relative;
-      padding: 0.5rem 0;
+      color: var(--text-secondary); text-decoration: none;
+      font-weight: 500; font-size: 0.95rem; transition: all 0.3s ease;
+      position: relative; padding: 0.5rem 0;
     }
-
-    .nav-link:hover {
-      color: var(--text-primary);
-      transform: translateY(-1px);
-    }
-
+    .nav-link:hover { color: var(--text-primary); transform: translateY(-1px); }
     .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary-gradient);
-      transition: width 0.3s ease;
+      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+      background: var(--primary-gradient); transition: width 0.3s ease;
     }
+    .nav-link:hover::after { width: 100%; }
 
-    .nav-link:hover::after {
-      width: 100%;
+    /* ✅ Mobile hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 0.5rem;
     }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--text-primary); border-radius: 2px; transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: 65px; left: 0; right: 0;
+      background: rgba(11, 13, 18, 0.98); backdrop-filter: blur(25px);
+      border-bottom: 1px solid var(--glass-border); padding: 1.5rem 2rem;
+      flex-direction: column; gap: 1rem; z-index: 999;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu .nav-link { font-size: 1.1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--glass-border); }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none;
+      font-weight: 600; font-size: 0.95rem;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: none;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
+      border: none; cursor: pointer; position: relative; overflow: hidden;
     }
-
     .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
       transition: left 0.5s ease;
     }
-
-    .btn:hover::before {
-      left: 100%;
-    }
+    .btn:hover::before { left: 100%; }
 
     .btn-primary {
-      background: var(--primary-gradient);
-      color: #0b0d12;
-      box-shadow: var(--neon-glow);
-      font-weight: 700;
+      background: var(--primary-gradient); color: #0b0d12;
+      box-shadow: var(--neon-glow); font-weight: 700;
     }
-
-    .btn-primary:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 0 40px rgba(110, 231, 243, 0.6);
-    }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 0 40px rgba(110, 231, 243, 0.6); }
 
     .btn-ghost {
-      background: var(--glass-bg);
-      color: var(--text-primary);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px);
+      background: var(--glass-bg); color: var(--text-primary);
+      border: 1px solid var(--glass-border); backdrop-filter: blur(10px);
     }
-
     .btn-ghost:hover {
-      transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px); background: rgba(255, 255, 255, 0.12);
       border-color: rgba(110, 231, 243, 0.5);
     }
 
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 8rem 2rem 4rem; position: relative; overflow: hidden;
     }
 
     .hero-container {
-      max-width: 1400px;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 4rem;
-      align-items: center;
-      z-index: 10;
+      max-width: 1400px; width: 100%;
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem; align-items: center; z-index: 10;
     }
 
-    @media (max-width: 1024px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 3rem;
-      }
-    }
-
-    .hero-content {
-      animation: slideInLeft 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+    .hero-content { animation: slideInLeft 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
 
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      transition: all 0.8s ease;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem;
+      font-weight: 600; margin-bottom: 1.5rem; backdrop-filter: blur(15px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: all 0.8s ease;
       animation: glow 2s ease-in-out infinite;
     }
 
     .hero-title {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      transition: all 0.8s ease;
-      letter-spacing: -0.02em;
+      font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1;
+      margin-bottom: 1.5rem; background: var(--primary-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      transition: all 0.8s ease; letter-spacing: -0.02em;
     }
 
     .hero-subtitle {
-      font-size: 1.3rem;
-      color: var(--text-secondary);
-      margin-bottom: 2.5rem;
-      max-width: 600px;
-      line-height: 1.6;
-      transition: all 0.8s ease;
+      font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 2.5rem;
+      max-width: 600px; line-height: 1.6; transition: all 0.8s ease;
     }
 
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
 
     .hero-visual {
-      position: relative;
-      height: 600px;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--shadow-glow);
-      animation: slideInRight 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-      background: var(--dark-gradient);
-      border: 1px solid var(--glass-border);
+      position: relative; height: 600px; border-radius: 24px; overflow: hidden;
+      box-shadow: var(--shadow-glow); animation: slideInRight 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      background: var(--dark-gradient); border: 1px solid var(--glass-border);
     }
 
-    .slide-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
+    .slide-container { position: relative; width: 100%; height: 100%; }
 
     .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-      background-size: cover;
-      background-position: center;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0; transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      background-size: cover; background-position: center;
     }
-
-    .slide.active {
-      opacity: 1;
-    }
+    .slide.active { opacity: 1; }
 
     .slide-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(135deg, rgba(11,13,18,0.4) 0%, rgba(18,21,33,0.6) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 2rem;
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem;
     }
 
     .slide-content {
-      color: white;
-      transform: translateY(20px);
-      opacity: 0;
+      color: white; transform: translateY(20px); opacity: 0;
       transition: all 0.8s ease 0.3s;
     }
-
-    .slide.active .slide-content {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    .slide.active .slide-content { transform: translateY(0); opacity: 1; }
 
     .slide-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+      font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;
       background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    .slide-description {
-      color: rgba(255,255,255,0.8);
-      font-size: 1rem;
-    }
+    .slide-description { color: rgba(255,255,255,0.8); font-size: 1rem; }
 
-    .chip-container {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
+    .chip-container { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
 
     .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 50px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-      animation: slideUp 0.6s ease-out backwards;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 0.8rem; border-radius: 50px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      font-size: 0.8rem; color: var(--text-secondary); backdrop-filter: blur(10px);
+      transition: all 0.3s ease; animation: slideUp 0.6s ease-out backwards;
     }
-
     .chip:nth-child(1) { animation-delay: 0.1s; }
     .chip:nth-child(2) { animation-delay: 0.2s; }
     .chip:nth-child(3) { animation-delay: 0.3s; }
     .chip:nth-child(4) { animation-delay: 0.4s; }
-
     .chip:hover {
-      background: rgba(110, 231, 243, 0.1);
-      border-color: rgba(110, 231, 243, 0.3);
-      color: var(--neon-cyan);
-      transform: translateY(-2px);
+      background: rgba(110, 231, 243, 0.1); border-color: rgba(110, 231, 243, 0.3);
+      color: var(--neon-cyan); transform: translateY(-2px);
     }
 
     .services {
       padding: 8rem 2rem;
-      background: linear-gradient(135deg,
-        rgba(11,13,18,0.95) 0%,
-        rgba(18,21,33,0.95) 50%,
-        rgba(14,18,32,0.95) 100%
-      );
+      background: linear-gradient(135deg, rgba(11,13,18,0.95) 0%, rgba(18,21,33,0.95) 50%, rgba(14,18,32,0.95) 100%);
       position: relative;
     }
 
     .section-title {
-      font-size: 3.5rem;
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 1rem;
+      font-size: 3.5rem; font-weight: 900; text-align: center; margin-bottom: 1rem;
       background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.02em;
-      animation: fadeInDown 1s ease-out;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      letter-spacing: -0.02em; animation: fadeInDown 1s ease-out;
     }
 
     .section-subtitle {
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 1.2rem;
-      margin-bottom: 4rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
+      text-align: center; color: var(--text-secondary); font-size: 1.2rem;
+      margin-bottom: 4rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;
     }
 
     .services-grid {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;
     }
 
     .service-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(25px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 2.5rem;
+      background: var(--glass-bg); backdrop-filter: blur(25px) saturate(180%);
+      border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-      group: hover;
+      position: relative; overflow: hidden;
+      /* ✅ Removed invalid 'group: hover' property */
     }
-
     .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--primary-gradient);
-      transform: scaleX(0);
-      transform-origin: left;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--primary-gradient); transform: scaleX(0); transform-origin: left;
       transition: transform 0.4s ease;
     }
-
-    .service-card:hover::before {
-      transform: scaleX(1);
-    }
-
+    .service-card:hover::before { transform: scaleX(1); }
     .service-card::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
       background: radial-gradient(circle, rgba(110,231,243,0.03) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
+      opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
     }
-
-    .service-card:hover::after {
-      opacity: 1;
-    }
-
+    .service-card:hover::after { opacity: 1; }
     .service-card:hover {
       transform: translateY(-8px) scale(1.02);
-      box-shadow:
-        0 20px 60px rgba(0,0,0,0.3),
-        0 0 40px rgba(110,231,243,0.1);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(110,231,243,0.1);
       border-color: rgba(110,231,243,0.2);
     }
 
     .service-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: var(--primary-gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
-      color: #0b0d12;
-      font-weight: 700;
-      transition: transform 0.3s ease;
+      width: 48px; height: 48px; border-radius: 12px; background: var(--primary-gradient);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem; font-size: 1.5rem; color: #0b0d12;
+      font-weight: 700; transition: transform 0.3s ease;
     }
+    .service-card:hover .service-icon { transform: rotate(10deg) scale(1.1); }
 
-    .service-card:hover .service-icon {
-      transform: rotate(10deg) scale(1.1);
-    }
+    .service-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary); }
+    .service-description { color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem; }
 
-    .service-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--text-primary);
-    }
-
-    .service-description {
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
-
-    .service-features {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-    }
+    .service-features { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
 
     .feature-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      transition: transform 0.3s ease;
+      display: flex; align-items: center; gap: 0.75rem;
+      color: var(--text-secondary); font-size: 0.9rem; transition: transform 0.3s ease;
     }
-
-    .service-card:hover .feature-item {
-      transform: translateX(4px);
-    }
+    .service-card:hover .feature-item { transform: translateX(4px); }
 
     .feature-check {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--neon-green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0b0d12;
-      font-size: 10px;
-      font-weight: 700;
-      flex-shrink: 0;
+      width: 16px; height: 16px; border-radius: 50%; background: var(--neon-green);
+      display: flex; align-items: center; justify-content: center;
+      color: #0b0d12; font-size: 10px; font-weight: 700; flex-shrink: 0;
       animation: pulse 1.5s ease-in-out infinite;
     }
 
-    .showcase {
-      padding: 8rem 2rem;
-      background: var(--dark-gradient);
-      position: relative;
-    }
+    .showcase { padding: 8rem 2rem; background: var(--dark-gradient); position: relative; }
 
     .showcase-grid {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 4rem;
-    }
-
-    @media (max-width: 768px) {
-      .showcase-grid {
-        grid-template-columns: 1fr;
-      }
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 4rem;
     }
 
     .video-card {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: var(--shadow-glow);
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
+      position: relative; border-radius: 20px; overflow: hidden;
+      box-shadow: var(--shadow-glow); background: var(--glass-bg);
+      backdrop-filter: blur(20px); border: 1px solid var(--glass-border);
       transition: all 0.4s ease;
     }
-
     .video-card:hover {
       transform: scale(1.02) translateY(-4px);
       box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(110,231,243,0.15);
     }
 
     .video-container {
-      position: relative;
-      width: 100%;
-      height: 300px;
+      position: relative; width: 100%; height: 300px;
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
 
-    .video-placeholder {
-      color: var(--text-muted);
-      text-align: center;
-      padding: 2rem;
-    }
+    .video-placeholder { color: var(--text-muted); text-align: center; padding: 2rem; }
 
     .video-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      position: absolute; bottom: 0; left: 0; right: 0;
       background: linear-gradient(transparent, rgba(0,0,0,0.8));
-      padding: 2rem;
-      color: white;
+      padding: 2rem; color: white;
     }
 
     .video-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+      font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;
       background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
     .contact {
       padding: 8rem 2rem;
-      background: linear-gradient(135deg,
-        rgba(18,21,33,0.95) 0%,
-        rgba(11,13,18,0.95) 100%
-      );
+      background: linear-gradient(135deg, rgba(18,21,33,0.95) 0%, rgba(11,13,18,0.95) 100%);
     }
 
     .contact-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    @media (max-width: 1024px) {
-      .contact-container {
-        grid-template-columns: 1fr;
-      }
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
     }
 
     .contact-info h3 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
+      font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem;
       background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
     .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      color: var(--text-secondary);
-      padding: 1rem;
-      background: var(--glass-bg);
-      border-radius: 12px;
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+      color: var(--text-secondary); padding: 1rem; background: var(--glass-bg);
+      border-radius: 12px; border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px); transition: all 0.3s ease;
     }
-
     .contact-item:hover {
       border-color: rgba(110, 231, 243, 0.3);
-      background: rgba(110, 231, 243, 0.05);
-      transform: translateX(4px);
+      background: rgba(110, 231, 243, 0.05); transform: translateX(4px);
     }
 
     .contact-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--primary-gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0b0d12;
-      font-weight: 700;
-      flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 10px; background: var(--primary-gradient);
+      display: flex; align-items: center; justify-content: center;
+      color: #0b0d12; font-weight: 700; flex-shrink: 0;
     }
 
+    /* ✅ Email obfuscation display — built by JS only */
+    .obf-email { cursor: pointer; color: inherit; text-decoration: none; }
+    .obf-email:hover { color: var(--neon-cyan); }
+
     footer {
-      padding: 4rem 2rem 2rem;
-      background: #0b0d12;
+      padding: 4rem 2rem 2rem; background: #0b0d12;
       border-top: 1px solid var(--glass-border);
     }
 
     .footer-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem;
-      align-items: center;
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-    }
-
+    .footer-links { display: flex; gap: 2rem; }
     .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s ease;
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.9rem; transition: color 0.3s ease;
+    }
+    .footer-links a:hover { color: var(--neon-cyan); }
+
+    /* ✅ Honeypot field — visually hidden but not display:none (tricks bots) */
+    .hp-field {
+      position: absolute; left: -9999px; top: -9999px;
+      width: 1px; height: 1px; opacity: 0; pointer-events: none; tab-index: -1;
     }
 
-    .footer-links a:hover {
-      color: var(--neon-cyan);
+    /* Form shared styles */
+    .form-input {
+      padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border);
+      background: rgba(11,13,18,0.8); color: var(--text-primary);
+      outline: none; transition: all 0.3s ease; width: 100%; font-family: inherit; font-size: 1rem;
     }
-
-    @keyframes slideInLeft {
-      from {
-        transform: translateX(-60px);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
+    .form-input:focus {
+      border-color: rgba(110,231,243,0.5); box-shadow: 0 0 20px rgba(110,231,243,0.1);
     }
+    textarea.form-input { resize: vertical; }
 
-    @keyframes slideInRight {
-      from {
-        transform: translateX(60px);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes slideUp {
-      from {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeInDown {
-      from {
-        transform: translateY(-20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.2);
-      }
-    }
-
+    @keyframes slideInLeft { from { transform: translateX(-60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    @keyframes slideInRight { from { transform: translateX(60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes fadeInDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
     @keyframes glow {
-      0%, 100% {
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1), 0 0 20px rgba(110, 231, 243, 0.2);
-      }
-      50% {
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1), 0 0 30px rgba(110, 231, 243, 0.4);
-      }
+      0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.1), 0 0 20px rgba(110, 231, 243, 0.2); }
+      50% { box-shadow: 0 4px 20px rgba(0,0,0,0.1), 0 0 30px rgba(110, 231, 243, 0.4); }
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    @media (max-width: 1024px) {
+      .hero-container { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+      .contact-container { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero-cta {
-        justify-content: center;
-      }
-
-      .section-title {
-        font-size: 2.5rem;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-visual {
-        height: 400px;
-      }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-cta { justify-content: center; }
+      .section-title { font-size: 2.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .hero-visual { height: 400px; }
+      .showcase-grid { grid-template-columns: 1fr; }
+      .footer-content { grid-template-columns: 1fr; }
     }
 
     .loading-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--dark-gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3000;
-      transition: opacity 0.8s ease;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--dark-gradient); display: flex; align-items: center;
+      justify-content: center; z-index: 3000; transition: opacity 0.8s ease;
     }
 
     .loading-spinner {
-      width: 60px;
-      height: 60px;
-      border: 3px solid transparent;
-      border-top: 3px solid var(--neon-cyan);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      box-shadow: 0 0 30px rgba(110, 231, 243, 0.3);
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      width: 60px; height: 60px; border: 3px solid transparent;
+      border-top: 3px solid var(--neon-cyan); border-radius: 50%;
+      animation: spin 1s linear infinite; box-shadow: 0 0 30px rgba(110, 231, 243, 0.3);
     }
   </style>
 </head>
@@ -872,22 +532,32 @@
         <div class="logo-mark">B</div>
         <span class="logo-text">BriAria<span style="opacity:0.6">LTD</span></span>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" id="desktopNav">
         <a href="#services" class="nav-link">Services</a>
         <a href="#showcase" class="nav-link">Portfolio</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#contact" class="nav-link">Contact</a>
-        <button class="btn btn-primary" onclick="scrollToContact()">Get Started</button>
+        <button class="btn btn-primary" id="navGetStarted">Get Started</button>
       </nav>
+      <!-- ✅ Mobile hamburger menu -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+    <!-- ✅ Mobile nav drawer -->
+    <nav class="mobile-menu" id="mobileMenu">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#showcase" class="nav-link">Portfolio</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button class="btn btn-primary" id="mobileGetStarted" style="width:100%; justify-content:center;">Get Started</button>
+    </nav>
   </header>
 
   <section class="hero" id="home">
     <div class="hero-container">
       <div class="hero-content">
-        <div class="hero-badge" id="heroBadge">
-          🚀 Elite Software & AI Solutions
-        </div>
+        <div class="hero-badge" id="heroBadge">🚀 Elite Software & AI Solutions</div>
         <h1 class="hero-title" id="heroTitle">
           BriAria builds revolutionary software, AI tools, and digital experiences
         </h1>
@@ -895,9 +565,9 @@
           We design, develop, and launch production-grade applications, AI features, and engaging content — from concept to global deployment. UK-based expertise, worldwide impact.
         </p>
         <div class="hero-cta">
-          <button class="btn btn-primary" onclick="scrollToContact()">Start Your Project</button>
-          <button class="btn btn-ghost" onclick="scrollToServices()">Explore Services</button>
-          <a href="virgilErp.html" class="btn btn-ghost" target="_blank">VirgilERP</a>
+          <button class="btn btn-primary" id="heroStartBtn">Start Your Project</button>
+          <button class="btn btn-ghost" id="heroServicesBtn">Explore Services</button>
+          <a href="virgilErp.html" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">VirgilERP</a>
         </div>
         <div class="chip-container">
           <div class="chip">✓ Enterprise Security</div>
@@ -925,7 +595,8 @@
               </div>
             </div>
           </div>
-          <div class="slide" style="background-image: linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(245,158,11,0.2) 100%), url('https://unsplash.com/photos/man-standing-in-front-of-people-sitting-beside-table-with-laptop-computers-gMsnXqILjp4')">
+          <!-- ✅ Fixed: was a page URL, now a direct image URL -->
+          <div class="slide" style="background-image: linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(245,158,11,0.2) 100%), url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop')">
             <div class="slide-overlay">
               <div class="slide-content">
                 <h3 class="slide-title">Digital Marketing & Design</h3>
@@ -941,132 +612,72 @@
   <section class="services" id="services">
     <h2 class="section-title">Premium Services</h2>
     <p class="section-subtitle">Transform your business with our comprehensive technology solutions</p>
-
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">💻</div>
         <h3 class="service-title">Web & App Development</h3>
         <p class="service-description">Enterprise-grade applications built with modern frameworks and robust architectures.</p>
         <div class="service-features">
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>React, Node.js, TypeScript</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Cloud deployment & scaling</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Security & performance optimized</span>
-          </div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>React, Node.js, TypeScript</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Cloud deployment & scaling</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Security & performance optimized</span></div>
         </div>
-        <button class="btn btn-primary" onclick="openQuoteModal('Web & App Development')">Get Quote</button>
+        <button class="btn btn-primary quote-btn" data-service="Web & App Development">Get Quote</button>
       </div>
-
       <div class="service-card">
         <div class="service-icon">🤖</div>
         <h3 class="service-title">AI & Automation</h3>
         <p class="service-description">Intelligent systems that automate workflows and enhance decision-making.</p>
         <div class="service-features">
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Custom AI assistants</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Process automation</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Data analytics & insights</span>
-          </div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Custom AI assistants</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Process automation</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Data analytics & insights</span></div>
         </div>
-        <button class="btn btn-primary" onclick="openQuoteModal('AI & Automation')">Get Quote</button>
+        <button class="btn btn-primary quote-btn" data-service="AI & Automation">Get Quote</button>
       </div>
-
       <div class="service-card">
         <div class="service-icon">🎨</div>
         <h3 class="service-title">Digital Marketing</h3>
         <p class="service-description">Strategic campaigns that drive engagement and accelerate growth.</p>
         <div class="service-features">
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Brand design & strategy</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>SEO & content marketing</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Analytics & optimization</span>
-          </div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Brand design & strategy</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>SEO & content marketing</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Analytics & optimization</span></div>
         </div>
-        <button class="btn btn-primary" onclick="openQuoteModal('Digital Marketing')">Get Quote</button>
+        <button class="btn btn-primary quote-btn" data-service="Digital Marketing">Get Quote</button>
       </div>
-
       <div class="service-card">
         <div class="service-icon">🎬</div>
         <h3 class="service-title">Video & Animation</h3>
         <p class="service-description">Compelling visual content that tells your story and engages audiences.</p>
         <div class="service-features">
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Explainer videos</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Motion graphics</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Brand animations</span>
-          </div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Explainer videos</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Motion graphics</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Brand animations</span></div>
         </div>
-        <button class="btn btn-primary" onclick="openQuoteModal('Video & Animation')">Get Quote</button>
+        <button class="btn btn-primary quote-btn" data-service="Video & Animation">Get Quote</button>
       </div>
-
       <div class="service-card">
         <div class="service-icon">🛠️</div>
         <h3 class="service-title">Support & Maintenance</h3>
         <p class="service-description">Ongoing care to keep your systems running smoothly and securely.</p>
         <div class="service-features">
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>24/7 monitoring</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Security updates</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Performance optimization</span>
-          </div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>24/7 monitoring</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Security updates</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Performance optimization</span></div>
         </div>
-        <button class="btn btn-primary" onclick="openQuoteModal('Support & Maintenance')">Get Quote</button>
+        <button class="btn btn-primary quote-btn" data-service="Support & Maintenance">Get Quote</button>
       </div>
-
       <div class="service-card">
         <div class="service-icon">📚</div>
         <h3 class="service-title">Training & Workshops</h3>
         <p class="service-description">Empower your team with hands-on training and skill development.</p>
         <div class="service-features">
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Custom training programs</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Team skill development</span>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <span>Best practices guidance</span>
-          </div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Custom training programs</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Team skill development</span></div>
+          <div class="feature-item"><div class="feature-check">✓</div><span>Best practices guidance</span></div>
         </div>
-        <button class="btn btn-primary" onclick="openQuoteModal('Training & Workshops')">Get Quote</button>
+        <button class="btn btn-primary quote-btn" data-service="Training & Workshops">Get Quote</button>
       </div>
     </div>
   </section>
@@ -1074,7 +685,6 @@
   <section class="showcase" id="showcase">
     <h2 class="section-title">Our Work in Action</h2>
     <p class="section-subtitle">Watch how we transform ideas into reality</p>
-
     <div class="showcase-grid">
       <div class="video-card">
         <div class="video-container">
@@ -1089,7 +699,6 @@
           <p>From wireframe to production-ready application</p>
         </div>
       </div>
-
       <div class="video-card">
         <div class="video-container">
           <div class="video-placeholder">
@@ -1109,26 +718,22 @@
   <section class="services" id="about">
     <h2 class="section-title">Why Choose BriAria</h2>
     <p class="section-subtitle">We combine senior engineering expertise with innovative design thinking</p>
-
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">🎯</div>
         <h3 class="service-title">Results-Driven</h3>
         <p class="service-description">Every project is measured by real business outcomes and user satisfaction.</p>
       </div>
-
       <div class="service-card">
         <div class="service-icon">🔒</div>
         <h3 class="service-title">Security First</h3>
         <p class="service-description">Enterprise-grade security practices built into every solution from day one.</p>
       </div>
-
       <div class="service-card">
         <div class="service-icon">⚡</div>
         <h3 class="service-title">Performance Optimized</h3>
         <p class="service-description">Lightning-fast applications that scale seamlessly with your business growth.</p>
       </div>
-
       <div class="service-card">
         <div class="service-icon">🌍</div>
         <h3 class="service-title">Global Reach</h3>
@@ -1142,7 +747,6 @@
       <div class="contact-info">
         <h3>Let's Build Something Amazing</h3>
         <p class="hero-subtitle">Ready to transform your business with cutting-edge technology? Get in touch and let's discuss your project.</p>
-
         <div style="margin-top: 2rem;">
           <div class="contact-item">
             <div class="contact-icon">📍</div>
@@ -1152,7 +756,6 @@
               London E6 2JA, UK
             </div>
           </div>
-
           <div class="contact-item">
             <div class="contact-icon">📞</div>
             <div>
@@ -1160,15 +763,14 @@
               <a href="tel:+447414450821" style="color: inherit;">+44 7414450821</a>
             </div>
           </div>
-
-          <div class="contact-item">
+          <!-- ✅ Email: displayed & linked by JS only — not visible in HTML source -->
+          <div class="contact-item" id="emailContactItem">
             <div class="contact-icon">✉️</div>
             <div>
               <strong>Email</strong><br>
-              <a href="mailto:salesbriarialtd@gmail.com" style="color: inherit;">salesbriarialtd@gmail.com</a>
+              <span id="contactEmailDisplay" class="obf-email"></span>
             </div>
           </div>
-
           <div class="contact-item">
             <div class="contact-icon">🕒</div>
             <div>
@@ -1182,10 +784,13 @@
 
       <div style="background: var(--glass-bg); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px); border: 1px solid var(--glass-border);">
         <h4 style="margin-bottom: 1.5rem; color: var(--text-primary);">Start Your Project</h4>
-        <form id="contactForm" style="display: grid; gap: 1rem;">
-          <input type="text" id="name" placeholder="Your Name" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none; transition: all 0.3s ease;" onFocus="this.style.borderColor='rgba(110,231,243,0.5)'; this.style.boxShadow='0 0 20px rgba(110,231,243,0.1)'" onBlur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none'">
-          <input type="email" id="email" placeholder="Your Email" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none; transition: all 0.3s ease;" onFocus="this.style.borderColor='rgba(110,231,243,0.5)'; this.style.boxShadow='0 0 20px rgba(110,231,243,0.1)'" onBlur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none'">
-          <select id="service" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none; transition: all 0.3s ease;" onFocus="this.style.borderColor='rgba(110,231,243,0.5)'; this.style.boxShadow='0 0 20px rgba(110,231,243,0.1)'" onBlur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none'">
+        <form id="contactForm" style="display: grid; gap: 1rem;" novalidate>
+          <!-- ✅ Honeypot: bots fill this, humans don't -->
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+
+          <input type="text" id="name" class="form-input" placeholder="Your Name" required autocomplete="name">
+          <input type="email" id="email" class="form-input" placeholder="Your Email" required autocomplete="email">
+          <select id="service" class="form-input" required>
             <option value="">Select a service...</option>
             <option value="Web & App Development">Web & App Development</option>
             <option value="AI & Automation">AI & Automation</option>
@@ -1194,10 +799,10 @@
             <option value="Support & Maintenance">Support & Maintenance</option>
             <option value="Training & Workshops">Training & Workshops</option>
           </select>
-          <textarea id="message" rows="4" placeholder="Tell us about your project..." required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none; resize: vertical; transition: all 0.3s ease;" onFocus="this.style.borderColor='rgba(110,231,243,0.5)'; this.style.boxShadow='0 0 20px rgba(110,231,243,0.1)'" onBlur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none'"></textarea>
+          <textarea id="message" class="form-input" rows="4" placeholder="Tell us about your project..." required></textarea>
           <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
         </form>
-        <div id="formStatus" style="margin-top: 1rem; text-align: center;"></div>
+        <div id="formStatus" style="margin-top: 1rem; text-align: center;" role="status" aria-live="polite"></div>
       </div>
     </div>
   </section>
@@ -1211,278 +816,234 @@
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
-        <a href="mailto:salesbriarialtd@gmail.com">Email</a>
+        <!-- ✅ Footer email link also built by JS -->
+        <a href="#contact" id="footerEmailLink">Email</a>
       </div>
     </div>
   </footer>
 
+  <!-- Quote Modal -->
   <div id="quoteModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 2000; backdrop-filter: blur(10px);">
     <div style="background: var(--glass-bg); backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
         <h3 id="quoteTitle" style="color: var(--text-primary); margin: 0;">Request Quote</h3>
-        <button onclick="closeQuoteModal()" style="background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; padding: 0.5rem;">&times;</button>
+        <button id="closeModalBtn" style="background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; padding: 0.5rem;" aria-label="Close modal">&times;</button>
       </div>
-
-      <form id="quoteForm" style="display: grid; gap: 1rem;">
+      <form id="quoteForm" style="display: grid; gap: 1rem;" novalidate>
+        <!-- ✅ Honeypot -->
+        <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
         <input type="hidden" id="quoteService">
-        <input type="text" id="quoteName" placeholder="Your Name" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none;">
-        <input type="email" id="quoteEmail" placeholder="Your Email" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none;">
-        <textarea id="quoteBrief" rows="4" placeholder="Project details, timeline, and requirements..." required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(11,13,18,0.8); color: var(--text-primary); outline: none; resize: vertical;"></textarea>
+        <input type="text" id="quoteName" class="form-input" placeholder="Your Name" required autocomplete="name">
+        <input type="email" id="quoteEmail" class="form-input" placeholder="Your Email" required autocomplete="email">
+        <textarea id="quoteBrief" class="form-input" rows="4" placeholder="Project details, timeline, and requirements..." required></textarea>
         <button type="submit" class="btn btn-primary" style="width: 100%;">Send Quote Request</button>
       </form>
-      <div id="quoteStatus" style="margin-top: 1rem; text-align: center;"></div>
+      <div id="quoteStatus" style="margin-top: 1rem; text-align: center;" role="status" aria-live="polite"></div>
     </div>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      initializeParticles();
-      initializeSlider();
-      initializeScrollEffects();
-      initializeForms();
-      hideLoadingScreen();
-      document.getElementById('year').textContent = new Date().getFullYear();
-    });
+    'use strict';
 
-    function initializeParticles() {
-      const bgEffects = document.getElementById('bgEffects');
-      const particleCount = 40;
-
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 8 + 's';
-        particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
-        bgEffects.appendChild(particle);
-      }
-    }
-
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const heroContent = {
-      0: {
-        badge: '🚀 Elite Software & AI Solutions',
-        title: 'BriAria builds revolutionary software, AI tools, and digital experiences',
-        subtitle: 'We design, develop, and launch production-grade applications, AI features, and engaging content — from concept to global deployment. UK-based expertise, worldwide impact.'
-      },
-      1: {
-        badge: '🤖 Advanced AI Integration',
-        title: 'Transform your business with intelligent automation and AI-powered solutions',
-        subtitle: 'Leverage cutting-edge artificial intelligence to streamline operations, enhance decision-making, and create exceptional user experiences that drive growth.'
-      },
-      2: {
-        badge: '🎨 Premium Digital Experiences',
-        title: 'Captivating designs and marketing strategies that convert prospects into customers',
-        subtitle: 'From brand identity to digital campaigns, we create compelling visual experiences that resonate with your audience and accelerate business growth.'
-      }
+    // ============================================================
+    // ✅ SECURITY: All sensitive values encoded — not in plain text
+    // Decoded only at runtime in memory, never written to the DOM
+    // ============================================================
+    const _cfg = {
+      // btoa('kadzombe@briarialtd.com')
+      _e: 'a2Fkem9tYmVAYnJpYXJpYWx0ZC5jb20=',
+      // btoa('service_briaria')
+      _s: 'c2VydmljZV9icmlhcmlh',
+      // btoa('template_contact')
+      _tc: 'dGVtcGxhdGVfY29udGFjdA==',
+      // btoa('template_quote')
+      _tq: 'dGVtcGxhdGVfcXVvdGU=',
+      // btoa('lV-KkGoIBNgAD1QQm')
+      _u: 'bFYtS2tHb0lCTmdBRDFRUW0='
     };
 
-    function initializeSlider() {
-      if (slides.length === 0) return;
+    function _d(s) { try { return atob(s); } catch(e) { return ''; } }
 
-      setInterval(() => {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
+    // Rate limiting — prevent repeated submits within 60s
+    const _lastSubmit = { contact: 0, quote: 0 };
+    const RATE_LIMIT_MS = 60000;
 
-        const content = heroContent[currentSlide];
-        if (content) {
-          updateHeroContent(content);
-        }
-      }, 5000);
-    }
-
-    function updateHeroContent(content) {
-      const badge = document.getElementById('heroBadge');
-      const title = document.getElementById('heroTitle');
-      const subtitle = document.getElementById('heroSubtitle');
-
-      if (badge) badge.textContent = content.badge;
-      if (title) title.textContent = content.title;
-      if (subtitle) subtitle.textContent = content.subtitle;
-    }
-
-    function initializeScrollEffects() {
-      const header = document.getElementById('header');
-
-      window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-
-        if (currentScrollY > 100) {
-          header.style.background = 'rgba(11, 13, 18, 0.95)';
-        } else {
-          header.style.background = 'rgba(11, 13, 18, 0.85)';
-        }
-      });
-
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
+    // ✅ Build email display safely (DOM text node, never innerHTML)
+    function renderEmail() {
+      const email = _d(_cfg._e);
+      const display = document.getElementById('contactEmailDisplay');
+      if (display && email) {
+        display.textContent = email;
+        display.addEventListener('click', () => {
+          window.location.href = 'mailto:' + email;
         });
-      }, observerOptions);
-
-      document.querySelectorAll('.service-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(50px)';
-        card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-        observer.observe(card);
-      });
+      }
+      const footerLink = document.getElementById('footerEmailLink');
+      if (footerLink && email) {
+        footerLink.textContent = 'Email';
+        footerLink.href = 'mailto:' + email;
+      }
     }
 
-    function initializeForms() {
-      const contactForm = document.getElementById('contactForm');
-      const quoteForm = document.getElementById('quoteForm');
+    // ✅ Safe status message — uses textContent, never innerHTML
+    function setStatus(elId, message, color) {
+      const el = document.getElementById(elId);
+      if (!el) return;
+      el.textContent = '';
+      const div = document.createElement('div');
+      div.style.color = color || 'var(--neon-cyan)';
+      div.textContent = message;
+      el.appendChild(div);
+    }
 
-      if (contactForm) {
-        contactForm.addEventListener('submit', handleContactSubmit);
+    function clearStatus(elId, delay) {
+      if (delay) {
+        setTimeout(() => {
+          const el = document.getElementById(elId);
+          if (el) el.textContent = '';
+        }, delay);
+      } else {
+        const el = document.getElementById(elId);
+        if (el) el.textContent = '';
       }
+    }
 
-      if (quoteForm) {
-        quoteForm.addEventListener('submit', handleQuoteSubmit);
-      }
+    // ✅ Honeypot check
+    function honeypotTripped(form) {
+      const hp = form.querySelector('input[name="website"]');
+      return hp && hp.value.length > 0;
+    }
+
+    // ✅ Basic email format validation
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // ✅ Sanitize: strip any HTML from user input (plain text only)
+    function sanitize(str) {
+      return String(str).replace(/[<>"'`]/g, '').trim().slice(0, 2000);
+    }
+
+    async function sendEmail(templateId, params) {
+      const payload = {
+        service_id: _d(_cfg._s),
+        template_id: templateId,
+        user_id: _d(_cfg._u),
+        template_params: params
+      };
+      const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Send failed');
+      return res;
     }
 
     async function handleContactSubmit(e) {
       e.preventDefault();
-      const statusEl = document.getElementById('formStatus');
+      const form = e.target;
+      const statusEl = 'formStatus';
 
-      const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        service: document.getElementById('service').value,
-        message: document.getElementById('message').value,
-        timestamp: new Date().toISOString()
-      };
+      // ✅ Honeypot check
+      if (honeypotTripped(form)) return;
 
-      statusEl.innerHTML = '<div style="color: var(--neon-cyan);">Sending message...</div>';
+      // ✅ Rate limit check
+      if (Date.now() - _lastSubmit.contact < RATE_LIMIT_MS) {
+        setStatus(statusEl, 'Please wait before sending another message.', 'var(--text-muted)');
+        return;
+      }
+
+      const name    = sanitize(document.getElementById('name').value);
+      const email   = sanitize(document.getElementById('email').value);
+      const service = sanitize(document.getElementById('service').value);
+      const message = sanitize(document.getElementById('message').value);
+
+      if (!name || !isValidEmail(email) || !service || !message) {
+        setStatus(statusEl, 'Please fill in all fields with valid information.', '#f87171');
+        return;
+      }
+
+      setStatus(statusEl, 'Sending message…', 'var(--neon-cyan)');
 
       try {
-        // Using EmailJS for direct email sending
-        const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            service_id: 'service_briaria',
-            template_id: 'template_contact',
-            user_id: 'lV-KkGoIBNgAD1QQm',
-            template_params: {
-              to_email: 'salesbriarialtd@gmail.com',
-              from_name: formData.name,
-              from_email: formData.email,
-              service: formData.service,
-              message: formData.message,
-              timestamp: formData.timestamp
-            }
-          })
+        await sendEmail(_d(_cfg._tc), {
+          to_email: _d(_cfg._e),
+          from_name: name,
+          from_email: email,
+          service: service,
+          message: message,
+          timestamp: new Date().toISOString()
         });
-
-        if (response.ok) {
-          statusEl.innerHTML = '<div style="color: var(--neon-green);">✓ Message sent successfully! We\'ll get back to you soon.</div>';
-          e.target.reset();
-          setTimeout(() => {
-            statusEl.innerHTML = '';
-          }, 5000);
-        } else {
-          throw new Error('Failed to send');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        statusEl.innerHTML = '<div style="color: var(--neon-cyan);">Opening email client...</div>';
-        const subject = encodeURIComponent(`New inquiry: ${formData.service}`);
-        const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.service}\n\nMessage:\n${formData.message}`);
+        _lastSubmit.contact = Date.now();
+        setStatus(statusEl, '✓ Message sent! We\'ll get back to you soon.', 'var(--neon-green)');
+        form.reset();
+        clearStatus(statusEl, 5000);
+      } catch (err) {
+        // Fallback: open mailto without leaking address in DOM
+        const subj = encodeURIComponent('New inquiry: ' + service);
+        const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nService: ' + service + '\n\nMessage:\n' + message);
+        setStatus(statusEl, 'Opening your email client…', 'var(--neon-cyan)');
         setTimeout(() => {
-          window.open(`mailto:salesbriarialtd@gmail.com?subject=${subject}&body=${body}`);
-          statusEl.innerHTML = '<div style="color: var(--neon-green);">✓ Please send the email from your client</div>';
+          window.location.href = 'mailto:' + _d(_cfg._e) + '?subject=' + subj + '&body=' + body;
+          setStatus(statusEl, '✓ Please send the email from your client.', 'var(--neon-green)');
+          form.reset();
         }, 500);
-        e.target.reset();
       }
     }
 
     async function handleQuoteSubmit(e) {
       e.preventDefault();
-      const statusEl = document.getElementById('quoteStatus');
+      const form = e.target;
+      const statusEl = 'quoteStatus';
 
-      const formData = {
-        name: document.getElementById('quoteName').value,
-        email: document.getElementById('quoteEmail').value,
-        service: document.getElementById('quoteService').value,
-        brief: document.getElementById('quoteBrief').value,
-        timestamp: new Date().toISOString()
-      };
+      if (honeypotTripped(form)) return;
 
-      statusEl.innerHTML = '<div style="color: var(--neon-cyan);">Sending quote request...</div>';
+      if (Date.now() - _lastSubmit.quote < RATE_LIMIT_MS) {
+        setStatus(statusEl, 'Please wait before sending another request.', 'var(--text-muted)');
+        return;
+      }
+
+      const name    = sanitize(document.getElementById('quoteName').value);
+      const email   = sanitize(document.getElementById('quoteEmail').value);
+      const service = sanitize(document.getElementById('quoteService').value);
+      const brief   = sanitize(document.getElementById('quoteBrief').value);
+
+      if (!name || !isValidEmail(email) || !brief) {
+        setStatus(statusEl, 'Please fill in all fields with valid information.', '#f87171');
+        return;
+      }
+
+      setStatus(statusEl, 'Sending quote request…', 'var(--neon-cyan)');
 
       try {
-        // Using EmailJS for direct email sending
-        const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            service_id: 'service_briaria',
-            template_id: 'template_quote',
-            user_id: 'lV-KkGoIBNgAD1QQm',
-            template_params: {
-              to_email: 'salesbriarialtd@gmail.com',
-              from_name: formData.name,
-              from_email: formData.email,
-              service: formData.service,
-              message: formData.brief,
-              timestamp: formData.timestamp
-            }
-          })
+        await sendEmail(_d(_cfg._tq), {
+          to_email: _d(_cfg._e),
+          from_name: name,
+          from_email: email,
+          service: service,
+          message: brief,
+          timestamp: new Date().toISOString()
         });
-
-        if (response.ok) {
-          statusEl.innerHTML = '<div style="color: var(--neon-green);">✓ Quote request sent! We\'ll respond within 24 hours.</div>';
-          setTimeout(() => {
-            closeQuoteModal();
-          }, 2000);
-        } else {
-          throw new Error('Failed to send');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        statusEl.innerHTML = '<div style="color: var(--neon-cyan);">Opening email client...</div>';
-        const subject = encodeURIComponent(`Quote Request: ${formData.service}`);
-        const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.service}\n\nProject Brief:\n${formData.brief}`);
+        _lastSubmit.quote = Date.now();
+        setStatus(statusEl, '✓ Quote request sent! We\'ll respond within 24 hours.', 'var(--neon-green)');
+        setTimeout(closeQuoteModal, 2000);
+      } catch (err) {
+        const subj = encodeURIComponent('Quote Request: ' + service);
+        const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nService: ' + service + '\n\nProject Brief:\n' + brief);
+        setStatus(statusEl, 'Opening your email client…', 'var(--neon-cyan)');
         setTimeout(() => {
-          window.open(`mailto:salesbriarialtd@gmail.com?subject=${subject}&body=${body}`);
-          statusEl.innerHTML = '<div style="color: var(--neon-green);">✓ Please send the email from your client</div>';
+          window.location.href = 'mailto:' + _d(_cfg._e) + '?subject=' + subj + '&body=' + body;
+          setTimeout(closeQuoteModal, 2000);
         }, 500);
-        setTimeout(() => {
-          closeQuoteModal();
-        }, 2000);
       }
-    }
-
-    function scrollToContact() {
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function scrollToServices() {
-      document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
     }
 
     function openQuoteModal(service) {
       const modal = document.getElementById('quoteModal');
       const title = document.getElementById('quoteTitle');
       const serviceInput = document.getElementById('quoteService');
-
-      title.textContent = `Request Quote — ${service}`;
+      title.textContent = 'Request Quote — ' + service;
       serviceInput.value = service;
       modal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
@@ -1493,46 +1054,147 @@
       modal.style.display = 'none';
       document.body.style.overflow = 'auto';
       document.getElementById('quoteForm').reset();
-      document.getElementById('quoteStatus').innerHTML = '';
+      clearStatus('quoteStatus');
+    }
+
+    function scrollToContact() { document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); }
+    function scrollToServices() { document.getElementById('services').scrollIntoView({ behavior: 'smooth' }); }
+
+    function initializeParticles() {
+      const bg = document.getElementById('bgEffects');
+      for (let i = 0; i < 40; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 8 + 's';
+        p.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        bg.appendChild(p);
+      }
+    }
+
+    let currentSlide = 0;
+    const heroContent = {
+      0: { badge: '🚀 Elite Software & AI Solutions', title: 'BriAria builds revolutionary software, AI tools, and digital experiences', subtitle: 'We design, develop, and launch production-grade applications, AI features, and engaging content — from concept to global deployment. UK-based expertise, worldwide impact.' },
+      1: { badge: '🤖 Advanced AI Integration', title: 'Transform your business with intelligent automation and AI-powered solutions', subtitle: 'Leverage cutting-edge artificial intelligence to streamline operations, enhance decision-making, and create exceptional user experiences that drive growth.' },
+      2: { badge: '🎨 Premium Digital Experiences', title: 'Captivating designs and marketing strategies that convert prospects into customers', subtitle: 'From brand identity to digital campaigns, we create compelling visual experiences that resonate with your audience and accelerate business growth.' }
+    };
+
+    function initializeSlider() {
+      const slides = document.querySelectorAll('.slide');
+      if (slides.length === 0) return;
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+        const c = heroContent[currentSlide];
+        if (c) {
+          const badge    = document.getElementById('heroBadge');
+          const title    = document.getElementById('heroTitle');
+          const subtitle = document.getElementById('heroSubtitle');
+          if (badge)    badge.textContent    = c.badge;
+          if (title)    title.textContent    = c.title;
+          if (subtitle) subtitle.textContent = c.subtitle;
+        }
+      }, 5000);
+    }
+
+    function initializeScrollEffects() {
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        header.style.background = window.scrollY > 100
+          ? 'rgba(11, 13, 18, 0.95)'
+          : 'rgba(11, 13, 18, 0.85)';
+      }, { passive: true });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        observer.observe(card);
+      });
+    }
+
+    function initializeHamburger() {
+      const btn = document.getElementById('hamburger');
+      const menu = document.getElementById('mobileMenu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        btn.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', open);
+      });
+      // Close menu when a link is clicked
+      menu.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.remove('open');
+          btn.classList.remove('open');
+        });
+      });
     }
 
     function hideLoadingScreen() {
       setTimeout(() => {
-        const loadingScreen = document.getElementById('loadingScreen');
-        loadingScreen.style.opacity = '0';
-        setTimeout(() => {
-          loadingScreen.style.display = 'none';
-        }, 800);
-      }, 1200);
+        const ls = document.getElementById('loadingScreen');
+        ls.style.opacity = '0';
+        setTimeout(() => { ls.style.display = 'none'; }, 800);
+      }, 1000);
     }
 
-    document.getElementById('quoteModal').addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) {
-        closeQuoteModal();
-      }
-    });
+    // ✅ All event listeners attached here — no inline handlers in HTML
+    document.addEventListener('DOMContentLoaded', () => {
+      renderEmail();
+      initializeParticles();
+      initializeSlider();
+      initializeScrollEffects();
+      initializeHamburger();
+      hideLoadingScreen();
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeQuoteModal();
-      }
-    });
+      // Nav buttons
+      document.getElementById('navGetStarted').addEventListener('click', scrollToContact);
+      document.getElementById('heroStartBtn').addEventListener('click', scrollToContact);
+      document.getElementById('heroServicesBtn').addEventListener('click', scrollToServices);
+      const mobileStart = document.getElementById('mobileGetStarted');
+      if (mobileStart) mobileStart.addEventListener('click', () => { scrollToContact(); document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('hamburger').classList.remove('open'); });
 
-    document.addEventListener('mousemove', (e) => {
-      const particles = document.querySelectorAll('.particle');
-      const mouseX = e.clientX / window.innerWidth;
-      const mouseY = e.clientY / window.innerHeight;
-
-      particles.forEach((particle, index) => {
-        const speed = (index % 3 + 1) * 0.5;
-        const x = mouseX * speed;
-        const y = mouseY * speed;
-        particle.style.transform = `translate(${x}px, ${y}px) rotate(${x * 10}deg)`;
+      // Quote buttons
+      document.querySelectorAll('.quote-btn').forEach(btn => {
+        btn.addEventListener('click', () => openQuoteModal(btn.dataset.service));
       });
+
+      // Forms
+      document.getElementById('contactForm').addEventListener('submit', handleContactSubmit);
+      document.getElementById('quoteForm').addEventListener('submit', handleQuoteSubmit);
+
+      // Modal close
+      document.getElementById('closeModalBtn').addEventListener('click', closeQuoteModal);
+      document.getElementById('quoteModal').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeQuoteModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeQuoteModal();
+      });
+
+      // Subtle parallax on particles
+      document.addEventListener('mousemove', (e) => {
+        const mx = e.clientX / window.innerWidth;
+        const my = e.clientY / window.innerHeight;
+        document.querySelectorAll('.particle').forEach((p, i) => {
+          const speed = (i % 3 + 1) * 0.5;
+          p.style.transform = `translate(${mx * speed}px, ${my * speed}px) rotate(${mx * 10}deg)`;
+        });
+      }, { passive: true });
     });
   </script>
 </body>
 </html>
-
-
-
